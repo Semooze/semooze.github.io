@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เตะลูกให้แรงที่สุด · Physics Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface-2: #1c1c1c;
+    --line: #2a2a2a;
+    --text: #f0f0f0;
+    --muted: #8a8a8a;
+    --accent: #ff3c00;
+    --accent-2: #00d9b2;
+    --warn: #ff4757;
+    --good: #2ed573;
+  }
+  
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+  
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 80px;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,60,0,0.15), transparent 70%);
+    filter: blur(40px);
+  }
+  
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .hero-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 14vw, 180px);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .hero h1 .accent {
+    color: var(--accent);
+    font-style: italic;
+  }
+  
+  .hero-sub {
+    font-size: 20px;
+    max-width: 600px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  
+  .hero-meta {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 600px;
+  }
+  
+  .hero-meta-item {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  
+  .hero-meta-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--accent-2);
+    line-height: 1;
+  }
+  
+  .hero-meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 8px;
+  }
+  
+  /* SECTION */
+  section.step {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 240px;
+    line-height: 0.8;
+    color: var(--surface-2);
+    position: absolute;
+    top: 40px;
+    right: -20px;
+    z-index: 0;
+    user-select: none;
+  }
+  
+  .step-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .step-header-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  
+  .step-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+  
+  .step-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .step-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .step-grid { grid-template-columns: 1fr; }
+    .step-num { font-size: 140px; right: 0; }
+    .hero-meta { grid-template-columns: 1fr; gap: 16px; }
+  }
+  
+  .step-text p {
+    margin-bottom: 16px;
+    font-size: 17px;
+  }
+  
+  .step-text strong {
+    color: var(--accent-2);
+    font-weight: 600;
+  }
+  
+  .key-point {
+    border-left: 2px solid var(--accent);
+    padding: 16px 20px;
+    background: rgba(255,60,0,0.04);
+    margin: 24px 0;
+    font-size: 15px;
+  }
+  
+  .key-point .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  /* SVG container */
+  .diagram {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 32px;
+    position: relative;
+  }
+  
+  .diagram-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  
+  /* OK / NG comparison */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  
+  .compare-item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 24px;
+    border-radius: 4px;
+    position: relative;
+  }
+  
+  .compare-item.ok { border-color: var(--good); }
+  .compare-item.ng { border-color: var(--warn); }
+  
+  .compare-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    padding: 4px 10px;
+    letter-spacing: 0.1em;
+  }
+  
+  .compare-item.ok .compare-tag {
+    background: var(--good);
+    color: #000;
+  }
+  
+  .compare-item.ng .compare-tag {
+    background: var(--warn);
+    color: #fff;
+  }
+  
+  /* Spin types section */
+  .spin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  
+  @media (max-width: 768px) {
+    .spin-grid { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+  }
+  
+  .spin-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 28px;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+  
+  .spin-card:hover {
+    border-color: var(--accent);
+  }
+  
+  .spin-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+  
+  .spin-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.02em;
+  }
+  
+  .spin-card-en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  
+  .spin-card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  
+  .spin-card-detail {
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  
+  .spin-card-detail strong {
+    color: var(--accent-2);
+    font-weight: 500;
+  }
+  
+  /* Phase timeline */
+  .timeline {
+    margin: 32px 0;
+  }
+  
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: flex-start;
+  }
+  
+  .timeline-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  
+  .timeline-title {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  
+  .timeline-desc {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  /* Final */
+  .final {
+    padding: 120px 24px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  
+  .final h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+  
+  .final h3 .accent {
+    color: var(--accent);
+  }
+  
+  .final p {
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+  
+  /* Ball impact zones */
+  .impact-zones {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 32px 0;
+  }
+  
+  .zone-card {
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  
+  .zone-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    margin-top: 12px;
+    color: var(--accent-2);
+  }
+  
+  .zone-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* Animations */
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  
+  .pulse-dot {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* PHYSICS SECTION STYLES */
+  .physics-intro {
+    background: linear-gradient(135deg, var(--surface) 0%, #0d1f1c 100%);
+    border: 1px solid var(--accent-2);
+    padding: 48px;
+    border-radius: 4px;
+    margin: 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .physics-intro::before {
+    content: 'F = ma';
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 80px;
+    color: var(--accent-2);
+    opacity: 0.08;
+    font-weight: 700;
+  }
+
+  .physics-intro h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--accent-2);
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .physics-intro p {
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 700px;
+  }
+
+  .law-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    margin: 32px 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .law-card-header {
+    background: linear-gradient(90deg, var(--surface-2), var(--surface));
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .law-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--accent);
+    min-width: 80px;
+  }
+
+  .law-title-block {
+    flex: 1;
+  }
+
+  .law-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  .law-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .law-equation {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    color: var(--accent-2);
+    background: var(--bg);
+    padding: 8px 16px;
+    border-radius: 2px;
+    border: 1px solid var(--accent-2);
+  }
+
+  .law-body {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .law-body { grid-template-columns: 1fr; }
+    .law-card-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .law-number { font-size: 48px; }
+  }
+
+  .law-text p {
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .law-text strong {
+    color: var(--accent-2);
+  }
+
+  .formula-box {
+    background: var(--bg);
+    border: 1px dashed var(--line);
+    padding: 20px;
+    margin: 16px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .formula-box .var {
+    color: var(--accent);
+  }
+
+  .formula-box .val {
+    color: var(--accent-2);
+  }
+
+  .formula-box .note {
+    color: var(--muted);
+    font-size: 11px;
+    display: block;
+    margin-top: 12px;
+  }
+
+  .energy-flow {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 32px;
+    border-radius: 4px;
+    margin: 32px 0;
+  }
+
+  .energy-flow-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .myth-bust {
+    border: 1px solid var(--warn);
+    background: rgba(255,71,87,0.05);
+    padding: 24px;
+    border-radius: 4px;
+    margin: 24px 0;
+  }
+
+  .myth-bust .myth-label {
+    color: var(--warn);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────── */
+  @media (max-width: 768px) {
+    .container { padding: 40px 16px; }
+
+    .hero { min-height: 70vh; padding-bottom: 48px; }
+    .hero h1 { margin-bottom: 20px; }
+    .hero-sub { font-size: 16px; }
+    .hero-meta { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .hero-meta-num { font-size: 32px; }
+    .hero-meta-label { font-size: 9px; letter-spacing: 0.08em; }
+
+    section.step { padding: 48px 0; }
+    .step-num { font-size: 120px; top: 20px; right: 0; }
+    .step-header { flex-direction: column; gap: 6px; margin-bottom: 28px; }
+    .step-header h2 { font-size: clamp(32px, 9vw, 56px); }
+
+    .key-point { padding: 14px 16px; font-size: 14px; }
+
+    .diagram { padding: 16px; }
+
+    .timeline-item { grid-template-columns: 52px 1fr; gap: 12px; }
+    .timeline-num { font-size: 40px; }
+    .timeline-title { font-size: 16px; }
+
+    .physics-intro { padding: 24px 20px; }
+    .physics-intro::before { font-size: 40px; top: 12px; right: 16px; }
+    .physics-intro h3 { font-size: 26px; }
+
+    .law-equation { font-size: 13px; padding: 6px 10px; }
+
+    .zone-card { min-width: 130px; padding: 14px; }
+
+    .final { padding: 64px 16px; }
+    .final p { font-size: 15px; }
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 28px 14px; }
+
+    .hero-meta { gap: 8px; }
+    .hero-meta-num { font-size: 26px; }
+    .hero-meta-label { display: none; }
+
+    .step-num { font-size: 80px; }
+    .step-header h2 { font-size: clamp(28px, 10vw, 48px); }
+
+    .physics-intro { padding: 18px 14px; }
+    .physics-intro::before { display: none; }
+
+    .spin-card { padding: 18px 14px; }
+    .spin-card-title { font-size: 22px; }
+
+    .impact-zones { gap: 12px; }
+    .zone-card { min-width: 100px; padding: 10px; }
+
+    .final { padding: 48px 14px; }
+  }
+
+  /* ── STICKY NAV ─────────────────────────────── */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background: rgba(10,10,10,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: stretch;
+    padding: 0 24px;
+    gap: 0;
+  }
+
+  .site-nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    margin-right: 8px;
+    border-right: 1px solid var(--line);
+    white-space: nowrap;
+  }
+
+  .nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .nav-tab .nav-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    line-height: 1;
+    color: inherit;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 600px) {
+    .site-nav { padding: 0 12px; }
+    .site-nav-logo { display: none; }
+    .nav-tab { font-size: 9px; padding: 12px 12px; letter-spacing: 0.1em; gap: 6px; }
+    .nav-tab .nav-num { font-size: 15px; }
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-logo">Football Guide</div>
+  <a href="football-kick-guide-v2.html" class="nav-tab active">
+    <span class="nav-num">01</span>วิธีเตะแรง
+  </a>
+  <a href="football-spin-guide.html" class="nav-tab">
+    <span class="nav-num">02</span>ควบคุมลูก
+  </a>
+</nav>
+
+<div class="container">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag">คู่มือฉบับสมบูรณ์ · 2026 Edition</div>
+  <h1>เตะลูกให้<br><span class="accent">แรง</span><br>ที่สุด</h1>
+  <p class="hero-sub">วิธีเตะฟุตบอลให้แรง ตรง พร้อมเทคนิคควบคุมการหมุนของลูก สำหรับผู้ที่ไม่เคยเตะแรงมาก่อน — รวมหลักฟิสิกส์ที่ซ่อนอยู่ในทุกขั้นตอน</p>
+  
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-num">06</div>
+      <div class="hero-meta-label">ขั้นตอนหลัก</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-num">06</div>
+      <div class="hero-meta-label">หลักฟิสิกส์</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-num">02</div>
+      <div class="hero-meta-label">หน้า</div>
+    </div>
+  </div>
+</header>
+
+<!-- STEP 1: Approach -->
+<section class="step">
+  <div class="step-num">01</div>
+  <div class="step-header">
+    <span class="step-header-tag">PHASE 01</span>
+    <h2>วิ่งเข้าหาลูก<br>(APPROACH)</h2>
+  </div>
+  
+  <div class="step-content">
+    <div class="step-grid">
+      <div class="step-text">
+        <p>วิ่งเข้าหาลูกในมุม <strong>30–45 องศา</strong> ไม่วิ่งตรง — มุมเฉียงคือสิ่งที่ทำให้ขาแกว่งได้เต็ม arc และทำให้สะโพกหมุนตามได้ตามธรรมชาติ</p>
+        <p>ระยะวิ่งประมาณ <strong>4–6 ก้าว</strong> เพื่อสะสมโมเมนตัม ไม่มากกว่านั้นเพราะจะคุมยาก ก้าวสุดท้ายควรยาวกว่าปกติเล็กน้อย</p>
+        
+        <div class="key-point">
+          <span class="label">หลักฟิสิกส์</span>
+          มุมเฉียงทำให้ลำตัวกับขาเตะอยู่คนละทิศทาง — สร้าง <strong>hip-to-leg separation</strong> ซึ่งเหมือนการขึ้นลานสปริงก่อนปล่อย
+        </div>
+      </div>
+      
+      <div class="diagram">
+        <div class="diagram-label">การวิ่งเข้า · มุมมองจากบน</div>
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ball -->
+          <circle cx="280" cy="200" r="14" fill="#fff" stroke="#000" stroke-width="2"/>
+          <path d="M280 186 L286 196 L282 206 L274 206 L270 196 Z" fill="#000" opacity="0.7"/>
+          
+          <!-- Goal direction arrow -->
+          <line x1="280" y1="200" x2="380" y2="200" stroke="#00d9b2" stroke-width="2" stroke-dasharray="4,4"/>
+          <polygon points="380,200 372,196 372,204" fill="#00d9b2"/>
+          <text x="335" y="190" fill="#00d9b2" font-family="JetBrains Mono" font-size="9" letter-spacing="2">เป้าหมาย</text>
+          
+          <!-- 45 degree run path -->
+          <path d="M 100 280 Q 180 250 260 215" stroke="#ff3c00" stroke-width="2" stroke-dasharray="6,4" fill="none"/>
+          
+          <!-- Footsteps -->
+          <ellipse cx="110" cy="278" rx="8" ry="14" fill="#ff3c00" opacity="0.3" transform="rotate(-30 110 278)"/>
+          <ellipse cx="145" cy="265" rx="8" ry="14" fill="#ff3c00" opacity="0.5" transform="rotate(-30 145 265)"/>
+          <ellipse cx="180" cy="250" rx="8" ry="14" fill="#ff3c00" opacity="0.7" transform="rotate(-30 180 250)"/>
+          <ellipse cx="220" cy="232" rx="8" ry="14" fill="#ff3c00" opacity="0.85" transform="rotate(-30 220 232)"/>
+          <ellipse cx="255" cy="218" rx="8" ry="14" fill="#ff3c00" transform="rotate(-30 255 218)"/>
+          
+          <!-- Plant foot -->
+          <ellipse cx="265" cy="215" rx="9" ry="15" fill="#ffd700" stroke="#fff" stroke-width="1" transform="rotate(0 265 215)"/>
+          
+          <!-- Angle indicator -->
+          <path d="M 280 200 L 320 200 A 40 40 0 0 0 305 175" stroke="#8a8a8a" stroke-width="1" fill="none"/>
+          <text x="295" y="195" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9">30–45°</text>
+          
+          <!-- Step numbers -->
+          <text x="100" y="295" fill="#fff" font-family="Bebas Neue" font-size="14">START</text>
+          <text x="265" y="245" fill="#ffd700" font-family="Bebas Neue" font-size="12">PLANT</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 2: Plant foot -->
+<section class="step">
+  <div class="step-num">02</div>
+  <div class="step-header">
+    <span class="step-header-tag">PHASE 02</span>
+    <h2>การวางเท้าข้าง<br>(PLANT FOOT)</h2>
+  </div>
+  
+  <div class="step-content">
+    <div class="step-grid">
+      <div class="step-text">
+        <p>เท้าข้าง (เท้าที่ไม่เตะ) คือ <strong>กุญแจสำคัญที่สุด</strong> ในการสร้างพลัง — มันทำหน้าที่เปลี่ยนโมเมนตัมแนวนอนจากการวิ่ง ให้กลายเป็นแรงสะบัดออกทางขาเตะ</p>
+        <p>วาง <strong>ข้างลูกห่างประมาณ 15–20 ซม.</strong> ปลายเท้าชี้ไปทิศที่ต้องการเตะ และต้องปักเฉียงเข้าหาพื้น <strong>ไม่ใช่ตั้งตรง</strong></p>
+        <p>เข่างอเล็กน้อยประมาณ 15–20° เพื่อทำหน้าที่เป็น shock absorber และสปริงในเวลาเดียวกัน</p>
+      </div>
+      
+      <div class="diagram">
+        <div class="diagram-label">มุมการปักเท้าข้าง · มุมมองด้านข้าง</div>
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ground line -->
+          <line x1="20" y1="260" x2="380" y2="260" stroke="#2a2a2a" stroke-width="1"/>
+          <pattern id="ground" patternUnits="userSpaceOnUse" width="10" height="10">
+            <line x1="0" y1="10" x2="10" y2="0" stroke="#2a2a2a" stroke-width="0.5"/>
+          </pattern>
+          <rect x="20" y="260" width="360" height="20" fill="url(#ground)"/>
+          
+          <!-- OK side: Diagonal plant -->
+          <g>
+            <text x="60" y="40" fill="#2ed573" font-family="Bebas Neue" font-size="20">OK</text>
+            <!-- Body -->
+            <line x1="120" y1="80" x2="120" y2="180" stroke="#00d9b2" stroke-width="6" stroke-linecap="round"/>
+            <!-- Head -->
+            <circle cx="120" cy="70" r="10" fill="#00d9b2"/>
+            <!-- Plant leg (diagonal) -->
+            <line x1="120" y1="180" x2="80" y2="260" stroke="#00d9b2" stroke-width="6" stroke-linecap="round"/>
+            <!-- Foot -->
+            <ellipse cx="78" cy="262" rx="14" ry="4" fill="#ffd700"/>
+            <!-- Ball -->
+            <circle cx="68" cy="252" r="10" fill="#fff" stroke="#000" stroke-width="1"/>
+            <!-- Force arrow showing redirection -->
+            <path d="M 90 240 Q 110 200 120 160" stroke="#ff3c00" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+            <polygon points="120,160 116,168 124,168" fill="#ff3c00"/>
+            <text x="50" y="290" fill="#2ed573" font-family="JetBrains Mono" font-size="9">เฉียง · เบรก+สปริง</text>
+          </g>
+          
+          <!-- NG side: Vertical plant -->
+          <g>
+            <text x="290" y="40" fill="#ff4757" font-family="Bebas Neue" font-size="20">NG</text>
+            <!-- Body -->
+            <line x1="290" y1="80" x2="290" y2="180" stroke="#666" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="290" cy="70" r="10" fill="#666"/>
+            <!-- Plant leg (vertical) -->
+            <line x1="290" y1="180" x2="290" y2="260" stroke="#666" stroke-width="6" stroke-linecap="round"/>
+            <ellipse cx="290" cy="262" rx="14" ry="4" fill="#888"/>
+            <circle cx="278" cy="252" r="10" fill="#fff" stroke="#000" stroke-width="1"/>
+            <!-- No redirection -->
+            <line x1="290" y1="220" x2="320" y2="220" stroke="#ff4757" stroke-width="2" stroke-dasharray="3,3"/>
+            <polygon points="320,220 316,216 316,224" fill="#ff4757"/>
+            <text x="240" y="290" fill="#ff4757" font-family="JetBrains Mono" font-size="9">ตั้งตรง · ใช้แค่กล้ามเนื้อ</text>
+          </g>
+          
+          <!-- Center divider -->
+          <line x1="200" y1="50" x2="200" y2="270" stroke="#2a2a2a" stroke-dasharray="2,4"/>
+        </svg>
+      </div>
+    </div>
+    
+    <div class="compare">
+      <div class="compare-item ok">
+        <span class="compare-tag">OK</span>
+        <strong style="color:var(--good)">ขาเฉียง · ลำตัวตั้งตรง/เอนหลัง</strong>
+        <p style="font-size:14px;color:var(--muted);margin-top:12px">เท้าข้างทำหน้าที่เป็น "ramp" ที่เปลี่ยนแรงพุ่งของร่างกายให้กลายเป็นแรงสะบัดออกทางขาเตะ</p>
+      </div>
+      <div class="compare-item ng">
+        <span class="compare-tag">NG</span>
+        <strong style="color:var(--warn)">ขาตั้งตรง / ลำตัวเอียงตามขา</strong>
+        <p style="font-size:14px;color:var(--muted);margin-top:12px">โมเมนตัมจากการวิ่งสูญเปล่า ต้องพึ่งกำลังกล้ามเนื้อขาเตะอย่างเดียว แรงน้อยกว่ามาก</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 3: Backswing -->
+<section class="step">
+  <div class="step-num">03</div>
+  <div class="step-header">
+    <span class="step-header-tag">PHASE 03</span>
+    <h2>การชาร์จขา<br>(BACKSWING)</h2>
+  </div>
+  
+  <div class="step-content">
+    <div class="step-grid">
+      <div class="step-text">
+        <p>ดึงขาเตะไปด้านหลังให้มากที่สุด <strong>พับเข่า</strong> จนส้นเท้าเกือบแตะก้น — นี่คือการชาร์จพลังเหมือนดึงสปริง</p>
+        <p>เอน <strong>ลำตัวไปด้านหลังเล็กน้อย</strong> เพื่อสร้างมุมระหว่างลำตัวกับขา ยิ่งห่างกันมาก ยิ่งเก็บพลังงานได้มาก</p>
+        
+        <div class="key-point">
+          <span class="label">เคล็ดลับ</span>
+          แขนข้างตรงข้ามกับขาเตะควรกางออกเพื่อสร้างสมดุล และช่วยให้ลำตัวบิดได้เต็มที่
+        </div>
+        <div class="key-point" style="border-color:var(--accent-2);margin-top:12px">
+          <span class="label" style="color:var(--accent-2)">เชื่อมกับ IMPACT</span>
+          ยิ่งลำตัวยืดออกมากตอน backswing ยิ่งมี range ให้พุ่งไปข้างหน้าตอนสัมผัสลูกได้มาก — นี่คือการ "ดึงสปริง" ให้ตึงก่อนปล่อย (ดู LAW 07)
+        </div>
+      </div>
+      
+      <div class="diagram">
+        <div class="diagram-label">ท่าชาร์จพลัง · จุดสูงสุดของ backswing</div>
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="260" x2="380" y2="260" stroke="#2a2a2a" stroke-width="1"/>
+          
+          <!-- Body leaning back -->
+          <line x1="200" y1="80" x2="180" y2="170" stroke="#00d9b2" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="205" cy="70" r="12" fill="#00d9b2"/>
+          
+          <!-- Plant leg -->
+          <line x1="180" y1="170" x2="160" y2="260" stroke="#00d9b2" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="158" cy="262" rx="16" ry="4" fill="#ffd700"/>
+          
+          <!-- Kicking leg (loaded back) -->
+          <line x1="180" y1="170" x2="240" y2="200" stroke="#ff3c00" stroke-width="6" stroke-linecap="round"/>
+          <line x1="240" y1="200" x2="280" y2="140" stroke="#ff3c00" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="280" cy="135" rx="14" ry="5" fill="#ff3c00" transform="rotate(-30 280 135)"/>
+          
+          <!-- Arms for balance -->
+          <line x1="200" y1="100" x2="240" y2="130" stroke="#666" stroke-width="4" stroke-linecap="round"/>
+          <line x1="200" y1="100" x2="155" y2="115" stroke="#666" stroke-width="4" stroke-linecap="round"/>
+          
+          <!-- Spring/charge indicator -->
+          <path d="M 240 200 Q 260 180 280 140" stroke="#ff3c00" stroke-width="1" stroke-dasharray="2,2" fill="none" opacity="0.5"/>
+          
+          <!-- Lightning bolt = stored energy -->
+          <g transform="translate(310, 145)">
+            <polygon points="0,0 8,0 4,8 12,8 2,22 6,12 -2,12" fill="#ffd700"/>
+          </g>
+          
+          <!-- Ball (in front) -->
+          <circle cx="140" cy="252" r="10" fill="#fff" stroke="#000"/>
+          
+          <!-- Annotations -->
+          <text x="260" y="125" fill="#ff3c00" font-family="JetBrains Mono" font-size="9">ขาชาร์จ</text>
+          <text x="120" y="100" fill="#00d9b2" font-family="JetBrains Mono" font-size="9">เอนหลัง</text>
+          <text x="50" y="150" fill="#666" font-family="JetBrains Mono" font-size="9">แขนกาง</text>
+          <line x1="80" y1="148" x2="155" y2="120" stroke="#666" stroke-width="0.5" stroke-dasharray="2,2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 4: Strike -->
+<section class="step">
+  <div class="step-num">04</div>
+  <div class="step-header">
+    <span class="step-header-tag">PHASE 04</span>
+    <h2>การสัมผัสลูก<br>(IMPACT)</h2>
+  </div>
+  
+  <div class="step-content">
+    <div class="step-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="step-text">
+        <p>ตอนเท้าข้างกระแทกพื้น <strong>ทันทีที่นั่น</strong> ขาเตะจะดีดออกมา (ไม่ใช่ก่อน ไม่ใช่หลัง) เข่าควรอยู่ <strong>เหนือลูก</strong> ตอนสัมผัส</p>
+        <p>สัมผัสลูกด้วย <strong>หลังเท้า (instep)</strong> โดยล็อคข้อเท้าให้แน่น — ปลายเท้าชี้ลงพื้น และเหยียดเหมือนยืนบนปลายเท้า</p>
+        
+        <div class="key-point">
+          <span class="label">CRITICAL</span>
+          ข้อเท้าต้องล็อค 100% ถ้าหลวม ลูกจะ "ชนะ" เท้า → แรงเสียไปกับการสั่นของข้อเท้า
+        </div>
+      </div>
+      
+      <div class="diagram">
+        <div class="diagram-label">จุดสัมผัสบนเท้า · มุมมองด้านบน</div>
+        <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+          <!-- Foot outline -->
+          <ellipse cx="150" cy="160" rx="55" ry="100" fill="none" stroke="#444" stroke-width="2"/>
+          
+          <!-- Toes -->
+          <ellipse cx="120" cy="65" rx="10" ry="14" fill="none" stroke="#444"/>
+          <ellipse cx="140" cy="58" rx="9" ry="12" fill="none" stroke="#444"/>
+          <ellipse cx="158" cy="60" rx="8" ry="11" fill="none" stroke="#444"/>
+          <ellipse cx="172" cy="65" rx="7" ry="10" fill="none" stroke="#444"/>
+          <ellipse cx="184" cy="72" rx="6" ry="9" fill="none" stroke="#444"/>
+          
+          <!-- INSTEP zone (best for power) -->
+          <ellipse cx="150" cy="135" rx="32" ry="35" fill="#ff3c00" opacity="0.7"/>
+          <text x="150" y="140" fill="#fff" font-family="Bebas Neue" font-size="20" text-anchor="middle">INSTEP</text>
+          
+          <!-- Inside foot (for placement) -->
+          <ellipse cx="105" cy="180" rx="18" ry="40" fill="#00d9b2" opacity="0.4" transform="rotate(20 105 180)"/>
+          
+          <!-- Outside foot -->
+          <ellipse cx="195" cy="180" rx="15" ry="35" fill="#ffd700" opacity="0.4" transform="rotate(-20 195 180)"/>
+          
+          <!-- Toe tip (NEVER USE) -->
+          <ellipse cx="150" cy="68" rx="35" ry="20" fill="#ff4757" opacity="0.3"/>
+          <text x="150" y="35" fill="#ff4757" font-family="JetBrains Mono" font-size="9" text-anchor="middle">✗ ห้ามเตะปลาย</text>
+          
+          <!-- Annotations -->
+          <text x="40" y="150" fill="#00d9b2" font-family="JetBrains Mono" font-size="9">ด้านใน</text>
+          <text x="40" y="162" fill="#00d9b2" font-family="JetBrains Mono" font-size="8">(แม่นยำ)</text>
+          <line x1="80" y1="155" x2="95" y2="170" stroke="#00d9b2" stroke-width="0.5"/>
+          
+          <text x="220" y="150" fill="#ffd700" font-family="JetBrains Mono" font-size="9">ด้านนอก</text>
+          <text x="220" y="162" fill="#ffd700" font-family="JetBrains Mono" font-size="8">(สปิน)</text>
+          <line x1="218" y1="155" x2="208" y2="170" stroke="#ffd700" stroke-width="0.5"/>
+          
+          <text x="220" y="240" fill="#ff3c00" font-family="JetBrains Mono" font-size="9">หลังเท้า</text>
+          <text x="220" y="252" fill="#ff3c00" font-family="JetBrains Mono" font-size="8">(แรงสุด)</text>
+          <line x1="218" y1="245" x2="180" y2="135" stroke="#ff3c00" stroke-width="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 5: Follow Through -->
+<section class="step">
+  <div class="step-num">05</div>
+  <div class="step-header">
+    <span class="step-header-tag">PHASE 05</span>
+    <h2>การส่งต่อแรง<br>(FOLLOW-THROUGH)</h2>
+  </div>
+  
+  <div class="step-content">
+    <div class="step-grid">
+      <div class="step-text">
+        <p>หลังสัมผัสลูก <strong>อย่าหยุดขา</strong> — ปล่อยให้ขาแกว่งต่อขึ้นไประดับเอวหรือสูงกว่า</p>
+        <p>การ follow-through เพิ่มแรงได้ <strong>20–30%</strong> เพราะมันช่วยเร่งความเร็วของเท้าตอนสัมผัส (เท้าที่กำลังเร่งจะเร็วกว่าเท้าที่กำลังช้าลง)</p>
+        <p>ร่างกายอาจกระโดดขึ้นเล็กน้อยตามแรงเหวี่ยง — นั่นคือสัญญาณว่าใช้แรงได้เต็มที่</p>
+      </div>
+      
+      <div class="diagram">
+        <div class="diagram-label">การแกว่งต่อหลังสัมผัส · ขาและลูกไปทิศเดียวกัน</div>
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ground -->
+          <line x1="20" y1="260" x2="380" y2="260" stroke="#2a2a2a"/>
+
+          <!-- Body (leaning forward to the LEFT — direction of kick) -->
+          <line x1="252" y1="80" x2="232" y2="168" stroke="#00d9b2" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="255" cy="68" r="12" fill="#00d9b2"/>
+
+          <!-- Plant leg (right leg, anchored on ground — RIGHT side) -->
+          <line x1="232" y1="168" x2="264" y2="258" stroke="#00d9b2" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="266" cy="260" rx="16" ry="4" fill="#ffd700"/>
+
+          <!-- Kicking leg follow-through — goes UP and to the LEFT (same direction as ball) -->
+          <line x1="232" y1="168" x2="172" y2="138" stroke="#ff3c00" stroke-width="6" stroke-linecap="round"/>
+          <line x1="172" y1="138" x2="78" y2="86" stroke="#ff3c00" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="72" cy="83" rx="14" ry="5" fill="#ff3c00" transform="rotate(18 72 83)"/>
+
+          <!-- Foot swing arc (from below up to the LEFT) -->
+          <path d="M 220 238 Q 172 185 128 138 Q 100 112 72 86" stroke="#ff3c00" stroke-width="1" stroke-dasharray="3,3" fill="none" opacity="0.6"/>
+
+          <!-- Ball trajectory (to the LEFT — SAME direction as the kicking leg) -->
+          <circle cx="152" cy="245" r="9" fill="#fff" stroke="#000"/>
+          <circle cx="102" cy="220" r="8" fill="#fff" stroke="#000" opacity="0.7"/>
+          <circle cx="52" cy="194" r="7" fill="#fff" stroke="#000" opacity="0.45"/>
+          <line x1="152" y1="245" x2="54" y2="196" stroke="#fff" stroke-width="0.5" stroke-dasharray="2,2"/>
+
+          <!-- Labels -->
+          <text x="8" y="70" fill="#ff3c00" font-family="JetBrains Mono" font-size="9">ขาขึ้นสูง</text>
+          <text x="18" y="212" fill="#fff" font-family="JetBrains Mono" font-size="9">วิถีลูก</text>
+
+          <!-- Same-direction indicator -->
+          <line x1="92" y1="178" x2="62" y2="160" stroke="#00d9b2" stroke-width="1.5" stroke-dasharray="2,3" opacity="0.7"/>
+          <text x="66" y="174" fill="#00d9b2" font-family="JetBrains Mono" font-size="8" opacity="0.9">ทิศเดียวกัน</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 6: Hip rotation -->
+<section class="step">
+  <div class="step-num">06</div>
+  <div class="step-header">
+    <span class="step-header-tag">PHASE 06</span>
+    <h2>การหมุนสะโพก<br>(HIP ROTATION)</h2>
+  </div>
+  
+  <div class="step-content">
+    <div class="step-text" style="max-width:700px;margin-bottom:32px">
+      <p>สะโพกไม่ได้หมุนแยกต่างหาก — มันเป็นผลจากการบิดลำตัวทั้งหมด ลำดับการส่งแรงคือ:</p>
+    </div>
+    
+    <!-- Kinetic chain -->
+    <div style="background:var(--surface);border:1px solid var(--line);padding:32px;border-radius:4px;overflow-x:auto">
+      <svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:600px">
+        <!-- Chain -->
+        <g font-family="Bebas Neue" font-size="22" text-anchor="middle">
+          <rect x="20" y="40" width="90" height="50" fill="#1c1c1c" stroke="#ff3c00" stroke-width="1" rx="2"/>
+          <text x="65" y="72" fill="#ff3c00">พื้น</text>
+          
+          <polygon points="115,55 130,65 115,75" fill="#ff3c00"/>
+          
+          <rect x="135" y="40" width="100" height="50" fill="#1c1c1c" stroke="#ff5e2e" stroke-width="1" rx="2"/>
+          <text x="185" y="72" fill="#ff5e2e">เท้าข้าง</text>
+          
+          <polygon points="240,55 255,65 240,75" fill="#ff5e2e"/>
+          
+          <rect x="260" y="40" width="80" height="50" fill="#1c1c1c" stroke="#ff8050" stroke-width="1" rx="2"/>
+          <text x="300" y="72" fill="#ff8050">เข่า</text>
+          
+          <polygon points="345,55 360,65 345,75" fill="#ff8050"/>
+          
+          <rect x="365" y="40" width="100" height="50" fill="#1c1c1c" stroke="#ffa570" stroke-width="1" rx="2"/>
+          <text x="415" y="72" fill="#ffa570">สะโพก</text>
+          
+          <polygon points="470,55 485,65 470,75" fill="#ffa570"/>
+          
+          <rect x="490" y="40" width="100" height="50" fill="#1c1c1c" stroke="#ffd700" stroke-width="1" rx="2"/>
+          <text x="540" y="72" fill="#ffd700">ลำตัว</text>
+          
+          <polygon points="595,55 610,65 595,75" fill="#ffd700"/>
+          
+          <rect x="615" y="40" width="100" height="50" fill="#1c1c1c" stroke="#00d9b2" stroke-width="2" rx="2"/>
+          <text x="665" y="72" fill="#00d9b2">ขาเตะ</text>
+          
+          <polygon points="720,55 735,65 720,75" fill="#00d9b2"/>
+          
+          <rect x="740" y="40" width="50" height="50" fill="#00d9b2" rx="2"/>
+          <text x="765" y="72" fill="#000">ลูก</text>
+        </g>
+        
+        <!-- Label -->
+        <text x="400" y="20" fill="#8a8a8a" font-family="JetBrains Mono" font-size="10" text-anchor="middle" letter-spacing="3">KINETIC CHAIN · ห่วงโซ่การส่งแรง</text>
+        <text x="400" y="110" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">แรงเริ่มจากพื้น ไหลขึ้นผ่านร่างกาย และออกที่ปลายเท้าตอนสัมผัสลูก</text>
+      </svg>
+    </div>
+    
+    <div class="step-text" style="margin-top:32px;max-width:700px">
+      <div class="key-point">
+        <span class="label">หลักสำคัญ</span>
+        อย่าพยายามหมุนสะโพกเอง — ถ้าทำขั้นตอน 1-5 ถูกต้อง สะโพกจะหมุนเองโดยอัตโนมัติ เหมือนการขว้างหมัดหรือสวิงไม้กอล์ฟ
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELAX / MINDSET SECTION -->
+<section class="step">
+  <div class="step-num" style="color:rgba(255,71,87,0.1)">!</div>
+  <div class="step-header">
+    <span class="step-header-tag" style="color:var(--warn)">MINDSET · ข้อเท็จจริงที่ฟังดูขัดแย้ง</span>
+    <h2>ยิ่งออกแรง<br>ยิ่ง<span style="color:var(--warn)">ช้า</span></h2>
+  </div>
+
+  <div class="step-content">
+
+    <div class="physics-intro" style="border-color:var(--warn);background:linear-gradient(135deg,var(--surface),#180808)">
+      <h3 style="color:var(--warn)">ทำไมนักเตะที่ดี "ดูสบาย" แต่ลูกแรงกว่า?</h3>
+      <p>ในกีฬาประเภท swing ทุกชนิด — เทนนิส กอล์ฟ เบสบอล ฟุตบอล — การ<strong>เกร็ง/ออกแรงเต็มที่ตั้งแต่ต้น</strong>ทำให้ความเร็วปลายเท้าลดลงจริงๆ ไม่ใช่แค่ความรู้สึก นี่คือ 3 สาเหตุที่พิสูจน์ได้ทางฟิสิกส์และกายวิทยา</p>
+    </div>
+
+    <!-- 3 negative effects -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:32px 0">
+
+      <div style="background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--warn);padding:24px;border-radius:4px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--warn);line-height:1">01</div>
+        <div style="font-weight:600;font-size:16px;margin:8px 0 10px">เข่าเหยียดล่วงหน้า</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7">เมื่อเกร็ง Quadriceps ก่อนเวลา เข่าเริ่มเหยียดก่อนถึง Impact ทำให้ arc ของการแกว่งขาสั้นลง ความเร็วปลายเท้าลดลงตาม <strong style="color:var(--text)">กฎคาน (Lever)</strong> — คานสั้นลง = เร็วน้อยลง</p>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--warn);padding:24px;border-radius:4px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--warn);line-height:1">02</div>
+        <div style="font-weight:600;font-size:16px;margin:8px 0 10px">ควบคุม Kinetic Chain ยาก</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7">การเกร็งรบกวน coordination — แต่ละข้อต่อไม่ส่งต่อแรงตามลำดับที่ถูกต้อง ทำให้ <strong style="color:var(--text)">whip effect หายไป</strong> และลูกเบี่ยงออกนอกเป้าหมาย</p>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--warn);padding:24px;border-radius:4px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--warn);line-height:1">03</div>
+        <div style="font-weight:600;font-size:16px;margin:8px 0 10px">Hamstrings ดึงเบรก</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7">นี่คือสาเหตุหลัก — เมื่อ Quadriceps เกร็งมากเกิน กล้ามเนื้อฝ่ายตรงข้าม (Hamstrings) จะ<strong style="color:var(--text)">ทำงานพร้อมกัน</strong>เพื่อปกป้องข้อต่อ ผลคือ Hamstrings ดึงเบรกการแกว่งขาโดยตรง</p>
+      </div>
+
+    </div>
+
+    <!-- Antagonist braking -->
+    <div class="law-card">
+      <div class="law-card-header">
+        <div class="law-number" style="color:var(--warn)">!</div>
+        <div class="law-title-block">
+          <div class="law-title">Hamstrings คือเบรกของการเตะ</div>
+          <div class="law-subtitle">Antagonist Co-contraction · เมื่อเกร็งเกินไป</div>
+        </div>
+        <div class="law-equation" style="border-color:var(--warn);color:var(--warn)">v_จริง = v_quad − F_brake</div>
+      </div>
+      <div class="law-body">
+        <div class="law-text">
+          <p>กล้ามเนื้อทุกมัดมีคู่ฝ่ายตรงข้าม (Antagonist) — เมื่อ <strong>Quadriceps</strong> (ยืดเข่า = เตะ) ทำงาน กล้ามเนื้อ <strong>Hamstrings</strong> (งอเข่า = ดึงกลับ) ควรผ่อนแรงออก</p>
+          <p>แต่เมื่อเราเกร็ง/พยายามออกแรงเกิน threshold → สัญญาณประสาทสั่งให้ทั้งสองทำงานพร้อมกัน (Co-contraction) → <strong>Hamstrings กลายเป็นเบรกของการเตะ</strong></p>
+          <div class="formula-box">
+            <span class="var">เกร็ง</span>: Quad แรงขึ้น แต่ Hamstrings ก็แรงขึ้น → <span class="val">v ลดลง</span><br>
+            <span class="var">ผ่อน</span>: Quad ทำงานเดี่ยว Hamstrings ไม่ขัด → <span class="val">v สูงสุด</span><br>
+            <span class="note">วงจรอุบาทว์: ลูกช้า → ออกแรงมากขึ้น → เบรกมากขึ้น → ลูกยิ่งช้า</span>
+          </div>
+        </div>
+        <div class="diagram" style="padding:20px">
+          <div class="diagram-label">Antagonist Braking · เกร็ง vs ผ่อน</div>
+          <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg">
+            <!-- LEFT: TENSED -->
+            <text x="95" y="18" fill="#ff4757" font-family="Bebas Neue" font-size="16" text-anchor="middle">เกร็ง</text>
+            <g transform="translate(15,30)">
+              <!-- Hip pivot -->
+              <circle cx="80" cy="20" r="5" fill="#666"/>
+              <!-- Thigh -->
+              <line x1="80" y1="20" x2="65" y2="95" stroke="#666" stroke-width="7" stroke-linecap="round"/>
+              <!-- Shin -->
+              <line x1="65" y1="95" x2="95" y2="175" stroke="#666" stroke-width="7" stroke-linecap="round"/>
+              <!-- Quad arrow: extends knee = foot swings forward -->
+              <path d="M 100 60 Q 115 80 108 100" stroke="#ff4757" stroke-width="2.5" fill="none"/>
+              <polygon points="108,100 103,92 112,91" fill="#ff4757"/>
+              <text x="118" y="70" fill="#ff4757" font-family="JetBrains Mono" font-size="8">Quad ↓</text>
+              <!-- Hamstrings arrow: pulls foot BACK = brake -->
+              <path d="M 38 80 Q 28 110 45 145" stroke="#ff8050" stroke-width="2.5" fill="none"/>
+              <polygon points="45,145 40,136 49,136" fill="#ff8050"/>
+              <text x="2" y="110" fill="#ff8050" font-family="JetBrains Mono" font-size="8">Ham↑</text>
+              <text x="2" y="120" fill="#ff8050" font-family="JetBrains Mono" font-size="8">เบรก!</text>
+              <!-- Slow ball -->
+              <circle cx="108" cy="185" r="9" fill="#fff" stroke="#555"/>
+              <line x1="117" y1="185" x2="145" y2="185" stroke="#ff4757" stroke-width="1.5" stroke-dasharray="2,2" marker-end="url(#arr-o)"/>
+              <text x="130" y="178" fill="#ff4757" font-family="JetBrains Mono" font-size="8">ช้า</text>
+            </g>
+
+            <!-- DIVIDER -->
+            <line x1="200" y1="10" x2="200" y2="220" stroke="#2a2a2a" stroke-dasharray="3,4"/>
+
+            <!-- RIGHT: RELAXED then LOCK -->
+            <text x="300" y="18" fill="#2ed573" font-family="Bebas Neue" font-size="16" text-anchor="middle">ผ่อน → lock</text>
+            <g transform="translate(215,30)">
+              <circle cx="80" cy="20" r="5" fill="#00d9b2"/>
+              <line x1="80" y1="20" x2="65" y2="95" stroke="#00d9b2" stroke-width="7" stroke-linecap="round"/>
+              <line x1="65" y1="95" x2="95" y2="175" stroke="#00d9b2" stroke-width="7" stroke-linecap="round"/>
+              <!-- Quad only -->
+              <path d="M 100 60 Q 115 80 108 100" stroke="#00d9b2" stroke-width="2.5" fill="none"/>
+              <polygon points="108,100 103,92 112,91" fill="#00d9b2"/>
+              <text x="118" y="70" fill="#00d9b2" font-family="JetBrains Mono" font-size="8">Quad ↓</text>
+              <!-- Ham relaxed -->
+              <text x="5" y="110" fill="#444" font-family="JetBrains Mono" font-size="8">Ham</text>
+              <text x="5" y="120" fill="#2ed573" font-family="JetBrains Mono" font-size="8">ผ่อน ✓</text>
+              <!-- Fast ball -->
+              <circle cx="108" cy="185" r="9" fill="#fff" stroke="#000"/>
+              <line x1="117" y1="185" x2="175" y2="185" stroke="#00d9b2" stroke-width="2.5" stroke-dasharray="4,2" marker-end="url(#arr-t2)"/>
+              <defs><marker id="arr-t2" markerWidth="7" markerHeight="7" refX="3" refY="3.5" orient="auto"><polygon points="0,0 7,3.5 0,7" fill="#00d9b2"/></marker></defs>
+              <text x="148" y="178" fill="#00d9b2" font-family="JetBrains Mono" font-size="8">เร็ว!</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Correct timing sequence -->
+    <div class="law-card">
+      <div class="law-card-header">
+        <div class="law-number" style="color:var(--accent-2)">✓</div>
+        <div class="law-title-block">
+          <div class="law-title">ลำดับการออกแรงที่ถูกต้อง</div>
+          <div class="law-subtitle">Core First · Endpoint Last · Lock at Impact</div>
+        </div>
+        <div class="law-equation">Core → Hip → Foot</div>
+      </div>
+      <div class="law-body">
+        <div class="law-text">
+          <p><strong>ต้นแกนออกแรงก่อน ปลายผ่อน</strong> — ลำตัวและสะโพกเป็นตัวขับเคลื่อนหลัก ปลายขาและเท้าต้องผ่อนเพื่อให้ whip effect เกิดขึ้นเต็มที่</p>
+          <p>ลำดับที่ถูกต้อง: <strong>กล้ามเนื้อ Core (Abs)</strong> → <strong>Iliopsoas + Adductors</strong> → <strong>Quadriceps</strong> — แต่ละส่วนทำงานมีเวลาห่างกัน ปลายเท้าเร็วขึ้นแบบทวีคูณเหมือนแส้</p>
+          <p><strong style="color:var(--accent-2)">ช่วงต้น:</strong> Core แน่น ปลายขาผ่อน &nbsp;|&nbsp; <strong style="color:var(--accent-2)">ช่วงกลาง-ท้าย:</strong> เพิ่มแรงที่ปลาย &nbsp;|&nbsp; <strong style="color:var(--accent)">Impact:</strong> lock ข้อเท้า 100% ทันที</p>
+          <div class="formula-box">
+            <span class="note">「力を抜け」脱力の真意 — ความหมายที่แท้จริงของ "อย่าออกแรง"</span>
+            ช่วงต้น…<span class="var">แกน</span>ออกแรง + <span class="val">ปลาย</span>ผ่อน<br>
+            ช่วงท้าย…ค่อยๆ เพิ่มแรงที่ <span class="val">ปลาย</span><br>
+            Impact…<span class="val">lock</span>ข้อเท้าทันที เหมือนกดสวิตช์
+          </div>
+        </div>
+        <div class="diagram" style="padding:20px">
+          <div class="diagram-label">Sequential Activation · Core → Hip → Quad → Lock</div>
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <text x="200" y="18" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" letter-spacing="2">ลำดับการจุดระเบิด</text>
+
+            <!-- Phase boxes -->
+            <rect x="10" y="35" width="80" height="50" fill="#1c1c1c" stroke="#00d9b2" stroke-width="1.5" rx="2"/>
+            <text x="50" y="58" fill="#00d9b2" font-family="Bebas Neue" font-size="14" text-anchor="middle">Core</text>
+            <text x="50" y="72" fill="#8a8a8a" font-family="JetBrains Mono" font-size="8" text-anchor="middle">Abs / Trunk</text>
+
+            <polygon points="95,58 110,58 102.5,50 102.5,66" fill="#ff3c00"/>
+
+            <rect x="115" y="28" width="80" height="64" fill="#1c1c1c" stroke="#ffa570" stroke-width="1.5" rx="2"/>
+            <text x="155" y="55" fill="#ffa570" font-family="Bebas Neue" font-size="14" text-anchor="middle">สะโพก</text>
+            <text x="155" y="68" fill="#8a8a8a" font-family="JetBrains Mono" font-size="7" text-anchor="middle">Iliopsoas</text>
+            <text x="155" y="79" fill="#8a8a8a" font-family="JetBrains Mono" font-size="7" text-anchor="middle">Adductors</text>
+
+            <polygon points="200,58 215,58 207.5,50 207.5,66" fill="#ff3c00"/>
+
+            <rect x="220" y="20" width="80" height="72" fill="#1c1c1c" stroke="#ffd700" stroke-width="1.5" rx="2"/>
+            <text x="260" y="50" fill="#ffd700" font-family="Bebas Neue" font-size="14" text-anchor="middle">หน้าขา</text>
+            <text x="260" y="63" fill="#8a8a8a" font-family="JetBrains Mono" font-size="8" text-anchor="middle">Quad</text>
+            <text x="260" y="76" fill="#8a8a8a" font-family="JetBrains Mono" font-size="8" text-anchor="middle">+ ผ่อน→เพิ่ม</text>
+
+            <polygon points="305,58 320,58 312.5,50 312.5,66" fill="#ff3c00"/>
+
+            <rect x="325" y="10" width="65" height="82" fill="#ff3c00" rx="2"/>
+            <text x="357" y="52" fill="#fff" font-family="Bebas Neue" font-size="13" text-anchor="middle">IMPACT</text>
+            <text x="357" y="66" fill="#fff" font-family="JetBrains Mono" font-size="7" text-anchor="middle">LOCK</text>
+            <text x="357" y="78" fill="#fff" font-family="JetBrains Mono" font-size="7" text-anchor="middle">ข้อเท้า</text>
+
+            <!-- endpoint status row -->
+            <text x="50" y="105" fill="#2ed573" font-family="JetBrains Mono" font-size="8" text-anchor="middle">ปลาย: ผ่อน</text>
+            <text x="155" y="105" fill="#2ed573" font-family="JetBrains Mono" font-size="8" text-anchor="middle">ปลาย: ผ่อน</text>
+            <text x="260" y="105" fill="#ffd700" font-family="JetBrains Mono" font-size="8" text-anchor="middle">ปลาย: เพิ่มแรง</text>
+            <text x="357" y="105" fill="#ff3c00" font-family="JetBrains Mono" font-size="8" text-anchor="middle">LOCK !</text>
+
+            <!-- Foot speed curve -->
+            <text x="8" y="125" fill="#8a8a8a" font-family="JetBrains Mono" font-size="8">ความเร็วเท้า</text>
+            <line x1="8" y1="185" x2="395" y2="185" stroke="#333" stroke-width="0.5"/>
+            <line x1="8" y1="185" x2="8" y2="120" stroke="#333" stroke-width="0.5"/>
+            <path d="M 10 183 Q 90 180 170 170 Q 260 155 370 128" stroke="#00d9b2" stroke-width="2" fill="none" stroke-dasharray="3,2"/>
+            <!-- speed spike at impact -->
+            <line x1="370" y1="128" x2="385" y2="108" stroke="#ff3c00" stroke-width="2"/>
+            <polygon points="385,108 380,116 390,116" fill="#ff3c00"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <span class="label">สรุป · Relax to Explode</span>
+      อย่าพยายาม "เตะแรง" — ให้พยายาม "เตะเร็วและถูกจังหวะ" | ช่วงแกว่งขา: Core แน่น ปลายขาผ่อน | ถึง Impact: lock ข้อเท้าทันทีเหมือนกดสวิตช์
+    </div>
+
+    <div class="myth-bust">
+      <span class="myth-label">วงจรอุบาทว์ที่ต้องหลีกเลี่ยง</span>
+      "ออกแรงเต็มที่ตั้งแต่ต้น" → Hamstrings เบรก → ลูกช้า → ยิ่งออกแรงมากขึ้น → เบรกมากขึ้น → ลูกยิ่งช้า<br>
+      <strong>แก้ด้วย:</strong> รู้สึก "เบา" ที่ขาตลอดการแกว่ง — จนถึงจุด Impact ค่อย "snap" ข้อเท้าออก
+    </div>
+
+  </div>
+</section>
+
+<!-- NEXT PAGE NAV -->
+<section class="step">
+  <div class="step-header">
+    <span class="step-header-tag">PART 2</span>
+    <h2>ควบคุมสปิน<br>&amp; การหมุนลูก</h2>
+  </div>
+  <div class="step-content">
+    <div class="step-text" style="max-width:700px;margin-bottom:40px">
+      <p>เมื่อเข้าใจหลักการเตะแรงแล้ว ขั้นถัดไปคือการควบคุม<strong>จุดสัมผัสลูก</strong> เพื่อสร้างสปินแบบต่างๆ — Topspin, Sidespin, Backspin — ซึ่งจุดสัมผัสที่ถูกต้องจะ<strong>แตกต่างกันตามความสูงของลูก</strong></p>
+    </div>
+    <a href="football-spin-guide.html" style="display:inline-flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--accent);padding:28px 40px;border-radius:4px;text-decoration:none;color:var(--text);transition:border-color 0.3s;max-width:500px">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px">ต่อไป · Part 2</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1">การควบคุมสปิน</div>
+        <div style="font-size:14px;color:var(--muted);margin-top:8px">Topspin · Sidespin · Backspin · 3 สถานการณ์</div>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--accent);margin-left:auto">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- PHYSICS DEEP DIVE -->
+<section class="step">
+  <div class="step-num">F=ma</div>
+  <div class="step-header">
+    <span class="step-header-tag">PHYSICS · DEEP DIVE</span>
+    <h2>หลักฟิสิกส์<br>ที่อยู่เบื้องหลัง</h2>
+  </div>
+  
+  <div class="step-content">
+    <div class="physics-intro">
+      <h3>ทำไมเตะแรงไม่ได้ขึ้นกับกำลังกล้ามเนื้ออย่างเดียว</h3>
+      <p>ความเร็วของลูกฟุตบอลตอนหลุดออกจากเท้าขึ้นอยู่กับ <strong>โมเมนตัม</strong> ที่ส่งผ่านจากร่างกายไปสู่ลูก ซึ่งกำลังกล้ามเนื้อเป็นเพียง <strong>หนึ่งในหลายปัจจัย</strong> เท่านั้น นักเตะมืออาชีพที่ตัวเล็กกว่ายิงแรงกว่าคนตัวใหญ่ได้ ก็เพราะใช้ฟิสิกส์ของร่างกายได้ดีกว่า</p>
+      <p style="margin-top:16px">ฟิสิกส์ทั้งหมดของการเตะลูกฟุตบอล สามารถสรุปเป็น <strong>6 หลักการหลัก</strong> ที่ทำงานพร้อมกัน</p>
+    </div>
+
+    <!-- LAW 1: Conservation of Momentum -->
+    <div class="law-card">
+      <div class="law-card-header">
+        <div class="law-number">01</div>
+        <div class="law-title-block">
+          <div class="law-title">การอนุรักษ์โมเมนตัม</div>
+          <div class="law-subtitle">Conservation of Momentum</div>
+        </div>
+        <div class="law-equation">p = m × v</div>
+      </div>
+      <div class="law-body">
+        <div class="law-text">
+          <p>โมเมนตัม (p) คือ "ปริมาณการเคลื่อนที่" — ขึ้นกับ <strong>มวล</strong> และ <strong>ความเร็ว</strong></p>
+          <p>ตอนเราวิ่งเข้าหาลูก ร่างกายทั้งหมด (มวล ~70 กก.) เคลื่อนที่ไปข้างหน้า สร้างโมเมนตัมจำนวนมาก โมเมนตัมนี้ <strong>ไม่หายไปไหน</strong> — มันต้องถูกถ่ายไปที่ใดที่หนึ่ง</p>
+          <p>เมื่อเท้าข้างปักพื้นและ "หยุด" → โมเมนตัมของร่างกายส่วนล่างถูกหยุด → ร่างกายส่วนบนและขาเตะยังคงมีโมเมนตัม → <strong>ถูก redirect ออกทางขาเตะ</strong></p>
+          <div class="formula-box">
+            <span class="var">p_วิ่ง</span> = <span class="val">70 กก. × 4 ม./วิ</span> = <span class="val">280 kg·m/s</span><br>
+            <span class="note">โมเมนตัมที่ต้อง redirect ไปยังลูก (มวล 0.43 กก.)</span>
+          </div>
+        </div>
+        <div class="diagram" style="padding:20px">
+          <div class="diagram-label">Momentum Transfer</div>
+          <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ground -->
+            <line x1="20" y1="220" x2="380" y2="220" stroke="#2a2a2a"/>
+            
+            <!-- Body running -->
+            <g opacity="0.3">
+              <circle cx="80" cy="80" r="10" fill="#00d9b2"/>
+              <line x1="80" y1="90" x2="85" y2="160" stroke="#00d9b2" stroke-width="5"/>
+              <line x1="85" y1="160" x2="75" y2="220" stroke="#00d9b2" stroke-width="4"/>
+              <line x1="85" y1="160" x2="100" y2="200" stroke="#00d9b2" stroke-width="4"/>
+            </g>
+            <text x="80" y="240" fill="#00d9b2" font-family="JetBrains Mono" font-size="9" text-anchor="middle">วิ่ง</text>
+            
+            <!-- Big arrow showing forward momentum -->
+            <line x1="100" y1="130" x2="170" y2="130" stroke="#00d9b2" stroke-width="3"/>
+            <polygon points="170,130 162,125 162,135" fill="#00d9b2"/>
+            <text x="135" y="120" fill="#00d9b2" font-family="JetBrains Mono" font-size="9" text-anchor="middle">p_body</text>
+            
+            <!-- Plant moment -->
+            <g>
+              <circle cx="220" cy="80" r="10" fill="#ffd700"/>
+              <line x1="220" y1="90" x2="225" y2="160" stroke="#ffd700" stroke-width="5"/>
+              <line x1="225" y1="160" x2="200" y2="220" stroke="#ffd700" stroke-width="4"/>
+              <!-- Plant foot wedged -->
+              <ellipse cx="200" cy="220" rx="12" ry="3" fill="#ff3c00"/>
+              <!-- Kicking leg back -->
+              <line x1="225" y1="160" x2="270" y2="180" stroke="#ff3c00" stroke-width="4"/>
+            </g>
+            <text x="220" y="240" fill="#ffd700" font-family="JetBrains Mono" font-size="9" text-anchor="middle">PLANT</text>
+            
+            <!-- Redirect arrow -->
+            <path d="M 245 200 Q 280 150 320 100" stroke="#ff3c00" stroke-width="3" fill="none"/>
+            <polygon points="320,100 315,108 325,108" fill="#ff3c00"/>
+            <text x="305" y="80" fill="#ff3c00" font-family="JetBrains Mono" font-size="10">REDIRECTED</text>
+            
+            <!-- Ball flying -->
+            <circle cx="370" cy="90" r="8" fill="#fff" stroke="#000"/>
+            <line x1="350" y1="100" x2="365" y2="92" stroke="#fff" stroke-width="0.5" stroke-dasharray="2,2"/>
+            
+            <!-- Title -->
+            <text x="200" y="20" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" letter-spacing="2">โมเมนตัมไม่หาย เพียงเปลี่ยนทิศ</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAW 2: Kinetic Chain -->
+    <div class="law-card">
+      <div class="law-card-header">
+        <div class="law-number">02</div>
+        <div class="law-title-block">
+          <div class="law-title">Kinetic Chain · ห่วงโซ่จลน์</div>
+          <div class="law-subtitle">Sequential Acceleration</div>
+        </div>
+        <div class="law-equation">v_tip = Σ ω × r</div>
+      </div>
+      <div class="law-body">
+        <div class="law-text">
+          <p>ความเร็วปลายเท้าตอนสัมผัสลูกไม่ใช่ผลรวมของแรงกล้ามเนื้อ — มันคือผลรวมของ <strong>ความเร็วเชิงมุม</strong> ของแต่ละข้อต่อ ที่ <strong>ส่งต่อกันเป็นลำดับ</strong></p>
+          <p>ลำดับ: สะโพก (ใหญ่/ช้า) → เข่า → ข้อเท้า → ปลายเท้า (เล็ก/เร็ว)</p>
+          <p>หลักการ <strong>"summation of speeds"</strong> — ข้อต่อใหญ่เริ่มก่อน เร่งจบ → ข้อต่อถัดไปเริ่มที่ความเร็วสูงสุดของอันก่อน → เกิด <strong>"whip effect"</strong></p>
+          <div class="formula-box">
+            <span class="var">v_สะโพก</span> = <span class="val">5 ม./วิ</span><br>
+            <span class="var">v_เข่า</span> = <span class="val">10 ม./วิ</span> (× 2)<br>
+            <span class="var">v_เท้า</span> = <span class="val">25 ม./วิ</span> (× 2.5)<br>
+            <span class="note">ความเร็วเพิ่มทบต้นเหมือนแส้ — ดังนั้นปลายเท้าเร็วกว่าสะโพก 5 เท่า</span>
+          </div>
+        </div>
+        <div class="diagram" style="padding:20px">
+          <div class="diagram-label">Whip Effect · ผลของแส้</div>
+          <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+            <!-- Whip frames -->
+            <!-- Frame 1: hip rotates -->
+            <g transform="translate(0, 0)">
+              <text x="60" y="20" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9">T1</text>
+              <circle cx="60" cy="60" r="6" fill="#ff3c00"/>
+              <line x1="60" y1="60" x2="80" y2="100" stroke="#666" stroke-width="2"/>
+              <line x1="80" y1="100" x2="100" y2="130" stroke="#666" stroke-width="2"/>
+              <line x1="100" y1="130" x2="115" y2="150" stroke="#666" stroke-width="2"/>
+              <path d="M 50 80 Q 50 70 60 65" stroke="#ff3c00" stroke-width="1" fill="none"/>
+              <polygon points="60,65 56,69 62,72" fill="#ff3c00"/>
+              <text x="40" y="170" fill="#ff3c00" font-family="JetBrains Mono" font-size="8">สะโพก</text>
+              <text x="40" y="180" fill="#ff3c00" font-family="JetBrains Mono" font-size="8">5 m/s</text>
+            </g>
+            
+            <!-- Frame 2: knee accelerates -->
+            <g transform="translate(120, 0)">
+              <text x="60" y="20" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9">T2</text>
+              <circle cx="60" cy="60" r="6" fill="#666"/>
+              <line x1="60" y1="60" x2="100" y2="80" stroke="#666" stroke-width="2"/>
+              <line x1="100" y1="80" x2="130" y2="115" stroke="#ff5e2e" stroke-width="2.5"/>
+              <line x1="130" y1="115" x2="145" y2="140" stroke="#666" stroke-width="2"/>
+              <path d="M 90 100 Q 105 90 115 95" stroke="#ff5e2e" stroke-width="1" fill="none"/>
+              <polygon points="115,95 110,98 113,101" fill="#ff5e2e"/>
+              <text x="40" y="170" fill="#ff5e2e" font-family="JetBrains Mono" font-size="8">เข่า</text>
+              <text x="40" y="180" fill="#ff5e2e" font-family="JetBrains Mono" font-size="8">10 m/s</text>
+            </g>
+            
+            <!-- Frame 3: ankle/foot whips -->
+            <g transform="translate(240, 0)">
+              <text x="60" y="20" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9">T3</text>
+              <circle cx="60" cy="60" r="6" fill="#666"/>
+              <line x1="60" y1="60" x2="100" y2="85" stroke="#666" stroke-width="2"/>
+              <line x1="100" y1="85" x2="135" y2="100" stroke="#666" stroke-width="2"/>
+              <line x1="135" y1="100" x2="155" y2="80" stroke="#ffd700" stroke-width="3"/>
+              <ellipse cx="158" cy="78" rx="8" ry="3" fill="#ffd700" transform="rotate(-30 158 78)"/>
+              <path d="M 130 90 Q 145 80 152 73" stroke="#ffd700" stroke-width="1.5" fill="none"/>
+              <polygon points="152,73 147,75 150,79" fill="#ffd700"/>
+              <text x="40" y="170" fill="#ffd700" font-family="JetBrains Mono" font-size="8">ปลายเท้า</text>
+              <text x="40" y="180" fill="#ffd700" font-family="JetBrains Mono" font-size="8">25 m/s</text>
+            </g>
+            
+            <!-- Speed graph -->
+            <g transform="translate(20, 200)">
+              <line x1="0" y1="0" x2="360" y2="0" stroke="#444" stroke-width="0.5"/>
+              <line x1="0" y1="0" x2="0" y2="-30" stroke="#444" stroke-width="0.5"/>
+              <rect x="20" y="-6" width="80" height="6" fill="#ff3c00"/>
+              <rect x="140" y="-12" width="80" height="12" fill="#ff5e2e"/>
+              <rect x="260" y="-30" width="80" height="30" fill="#ffd700"/>
+              <text x="180" y="20" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">ความเร็วทบต้น</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAW 3: Newton's 2nd Law -->
+    <div class="law-card">
+      <div class="law-card-header">
+        <div class="law-number">03</div>
+        <div class="law-title-block">
+          <div class="law-title">กฎข้อ 2 ของนิวตัน · Impulse</div>
+          <div class="law-subtitle">Force × Time = Change in Momentum</div>
+        </div>
+        <div class="law-equation">F·Δt = m·Δv</div>
+      </div>
+      <div class="law-body">
+        <div class="law-text">
+          <p>ความเร็วของลูกหลังถูกเตะ ขึ้นกับ <strong>impulse</strong> (แรง × เวลา ที่สัมผัส)</p>
+          <p>ลูกฟุตบอลสัมผัสเท้าจริงๆ <strong>เพียง 8-10 มิลลิวินาที</strong> เท่านั้น ในเวลาสั้นมากนี้ เราต้องส่งโมเมนตัมให้มากที่สุด</p>
+          <p>นี่คือเหตุผลที่ <strong>follow-through</strong> สำคัญ — ไม่ใช่เพราะมันเพิ่มแรงหลังลูกหลุด แต่เพราะมันรับประกันว่าเท้ากำลัง <strong>เร่ง</strong> ตอนสัมผัส (ไม่ใช่กำลังช้าลง)</p>
+          <div class="formula-box">
+            <span class="var">v_ลูก</span> = (<span class="var">F</span> × <span class="var">Δt</span>) / <span class="var">m_ลูก</span><br>
+            <span class="val">30 m/s</span> = (<span class="val">1500 N</span> × <span class="val">0.009 s</span>) / <span class="val">0.43 kg</span><br>
+            <span class="note">แรงสัมผัสประมาณ 1,500 นิวตัน เกิดขึ้นใน 9 มิลลิวินาที</span>
+          </div>
+        </div>
+        <div class="diagram" style="padding:20px">
+          <div class="diagram-label">Force Profile · 8-10 ms Window</div>
+          <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+            <!-- Axes -->
+            <line x1="40" y1="200" x2="380" y2="200" stroke="#444"/>
+            <line x1="40" y1="200" x2="40" y2="40" stroke="#444"/>
+            <text x="40" y="220" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">0</text>
+            <text x="200" y="220" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">5 ms</text>
+            <text x="360" y="220" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">10 ms</text>
+            <text x="200" y="240" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">เวลา</text>
+            <text x="20" y="120" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" transform="rotate(-90 20 120)">แรง (N)</text>
+            
+            <!-- Impulse curve -->
+            <path d="M 40 200 Q 80 195 120 180 T 200 60 Q 240 80 280 180 T 380 200" 
+                  fill="rgba(255,60,0,0.2)" stroke="#ff3c00" stroke-width="2"/>
+            
+            <!-- Peak marker -->
+            <line x1="200" y1="60" x2="200" y2="200" stroke="#ffd700" stroke-width="0.5" stroke-dasharray="2,2"/>
+            <text x="200" y="50" fill="#ffd700" font-family="JetBrains Mono" font-size="9" text-anchor="middle">PEAK 1500N</text>
+            
+            <!-- Area label -->
+            <text x="200" y="150" fill="#fff" font-family="JetBrains Mono" font-size="10" text-anchor="middle">IMPULSE = ∫F dt</text>
+            <text x="200" y="170" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">(พื้นที่ใต้กราฟ)</text>
+            
+            <text x="200" y="20" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle" letter-spacing="2">ระยะเวลาสัมผัสจริงสั้นมาก</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAW 4: Lever Mechanics -->
+    <div class="law-card">
+      <div class="law-card-header">
+        <div class="law-number">04</div>
+        <div class="law-title-block">
+          <div class="law-title">หลักการคาน · Lever Arm</div>
+          <div class="law-subtitle">Angular Velocity at Distance</div>
+        </div>
+        <div class="law-equation">v = ω × r</div>
+      </div>
+      <div class="law-body">
+        <div class="law-text">
+          <p>ขาเตะคือ <strong>คานหมุนรอบสะโพก</strong> — ยิ่งคานยาว ปลายคานยิ่งเร็ว (ที่ความเร็วเชิงมุม ω เดียวกัน)</p>
+          <p>นี่คือเหตุผลที่ <strong>backswing สูง</strong> และ <strong>follow-through สูง</strong> เพิ่มแรง — มันทำให้ขาเหยียดสุดที่จุดสัมผัส = คานยาวที่สุด</p>
+          <p>ถ้าเข่างอตอนสัมผัส = คานสั้น = ความเร็วปลายเท้าน้อยกว่า แม้ใช้แรงกล้ามเนื้อเท่ากัน</p>
+          <div class="formula-box">
+            <span class="var">v_เท้า</span> = <span class="var">ω_สะโพก</span> × <span class="var">r_ขา</span><br>
+            ขาเหยียด: <span class="val">15 rad/s × 0.9 m</span> = <span class="val">13.5 m/s</span><br>
+            ขางอ: <span class="val">15 rad/s × 0.6 m</span> = <span class="val">9 m/s</span><br>
+            <span class="note">ขาเหยียดเร็วกว่าขางอถึง 50% ที่ความเร็วเชิงมุมเท่ากัน</span>
+          </div>
+        </div>
+        <div class="diagram" style="padding:20px">
+          <div class="diagram-label">Lever Length Comparison</div>
+          <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+            <!-- Hip pivot -->
+            <circle cx="100" cy="60" r="6" fill="#ff3c00"/>
+            <text x="100" y="40" fill="#ff3c00" font-family="JetBrains Mono" font-size="9" text-anchor="middle">สะโพก</text>
+            
+            <!-- Short lever (bent knee) -->
+            <line x1="100" y1="60" x2="80" y2="160" stroke="#666" stroke-width="3"/>
+            <line x1="80" y1="160" x2="130" y2="180" stroke="#666" stroke-width="3"/>
+            <ellipse cx="135" cy="180" rx="6" ry="3" fill="#666"/>
+            <text x="60" y="200" fill="#666" font-family="JetBrains Mono" font-size="9">SHORT · 9 m/s</text>
+            
+            <!-- Long lever (straight) -->
+            <circle cx="280" cy="60" r="6" fill="#ff3c00"/>
+            <text x="280" y="40" fill="#ff3c00" font-family="JetBrains Mono" font-size="9" text-anchor="middle">สะโพก</text>
+            <line x1="280" y1="60" x2="350" y2="200" stroke="#00d9b2" stroke-width="3"/>
+            <ellipse cx="354" cy="200" rx="6" ry="3" fill="#00d9b2"/>
+            <text x="290" y="225" fill="#00d9b2" font-family="JetBrains Mono" font-size="9">LONG · 13.5 m/s</text>
+            
+            <!-- Arc -->
+            <path d="M 280 60 Q 320 130 350 200" stroke="#00d9b2" stroke-width="0.5" stroke-dasharray="2,2" fill="none"/>
+            <path d="M 100 60 Q 90 110 130 180" stroke="#666" stroke-width="0.5" stroke-dasharray="2,2" fill="none"/>
+            
+            <!-- Speed indicator -->
+            <text x="350" y="220" fill="#00d9b2" font-family="Bebas Neue" font-size="20" text-anchor="middle">+50%</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAW 5: Elastic Energy -->
+    <div class="law-card">
+      <div class="law-card-header">
+        <div class="law-number">05</div>
+        <div class="law-title-block">
+          <div class="law-title">พลังงานยืดหยุ่น · Stretch-Shortening</div>
+          <div class="law-subtitle">Elastic Energy Storage</div>
+        </div>
+        <div class="law-equation">E = ½kx²</div>
+      </div>
+      <div class="law-body">
+        <div class="law-text">
+          <p>กล้ามเนื้อและเอ็น (เช่น quadriceps, iliopsoas) ทำงานเหมือน <strong>สปริงทางชีวภาพ</strong> — ยืดออกแล้วเก็บพลังงานยืดหยุ่น แล้วปล่อยกลับเร็วกว่ากล้ามเนื้อหดธรรมดามาก</p>
+          <p>การ <strong>backswing</strong> และ <strong>เอนหลัง</strong> = การยืดกล้ามเนื้อหน้าขาและสะโพก → เก็บพลังงานในเอ็น → ปล่อยตอนเตะ ได้แรงเพิ่ม <strong>20-30%</strong> ฟรี</p>
+          <p>ต้องทำเร็ว — ถ้าค้างไว้นาน พลังงานยืดหยุ่นหายไปกับความร้อน</p>
+          <div class="formula-box">
+            <span class="var">E_total</span> = <span class="var">E_muscle</span> + <span class="var">E_elastic</span><br>
+            <span class="note">พลังงานยืดหยุ่น = "ของแถม" จากการ stretch ก่อนหด</span>
+          </div>
+        </div>
+        <div class="diagram" style="padding:20px">
+          <div class="diagram-label">Stretch-Shortening Cycle</div>
+          <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+            <!-- Stretch phase -->
+            <text x="80" y="30" fill="#ffd700" font-family="JetBrains Mono" font-size="9" text-anchor="middle">STRETCH</text>
+            <g transform="translate(40, 60)">
+              <line x1="20" y1="20" x2="20" y2="80" stroke="#666" stroke-width="2"/>
+              <line x1="20" y1="80" x2="60" y2="100" stroke="#666" stroke-width="2"/>
+              <!-- Spring symbol stretched -->
+              <path d="M 20 60 L 30 65 L 20 70 L 30 75 L 20 80" stroke="#ffd700" stroke-width="2" fill="none"/>
+              <text x="40" y="130" fill="#ffd700" font-family="JetBrains Mono" font-size="8">เก็บพลังงาน</text>
+            </g>
+            
+            <!-- Arrow -->
+            <line x1="160" y1="120" x2="220" y2="120" stroke="#ff3c00" stroke-width="2"/>
+            <polygon points="220,120 212,116 212,124" fill="#ff3c00"/>
+            <text x="190" y="110" fill="#ff3c00" font-family="JetBrains Mono" font-size="9" text-anchor="middle">RELEASE</text>
+            
+            <!-- Snap phase -->
+            <text x="320" y="30" fill="#00d9b2" font-family="JetBrains Mono" font-size="9" text-anchor="middle">SNAP</text>
+            <g transform="translate(280, 60)">
+              <line x1="20" y1="20" x2="20" y2="80" stroke="#666" stroke-width="2"/>
+              <line x1="20" y1="80" x2="80" y2="50" stroke="#00d9b2" stroke-width="3"/>
+              <!-- Spring contracted -->
+              <path d="M 20 70 L 30 73 L 20 76" stroke="#00d9b2" stroke-width="2" fill="none"/>
+              <ellipse cx="85" cy="48" rx="6" ry="3" fill="#00d9b2"/>
+              <!-- Speed lines -->
+              <line x1="92" y1="48" x2="100" y2="45" stroke="#00d9b2" stroke-width="0.5"/>
+              <line x1="92" y1="50" x2="100" y2="50" stroke="#00d9b2" stroke-width="0.5"/>
+              <line x1="92" y1="52" x2="100" y2="55" stroke="#00d9b2" stroke-width="0.5"/>
+              <text x="50" y="130" fill="#00d9b2" font-family="JetBrains Mono" font-size="8">+20-30% แรง</text>
+            </g>
+            
+            <text x="200" y="220" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">เหมือนหนังสติ๊กยิ่งยืด ยิ่งดีดแรง</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAW 6: Conservation of Energy in Collision -->
+    <div class="law-card">
+      <div class="law-card-header">
+        <div class="law-number">06</div>
+        <div class="law-title-block">
+          <div class="law-title">การชนแบบยืดหยุ่น · Elastic Collision</div>
+          <div class="law-subtitle">Mass Coupling at Impact</div>
+        </div>
+        <div class="law-equation">v_ball ∝ v_foot × (M / M+m)</div>
+      </div>
+      <div class="law-body">
+        <div class="law-text">
+          <p>ตอนเท้าชนลูก เป็นการชนแบบกึ่งยืดหยุ่น (coefficient of restitution ≈ 0.6) ความเร็วลูกขึ้นกับ <strong>ความเร็วเท้า</strong> และ <strong>"effective mass"</strong> ของเท้า</p>
+          <p>ถ้าข้อเท้าหลวม → effective mass = แค่มวลของเท้า (~1 กก.)<br>ถ้าข้อเท้า <strong>ล็อคแน่น</strong> → effective mass = มวลของขาทั้งหมด (~10 กก.) เพราะเท้าและขาทำงานเป็น <strong>หน่วยเดียวกัน</strong></p>
+          <p>นี่คือเหตุผลที่ <strong>ล็อคข้อเท้า</strong> เพิ่มแรงได้มหาศาล แม้ความเร็วเท้าเท่าเดิม</p>
+          <div class="formula-box">
+            ข้อเท้าหลวม: <span class="val">v_ball ≈ 1.4 × v_foot</span><br>
+            ข้อเท้าล็อค: <span class="val">v_ball ≈ 1.95 × v_foot</span><br>
+            <span class="note">ลูกบินเร็วขึ้น 40% โดยที่เท้าไม่ต้องเร็วขึ้นเลย</span>
+          </div>
+          <div class="myth-bust">
+            <span class="myth-label">myth busted</span>
+            "ตีลูกแรงๆ" ไม่ได้แปลว่าออกแรงกล้ามเนื้อมาก — แปลว่า <strong>เร็ว + ล็อค</strong>
+          </div>
+        </div>
+        <div class="diagram" style="padding:20px">
+          <div class="diagram-label">Effective Mass at Impact</div>
+          <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- Loose ankle -->
+            <text x="100" y="30" fill="#ff4757" font-family="JetBrains Mono" font-size="10" text-anchor="middle">ข้อเท้าหลวม</text>
+            <g transform="translate(40, 50)">
+              <!-- Leg -->
+              <line x1="50" y1="0" x2="60" y2="80" stroke="#666" stroke-width="3"/>
+              <!-- Loose foot -->
+              <ellipse cx="80" cy="100" rx="20" ry="6" fill="#666" transform="rotate(-30 80 100)"/>
+              <!-- Floppy indicator -->
+              <path d="M 65 90 Q 75 110 90 95" stroke="#ff4757" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+              <!-- Ball -->
+              <circle cx="120" cy="105" r="12" fill="#fff" stroke="#000"/>
+              <!-- Effective mass -->
+              <text x="80" y="160" fill="#ff4757" font-family="Bebas Neue" font-size="20" text-anchor="middle">M = 1 kg</text>
+              <text x="80" y="180" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">แค่เท้า</text>
+              <text x="80" y="200" fill="#ff4757" font-family="Bebas Neue" font-size="14" text-anchor="middle">v_ball = 1.4×v</text>
+            </g>
+            
+            <!-- Locked ankle -->
+            <text x="290" y="30" fill="#2ed573" font-family="JetBrains Mono" font-size="10" text-anchor="middle">ข้อเท้าล็อค</text>
+            <g transform="translate(230, 50)">
+              <!-- Leg -->
+              <line x1="50" y1="0" x2="60" y2="80" stroke="#00d9b2" stroke-width="4"/>
+              <!-- Locked foot (continuous with leg) -->
+              <line x1="60" y1="80" x2="100" y2="100" stroke="#00d9b2" stroke-width="4"/>
+              <ellipse cx="100" cy="100" rx="14" ry="5" fill="#00d9b2"/>
+              <!-- Solid lock indicator -->
+              <circle cx="60" cy="80" r="4" fill="#ffd700"/>
+              <!-- Ball -->
+              <circle cx="125" cy="100" r="12" fill="#fff" stroke="#000"/>
+              <!-- Effective mass -->
+              <text x="80" y="160" fill="#2ed573" font-family="Bebas Neue" font-size="20" text-anchor="middle">M = 10 kg</text>
+              <text x="80" y="180" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">ขาทั้งหมด</text>
+              <text x="80" y="200" fill="#2ed573" font-family="Bebas Neue" font-size="14" text-anchor="middle">v_ball = 1.95×v</text>
+            </g>
+            
+            <!-- Divider -->
+            <line x1="200" y1="50" x2="200" y2="260" stroke="#444" stroke-dasharray="2,4"/>
+            
+            <text x="200" y="270" fill="#ffd700" font-family="JetBrains Mono" font-size="10" text-anchor="middle">+40% แค่ล็อคข้อเท้า</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAW 7: Upper Body Drive -->
+    <div class="law-card">
+      <div class="law-card-header">
+        <div class="law-number">07</div>
+        <div class="law-title-block">
+          <div class="law-title">Upper Body Drive · การพุ่งลำตัวไปข้างหน้า</div>
+          <div class="law-subtitle">Hip Velocity + Reactive Whip — สองกลไกซ้อนกัน</div>
+        </div>
+        <div class="law-equation">v_foot = v_hip + ω × L</div>
+      </div>
+      <div class="law-body">
+        <div class="law-text">
+          <p>ความเร็วปลายเท้าคือผลรวมของ <strong>ความเร็วเชิงเส้นของสะโพก (v_hip)</strong> และ <strong>ความเร็วเชิงมุมของขา (ω × L)</strong> — ทั้งสองบวกกันได้เมื่อทิศทางเดียวกัน</p>
+          <p><strong style="color:var(--accent)">กลไกที่ 1 — Linear Hip Velocity</strong><br>
+          ลำตัวพุ่งไปข้างหน้าตั้งแต่ก่อน impact → สะโพกมีความเร็วสะสมไปในทิศเดียวกับเท้า → v_สะโพก บวกเข้า v_เท้าโดยตรง เหมือนนักเบสบอลที่ก้าวไปข้างหน้าพร้อมตีไม้</p>
+          <p><strong style="color:var(--accent-2)">กลไกที่ 2 — Reactive Angular Momentum</strong><br>
+          ลำตัวกำลัง accelerate ผ่านจุด impact พอดี → ขาเตะถูก "ดีด" แบบ reactive ตาม conservation of angular momentum → angular velocity ของขาพุ่งขึ้นในช่วง 8–10 ms ที่สัมผัสลูก เหมือนการสะบัดแส้ที่ด้ามกำลังเคลื่อนที่</p>
+          <div class="formula-box">
+            กลไก 1 (พุ่งแต่ต้น): <span class="val">+ v_hip สะสม</span><br>
+            กลไก 2 (accelerate พร้อม impact): <span class="val">+ ω reactive ที่ peak</span><br>
+            <span class="note">ทำได้พร้อมกัน = ซ้อนทับกันทั้งสองกลไก</span>
+          </div>
+          <div class="myth-bust">
+            <span class="myth-label">จังหวะสำคัญ</span>
+            ลำตัวต้อง <strong>กำลัง accelerate ผ่าน impact</strong> — ถ้าพุ่งเสร็จแล้วก่อนถึงลูก ได้แค่กลไก 1 กลไก 2 จะหายไป
+          </div>
+        </div>
+        <div class="diagram" style="padding:20px">
+          <div class="diagram-label">สองกลไกซ้อนกันที่ Impact</div>
+          <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="232" x2="380" y2="232" stroke="#2a2a2a"/>
+
+            <!-- BACKSWING figure (faded, left side) -->
+            <g opacity="0.28">
+              <circle cx="95" cy="58" r="10" fill="#00d9b2"/>
+              <line x1="93" y1="68" x2="85" y2="148" stroke="#00d9b2" stroke-width="4" stroke-linecap="round"/>
+              <line x1="85" y1="148" x2="72" y2="227" stroke="#00d9b2" stroke-width="4" stroke-linecap="round"/>
+              <line x1="85" y1="148" x2="125" y2="170" stroke="#ff3c00" stroke-width="4" stroke-linecap="round"/>
+              <line x1="125" y1="170" x2="152" y2="120" stroke="#ff3c00" stroke-width="4" stroke-linecap="round"/>
+              <text x="68" y="44" fill="#00d9b2" font-family="JetBrains Mono" font-size="8">backswing</text>
+              <text x="68" y="54" fill="#00d9b2" font-family="JetBrains Mono" font-size="7">(ยืดออก)</text>
+            </g>
+
+            <!-- Transition arrow -->
+            <line x1="162" y1="135" x2="192" y2="135" stroke="#555" stroke-width="1" stroke-dasharray="3,3"/>
+            <polygon points="192,131 202,135 192,139" fill="#555"/>
+
+            <!-- IMPACT figure (body driving forward) -->
+            <circle cx="258" cy="52" r="11" fill="#00d9b2"/>
+            <line x1="256" y1="63" x2="242" y2="148" stroke="#00d9b2" stroke-width="5" stroke-linecap="round"/>
+            <line x1="242" y1="148" x2="264" y2="227" stroke="#00d9b2" stroke-width="5" stroke-linecap="round"/>
+            <ellipse cx="266" cy="229" rx="14" ry="4" fill="#ffd700"/>
+            <line x1="242" y1="148" x2="182" y2="172" stroke="#ff3c00" stroke-width="5" stroke-linecap="round"/>
+            <line x1="182" y1="172" x2="124" y2="222" stroke="#ff3c00" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="115" cy="224" r="10" fill="#fff" stroke="#000"/>
+
+            <!-- Mechanism 1: hip forward arrow -->
+            <line x1="255" y1="92" x2="225" y2="92" stroke="#ff3c00" stroke-width="2"/>
+            <polygon points="225,88 214,92 225,96" fill="#ff3c00"/>
+            <text x="234" y="84" fill="#ff3c00" font-family="JetBrains Mono" font-size="7" text-anchor="middle">v_สะโพก</text>
+            <text x="234" y="106" fill="#ff3c00" font-family="JetBrains Mono" font-size="7" text-anchor="middle">กลไก ①</text>
+
+            <!-- Mechanism 2: reactive whip at foot -->
+            <line x1="120" y1="212" x2="90" y2="190" stroke="#00d9b2" stroke-width="2"/>
+            <polygon points="94,184 80,188 88,198" fill="#00d9b2"/>
+            <text x="58" y="182" fill="#00d9b2" font-family="JetBrains Mono" font-size="7">reactive</text>
+            <text x="58" y="194" fill="#00d9b2" font-family="JetBrains Mono" font-size="7">กลไก ②</text>
+
+            <!-- Sum label -->
+            <text x="338" y="118" fill="#ffd700" font-family="Bebas Neue" font-size="22" text-anchor="middle">①+②</text>
+            <text x="338" y="138" fill="#ffd700" font-family="JetBrains Mono" font-size="8" text-anchor="middle">ซ้อนกัน</text>
+            <text x="338" y="152" fill="#8a8a8a" font-family="JetBrains Mono" font-size="7" text-anchor="middle">เร็วสูงสุด</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENERGY FLOW SUMMARY -->
+    <div class="energy-flow">
+      <div class="energy-flow-title">Energy Pathway · เส้นทางการไหลของพลังงาน</div>
+      <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:600px">
+        <!-- Stages -->
+        <g font-family="Bebas Neue" font-size="14" text-anchor="middle">
+          <!-- 1: Chemical -->
+          <rect x="20" y="60" width="100" height="80" fill="#1c1c1c" stroke="#ff3c00" rx="2"/>
+          <text x="70" y="90" fill="#ff3c00">เคมี</text>
+          <text x="70" y="108" fill="#8a8a8a" font-size="10" font-family="JetBrains Mono">ATP</text>
+          <text x="70" y="125" fill="#8a8a8a" font-size="9" font-family="JetBrains Mono">100 J</text>
+          
+          <polygon points="125,100 145,90 145,110" fill="#ff3c00"/>
+          
+          <!-- 2: Muscular -->
+          <rect x="155" y="60" width="100" height="80" fill="#1c1c1c" stroke="#ff5e2e" rx="2"/>
+          <text x="205" y="90" fill="#ff5e2e">กล้ามเนื้อ</text>
+          <text x="205" y="108" fill="#8a8a8a" font-size="10" font-family="JetBrains Mono">หดตัว</text>
+          <text x="205" y="125" fill="#8a8a8a" font-size="9" font-family="JetBrains Mono">25 J</text>
+          
+          <polygon points="260,100 280,90 280,110" fill="#ff5e2e"/>
+          
+          <!-- 3: Kinetic body -->
+          <rect x="290" y="60" width="100" height="80" fill="#1c1c1c" stroke="#ff8050" rx="2"/>
+          <text x="340" y="90" fill="#ff8050">ร่างกาย</text>
+          <text x="340" y="108" fill="#8a8a8a" font-size="10" font-family="JetBrains Mono">โมเมนตัม</text>
+          <text x="340" y="125" fill="#8a8a8a" font-size="9" font-family="JetBrains Mono">280 kg·m/s</text>
+          
+          <polygon points="395,100 415,90 415,110" fill="#ff8050"/>
+          
+          <!-- 4: Leg whip -->
+          <rect x="425" y="60" width="100" height="80" fill="#1c1c1c" stroke="#ffa570" rx="2"/>
+          <text x="475" y="90" fill="#ffa570">ขาเตะ</text>
+          <text x="475" y="108" fill="#8a8a8a" font-size="10" font-family="JetBrains Mono">whip</text>
+          <text x="475" y="125" fill="#8a8a8a" font-size="9" font-family="JetBrains Mono">25 m/s</text>
+          
+          <polygon points="530,100 550,90 550,110" fill="#ffa570"/>
+          
+          <!-- 5: Foot impact -->
+          <rect x="560" y="60" width="100" height="80" fill="#1c1c1c" stroke="#ffd700" rx="2"/>
+          <text x="610" y="90" fill="#ffd700">เท้า · ลูก</text>
+          <text x="610" y="108" fill="#8a8a8a" font-size="10" font-family="JetBrains Mono">9 ms</text>
+          <text x="610" y="125" fill="#8a8a8a" font-size="9" font-family="JetBrains Mono">1500 N</text>
+          
+          <polygon points="665,100 685,90 685,110" fill="#ffd700"/>
+          
+          <!-- 6: Ball -->
+          <rect x="695" y="60" width="100" height="80" fill="#00d9b2" rx="2"/>
+          <text x="745" y="90" fill="#000">ลูกบิน</text>
+          <text x="745" y="108" fill="#000" font-size="10" font-family="JetBrains Mono">30 m/s</text>
+          <text x="745" y="125" fill="#000" font-size="9" font-family="JetBrains Mono">108 km/h</text>
+        </g>
+        
+        <text x="400" y="30" fill="#8a8a8a" font-family="JetBrains Mono" font-size="10" text-anchor="middle" letter-spacing="3">พลังงานเดินทางจาก ATP → ลูก ในเวลาน้อยกว่า 0.5 วินาที</text>
+        <text x="400" y="180" fill="#8a8a8a" font-family="JetBrains Mono" font-size="9" text-anchor="middle">ประสิทธิภาพรวมประมาณ 30% — 70% สูญเป็นความร้อน เสียง การสั่น</text>
+      </svg>
+    </div>
+
+    <!-- KEY TAKEAWAYS -->
+    <div style="background:linear-gradient(135deg, var(--surface), var(--surface-2));border:1px solid var(--accent);padding:40px;border-radius:4px;margin-top:48px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px">Physics Cheat Sheet</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:36px;margin-bottom:24px">สรุป 6 หลักฟิสิกส์</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
+        <div>
+          <strong style="color:var(--accent-2)">1. โมเมนตัม</strong>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">วิ่งสร้างโมเมนตัม → เท้าข้าง redirect → ลูก</p>
+        </div>
+        <div>
+          <strong style="color:var(--accent-2)">2. Kinetic Chain</strong>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">สะโพก → เข่า → เท้า แส้สร้างความเร็วทบต้น</p>
+        </div>
+        <div>
+          <strong style="color:var(--accent-2)">3. Impulse</strong>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">9 มิลลิวินาทีตัดสินทุกอย่าง — เท้าต้องเร่งอยู่</p>
+        </div>
+        <div>
+          <strong style="color:var(--accent-2)">4. Lever Arm</strong>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">ขายาวกว่า = ปลายเท้าเร็วกว่า</p>
+        </div>
+        <div>
+          <strong style="color:var(--accent-2)">5. Elastic Energy</strong>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">Backswing เก็บพลังงาน → ปล่อยฟรี +25%</p>
+        </div>
+        <div>
+          <strong style="color:var(--accent-2)">6. Effective Mass</strong>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">ล็อคข้อเท้า = เพิ่ม mass × 10 → +40% แรง</p>
+        </div>
+        <div>
+          <strong style="color:var(--accent-2)">7. Upper Body Drive</strong>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">พุ่งลำตัว → v_สะโพก + reactive whip ซ้อนกัน</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMING summary -->
+<section class="step">
+  <div class="step-header">
+    <span class="step-header-tag">SYNTHESIS</span>
+    <h2>ภาพรวม Timing<br>ทั้งหมด</h2>
+  </div>
+  
+  <div class="step-content">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-num">T-4</div>
+        <div>
+          <div class="timeline-title">วิ่งเข้า · มุม 30–45°</div>
+          <div class="timeline-desc">สะสมโมเมนตัม · 4–6 ก้าว · ก้าวสุดท้ายยาวกว่าปกติ</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">T-3</div>
+        <div>
+          <div class="timeline-title">ก้าวสุดท้าย</div>
+          <div class="timeline-desc">เริ่มดึงขาเตะไปด้านหลัง · ลำตัวเอนหลัง · กางแขนตรงข้าม</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">T-2</div>
+        <div>
+          <div class="timeline-title">เท้าข้างกระแทกพื้น (PLANT)</div>
+          <div class="timeline-desc">เฉียง · เข่างอ 15–20° · ปลายเท้าชี้เป้าหมาย · 15-20 ซม. ข้างลูก</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">T-1</div>
+        <div>
+          <div class="timeline-title">ขาเตะดีดออก</div>
+          <div class="timeline-desc">โมเมนตัมจากการวิ่งถูก redirect · เข่าลีดก่อน · เท้าตามมา</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">T-0</div>
+        <div>
+          <div class="timeline-title">IMPACT (สัมผัสลูก)</div>
+          <div class="timeline-desc">เข่าเหนือลูก · ข้อเท้าล็อค · จุดสัมผัสตามชนิดลูกที่ต้องการ</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">T+1</div>
+        <div>
+          <div class="timeline-title">FOLLOW-THROUGH</div>
+          <div class="timeline-desc">ขาแกว่งต่อขึ้นสูง · ร่างกายอาจกระโดดตามแรงเหวี่ยง · ลงพื้นด้วยเท้าเตะ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMON MISTAKES -->
+<section class="step">
+  <div class="step-header">
+    <span class="step-header-tag">PITFALLS</span>
+    <h2>ข้อผิดพลาด<br>ที่พบบ่อย</h2>
+  </div>
+  
+  <div class="step-content">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+      <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);padding:20px;border-radius:4px">
+        <div style="color:var(--warn);font-family:JetBrains Mono;font-size:10px;letter-spacing:0.2em;margin-bottom:8px">MISTAKE 01</div>
+        <strong style="color:var(--text)">เตะด้วยปลายเท้า</strong>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px">พื้นที่สัมผัสน้อย แรงน้อย คุมไม่ได้ — ใช้ instep แทน</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);padding:20px;border-radius:4px">
+        <div style="color:var(--warn);font-family:JetBrains Mono;font-size:10px;letter-spacing:0.2em;margin-bottom:8px">MISTAKE 02</div>
+        <strong style="color:var(--text)">ข้อเท้าหลวม</strong>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px">ลูกชนะเท้า แรงสูญเสียกับการสั่นของข้อเท้า → ล็อคให้แน่น</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);padding:20px;border-radius:4px">
+        <div style="color:var(--warn);font-family:JetBrains Mono;font-size:10px;letter-spacing:0.2em;margin-bottom:8px">MISTAKE 03</div>
+        <strong style="color:var(--text)">เท้าข้างตั้งตรง</strong>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px">โมเมนตัมจากการวิ่งสูญเปล่า — ปักเฉียงเพื่อ redirect แรง</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);padding:20px;border-radius:4px">
+        <div style="color:var(--warn);font-family:JetBrains Mono;font-size:10px;letter-spacing:0.2em;margin-bottom:8px">MISTAKE 04</div>
+        <strong style="color:var(--text)">ลำตัวเอียงตามขา</strong>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px">ไม่มี hip-leg separation → ตั้งลำตัวตรง/เอนหลัง ขาเฉียงต่างหาก</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);padding:20px;border-radius:4px">
+        <div style="color:var(--warn);font-family:JetBrains Mono;font-size:10px;letter-spacing:0.2em;margin-bottom:8px">MISTAKE 05</div>
+        <strong style="color:var(--text)">หยุดขาหลังสัมผัส</strong>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px">เสียแรง 20-30% — ปล่อยขาแกว่งต่อขึ้นสูง</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);padding:20px;border-radius:4px">
+        <div style="color:var(--warn);font-family:JetBrains Mono;font-size:10px;letter-spacing:0.2em;margin-bottom:8px">MISTAKE 06</div>
+        <strong style="color:var(--text)">เข่าต่ำกว่าลูกตอนสัมผัส</strong>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px">ลูกจะลอยขึ้นฟ้า — เข่าต้องอยู่เหนือหรือพอดีกับลูก</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <h3>ฝึก<span class="accent">ช้า</span><br>ก่อน<span class="accent">เร็ว</span></h3>
+  <p>ทำ technique ให้ถูกที่ความเร็ว 50% ก่อน ค่อยๆ เพิ่ม — เมื่อร่างกายจดจำการเคลื่อนไหวที่ถูกต้องแล้ว แรงจะตามมาเองโดยที่คุณไม่ต้องคิดเลย</p>
+  
+  <div style="margin-top:64px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.3em">
+    END OF GUIDE · เตะให้แรง · 2026
+  </div>
+</section>
+
+</div>
+
+</body>
+</html>

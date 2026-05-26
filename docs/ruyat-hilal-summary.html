@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="th" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สรุปทัศนะเรื่องการเห็นเดือน (รุอ์ยะตุลฮิลาล)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Sarabun:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --indigo: #3d4f8a;
+    --indigo-deep: #2b3668;
+    --ink: #1c1a17;
+    --ink-soft: #44403a;
+    --parchment: #f4ede0;
+    --parchment-deep: #e8dcc7;
+    --gold: #a8812e;
+    --gold-soft: #c9a86a;
+    --gold-bright: #c4992f;
+    --teal: #1d5b54;
+    --teal-deep: #143f3a;
+    --maroon: #7a2f2a;
+    --rule: #d4c4a5;
+    --shadow: rgba(40, 30, 12, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Sarabun', sans-serif;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(168,129,46,0.06), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(29,91,84,0.06), transparent 40%),
+      var(--parchment);
+    color: var(--ink);
+    line-height: 1.75;
+    font-weight: 400;
+    padding: 0;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23a8812e' stroke-opacity='0.04' stroke-width='1'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* ===== Header ===== */
+  header {
+    text-align: center;
+    padding: 70px 24px 50px;
+    position: relative;
+  }
+  .basmala {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    direction: rtl;
+    margin-bottom: 28px;
+    opacity: 0.9;
+  }
+  .kicker {
+    font-size: 0.82rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  header h1 {
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  header .arabic-title {
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--teal-deep);
+    direction: rtl;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  header p.lede {
+    max-width: 640px;
+    margin: 0 auto;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    font-weight: 300;
+  }
+  .divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin: 36px auto 0; max-width: 320px;
+  }
+  .divider::before, .divider::after {
+    content: ""; height: 1px; flex: 1;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .divider span { color: var(--gold); font-size: 1.2rem; }
+
+  /* ===== Intro note ===== */
+  .intro-note {
+    background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+    color: #f0e9da;
+    border-radius: 10px;
+    padding: 32px 36px;
+    margin: 20px 0 56px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(20,63,58,0.25);
+  }
+  .intro-note::after {
+    content: "☾";
+    position: absolute;
+    left: -10px; bottom: -40px;
+    font-size: 11rem;
+    color: rgba(255,255,255,0.05);
+    line-height: 1;
+  }
+  .intro-note h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; color: #f6d98a; }
+  .intro-note p { font-weight: 300; font-size: 1rem; position: relative; z-index: 1; }
+  .intro-note strong { color: #f6d98a; font-weight: 600; }
+
+  /* ===== Section titles ===== */
+  .section-head { margin: 64px 0 28px; }
+  .section-head .num {
+    font-family: 'Amiri', serif;
+    font-size: 0.95rem; color: var(--gold);
+    letter-spacing: 0.2em; font-weight: 700;
+  }
+  .section-head h2 {
+    font-size: 1.75rem; font-weight: 700; color: var(--ink);
+    margin-top: 4px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-head h2::before {
+    content: ""; width: 6px; height: 28px;
+    background: var(--gold); border-radius: 2px;
+  }
+  .section-head p { color: var(--ink-soft); margin-top: 8px; font-weight: 300; }
+
+  /* ===== Scholar cards ===== */
+  .scholar-grid { display: grid; gap: 22px; }
+  @media (min-width: 760px) { .scholar-grid { grid-template-columns: 1fr 1fr; } }
+
+  .card {
+    background: rgba(255,252,246,0.7);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 26px 28px;
+    position: relative;
+    box-shadow: 0 4px 18px var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px var(--shadow); }
+  .card::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+  }
+  .card.t-nok::before { background: linear-gradient(90deg, var(--teal), var(--gold)); }
+  .card.t-nai::before { background: linear-gradient(90deg, var(--maroon), var(--gold)); }
+  .card.t-mid::before { background: linear-gradient(90deg, var(--gold), var(--teal)); }
+  .card.t-other::before { background: linear-gradient(90deg, #5a5145, var(--gold)); }
+  .card.t-ijma::before { background: linear-gradient(90deg, var(--indigo), var(--gold)); }
+
+  .card .tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.08em; padding: 3px 11px; border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .tag.nok { background: rgba(29,91,84,0.12); color: var(--teal-deep); }
+  .tag.nai { background: rgba(122,47,42,0.12); color: var(--maroon); }
+  .tag.mid { background: rgba(168,129,46,0.16); color: #6f5417; }
+  .tag.other { background: rgba(90,81,69,0.12); color: #3f3930; }
+  .tag.ijma { background: rgba(61,79,138,0.13); color: var(--indigo-deep); }
+
+  .card h3 { font-size: 1.25rem; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+  .card .arab {
+    font-family: 'Noto Naskh Arabic', serif; direction: rtl;
+    color: var(--teal); font-size: 1.05rem; margin-bottom: 14px; font-weight: 600;
+  }
+  .card .meta-row {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;
+    font-size: 0.8rem;
+  }
+  .card .field { margin-bottom: 12px; }
+  .card .field .label {
+    font-size: 0.74rem; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 3px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .card .field .val { font-size: 0.94rem; color: var(--ink-soft); font-weight: 400; }
+  .card .field .val.limit { color: var(--maroon); }
+
+  /* ===== Comparison table ===== */
+  .table-scroll { overflow-x: auto; margin: 8px 0; border-radius: 12px; box-shadow: 0 6px 22px var(--shadow); }
+  table { width: 100%; border-collapse: collapse; background: rgba(255,252,246,0.85); min-width: 720px; }
+  thead { background: linear-gradient(135deg, var(--teal-deep), var(--teal)); }
+  thead th {
+    color: #f6d98a; font-weight: 600; font-size: 0.86rem; text-align: left;
+    padding: 15px 18px; letter-spacing: 0.03em;
+  }
+  tbody td { padding: 14px 18px; border-bottom: 1px solid var(--rule); font-size: 0.9rem; vertical-align: top; }
+  tbody tr:hover { background: rgba(168,129,46,0.05); }
+  tbody tr:last-child td { border-bottom: none; }
+  td .pos { font-weight: 600; }
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 14px; font-size: 0.78rem; font-weight: 600; }
+  .pill.nok { background: rgba(29,91,84,0.14); color: var(--teal-deep); }
+  .pill.nai { background: rgba(122,47,42,0.14); color: var(--maroon); }
+  .pill.mid { background: rgba(168,129,46,0.18); color: #6f5417; }
+  .pill.ijma { background: rgba(61,79,138,0.15); color: var(--indigo-deep); }
+
+  /* ===== Hadith section ===== */
+  .hadith-list { display: grid; gap: 18px; }
+  .hadith {
+    background: rgba(255,252,246,0.7);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 22px 26px;
+    box-shadow: 0 3px 14px var(--shadow);
+  }
+  .hadith .ar {
+    font-family: 'Amiri', serif; direction: rtl; text-align: right;
+    font-size: 1.3rem; color: var(--teal-deep); line-height: 1.9;
+    margin-bottom: 12px; font-weight: 700;
+  }
+  .hadith .th { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 8px; }
+  .hadith .src { font-size: 0.8rem; color: var(--gold); font-weight: 600; }
+  .hadith .use { font-size: 0.86rem; color: var(--ink-soft); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--rule); }
+  .hadith .use strong { color: var(--maroon); }
+
+  /* ===== Arafah box ===== */
+  .arafah-wrap { display: grid; gap: 18px; }
+  @media (min-width: 720px) { .arafah-wrap { grid-template-columns: 1fr 1fr; } }
+  .arafah-card {
+    background: rgba(255,252,246,0.75); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 24px 26px; box-shadow: 0 4px 16px var(--shadow);
+  }
+  .arafah-card h4 { font-size: 1.1rem; color: var(--teal-deep); margin-bottom: 6px; font-weight: 700; }
+  .arafah-card .who { font-size: 0.84rem; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .arafah-card p { font-size: 0.92rem; color: var(--ink-soft); }
+
+  /* ===== Tension section ===== */
+  .tension-intro {
+    background: rgba(255,252,246,0.7);
+    border: 1px dashed var(--gold);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 26px;
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+  }
+  .tension-intro strong { color: var(--maroon); }
+
+  .layer-wrap { display: grid; gap: 18px; margin-bottom: 30px; }
+  @media (min-width: 720px) { .layer-wrap { grid-template-columns: 1fr 1fr; } }
+  .layer {
+    border-radius: 12px; padding: 24px 26px; box-shadow: 0 4px 16px var(--shadow);
+    position: relative; overflow: hidden;
+  }
+  .layer.official { background: rgba(29,91,84,0.07); border: 1px solid rgba(29,91,84,0.25); }
+  .layer.muhaqqiq { background: rgba(122,47,42,0.06); border: 1px solid rgba(122,47,42,0.22); }
+  .layer h4 { font-size: 1.08rem; margin-bottom: 4px; font-weight: 700; }
+  .layer.official h4 { color: var(--teal-deep); }
+  .layer.muhaqqiq h4 { color: var(--maroon); }
+  .layer .arb { font-family:'Noto Naskh Arabic',serif; direction:rtl; font-size:0.95rem; color:var(--gold); margin-bottom:12px; font-weight:600; }
+  .layer p { font-size: 0.92rem; color: var(--ink-soft); }
+
+  .source-list { list-style: none; display: grid; gap: 12px; margin-top: 4px; }
+  .source-list li {
+    background: rgba(255,252,246,0.75); border: 1px solid var(--rule);
+    border-radius: 10px; padding: 16px 18px; box-shadow: 0 3px 12px var(--shadow);
+    position: relative; padding-left: 18px;
+  }
+  .source-list li::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    border-radius: 4px 0 0 4px; background: var(--gold);
+  }
+  .source-list .nm { font-weight: 700; color: var(--ink); font-size: 0.98rem; }
+  .source-list .bk { font-family:'Noto Naskh Arabic',serif; direction:rtl; color: var(--teal); font-size:0.92rem; font-weight:600; }
+  .source-list .dd { font-size: 0.78rem; color: var(--gold); font-weight: 600; }
+  .source-list .tx { font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px; }
+
+  /* confidence badges */
+  .conf { display:inline-block; font-size:0.68rem; font-weight:700; letter-spacing:0.04em;
+          padding:2px 9px; border-radius:12px; margin-left:8px; vertical-align:middle; }
+  .conf.verified { background: rgba(29,91,84,0.16); color: var(--teal-deep); }
+  .conf.directional { background: rgba(168,129,46,0.18); color:#6f5417; }
+  .conf-legend {
+    display:flex; gap:18px; flex-wrap:wrap; justify-content:center;
+    margin: 6px 0 26px; font-size:0.8rem; color:var(--ink-soft);
+  }
+  .conf-legend span { display:inline-flex; align-items:center; gap:7px; }
+
+  /* ===== Definition compare ===== */
+  .def-wrap { display: grid; gap: 18px; margin-bottom: 22px; }
+  @media (min-width: 760px) { .def-wrap { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1060px) { .def-wrap { grid-template-columns: 1fr 1fr 1fr; } }
+  .def-box {
+    border-radius: 14px; padding: 26px 28px; box-shadow: 0 6px 20px var(--shadow);
+    position: relative; overflow: hidden;
+  }
+  .def-box.nok { background: linear-gradient(150deg, rgba(29,91,84,0.1), rgba(29,91,84,0.03)); border: 1.5px solid rgba(29,91,84,0.3); }
+  .def-box.nai { background: linear-gradient(150deg, rgba(122,47,42,0.09), rgba(122,47,42,0.03)); border: 1.5px solid rgba(122,47,42,0.28); }
+  .def-box.ijma { background: linear-gradient(150deg, rgba(61,79,138,0.09), rgba(61,79,138,0.03)); border: 1.5px solid rgba(61,79,138,0.28); }
+  .def-box .head { display:flex; align-items:baseline; gap:10px; margin-bottom:4px; flex-wrap:wrap; }
+  .def-box h3 { font-size: 1.3rem; font-weight: 700; }
+  .def-box.nok h3 { color: var(--teal-deep); }
+  .def-box.nai h3 { color: var(--maroon); }
+  .def-box.ijma h3 { color: var(--indigo-deep); }
+  .def-box .arb { font-family:'Noto Naskh Arabic',serif; direction:rtl; font-size:1rem; color:var(--gold); font-weight:600; }
+  .def-box .who { font-size:0.82rem; color:var(--ink-soft); font-weight:600; margin-bottom:14px; }
+  .def-box .startpoint {
+    background: rgba(255,252,246,0.8); border-radius: 8px; padding: 12px 14px;
+    margin-bottom: 12px; font-size:0.9rem;
+  }
+  .def-box .startpoint b { display:block; font-size:0.74rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:3px; }
+  .def-box.nok .startpoint b { color: var(--teal); }
+  .def-box.nai .startpoint b { color: var(--maroon); }
+  .def-box.ijma .startpoint b { color: var(--indigo); }
+  .def-box p { font-size:0.9rem; color:var(--ink-soft); }
+
+  .key-insight {
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+    color: #2a2008; border-radius: 12px; padding: 22px 28px; margin-bottom: 30px;
+    box-shadow: 0 10px 28px rgba(168,129,46,0.25); font-size:0.98rem;
+  }
+  .key-insight strong { color: #1c1505; }
+  .key-insight .lbl { font-weight:700; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:8px; }
+
+  /* ===== Sticky TOC ===== */
+  #toc-nav {
+    position: fixed;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: rgba(244,237,224,0.92);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 10px 8px;
+    box-shadow: 0 4px 18px var(--shadow);
+    backdrop-filter: blur(4px);
+  }
+  #toc-nav a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 3px 4px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+  }
+  #toc-nav a:hover { color: var(--teal); background: rgba(29,91,84,0.08); }
+  #toc-nav a .dot-nav {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  @media (max-width: 900px) { #toc-nav { display: none; } }
+
+  /* ===== Mobile table ===== */
+  @media (max-width: 700px) {
+    .table-scroll { border-radius: 8px; }
+    table, thead, tbody, th, td, tr { display: block; }
+    thead { display: none; }
+    tbody tr {
+      margin-bottom: 14px;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255,252,246,0.9);
+    }
+    tbody td {
+      display: flex;
+      gap: 8px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.88rem;
+    }
+    tbody td:last-child { border-bottom: none; }
+    tbody td::before {
+      content: attr(data-label);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      min-width: 70px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+  }
+
+  /* ===== References section ===== */
+  .ref-block { margin-bottom: 26px; }
+  .ref-block h3 {
+    font-size: 1.1rem; color: var(--teal-deep); font-weight: 700; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--rule);
+  }
+  .ref-block h3::before { content: "◆"; color: var(--gold); font-size: 0.9rem; }
+  .ref-list { list-style: none; display: grid; gap: 10px; }
+  .ref-list li {
+    background: rgba(255,252,246,0.7); border: 1px solid var(--rule); border-radius: 8px;
+    padding: 12px 16px; font-size: 0.88rem; line-height: 1.7;
+  }
+  .ref-list .topic { font-weight: 700; color: var(--maroon); }
+  .ref-list .who { color: var(--teal-deep); font-weight: 600; }
+  .ref-list .bk-ar { font-family:'Noto Naskh Arabic',serif; direction:rtl; color: var(--teal); font-weight:600; }
+  .ref-list a { color: var(--gold); word-break: break-all; text-decoration: none; border-bottom: 1px dotted var(--gold); }
+  .ref-list a:hover { color: #6f5417; }
+  .ref-cols { display: grid; gap: 8px; }
+  @media (min-width: 700px) { .ref-cols { grid-template-columns: 1fr 1fr; } }
+  .ref-cols .nm-row { background: rgba(255,252,246,0.7); border:1px solid var(--rule); border-radius:7px; padding:9px 13px; font-size:0.85rem; }
+  .ref-cols .nm-row .th { font-weight:600; color:var(--ink); }
+  .ref-cols .nm-row .ar { font-family:'Noto Naskh Arabic',serif; direction:rtl; color:var(--teal); float:right; }
+  .ref-note {
+    background: repeating-linear-gradient(45deg, rgba(168,129,46,0.06), rgba(168,129,46,0.06) 10px, rgba(168,129,46,0.11) 10px, rgba(168,129,46,0.11) 20px);
+    border: 2px dashed var(--gold); border-radius: 10px; padding: 14px 18px; margin: 18px 0 0;
+    font-size: 0.84rem; color: var(--ink-soft);
+  }
+  .ref-note b { color: #6f5417; }
+  .ref-subcat { font-size:0.8rem; font-weight:700; color:var(--gold); letter-spacing:0.05em; margin:14px 0 6px; }
+
+  /* ===== Footer ===== */
+  footer {
+    margin-top: 72px; padding: 40px 24px 60px; text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+  /* ===== Author-view banner & timeline ===== */
+  .author-view {
+    background: repeating-linear-gradient(45deg, rgba(168,129,46,0.06), rgba(168,129,46,0.06) 10px, rgba(168,129,46,0.11) 10px, rgba(168,129,46,0.11) 20px);
+    border: 2px dashed var(--gold); border-radius: 12px; padding: 14px 20px; margin-bottom: 22px;
+    font-size: 0.88rem; color: var(--ink-soft);
+  }
+  .author-view b { color: #6f5417; }
+  .timeline { display: grid; gap: 0; margin: 8px 0; position: relative; padding-left: 28px; }
+  .timeline::before { content:""; position:absolute; left:7px; top:8px; bottom:8px; width:2px; background:linear-gradient(var(--gold),var(--teal),var(--maroon)); }
+  .tl-item { position: relative; padding: 0 0 22px 0; }
+  .tl-item::before { content:""; position:absolute; left:-25px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--gold); border:2px solid var(--parchment); box-shadow:0 0 0 2px var(--gold); }
+  .tl-item .era { font-size:0.76rem; font-weight:700; color:var(--gold); letter-spacing:0.05em; }
+  .tl-item .ev { font-size:0.94rem; color:var(--ink); margin-top:2px; }
+  .tl-item .ev strong { color:var(--teal-deep); }
+
+  footer .wallah {
+    font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--teal-deep);
+    direction: rtl; margin-bottom: 14px; font-weight: 700;
+  }
+  footer p { color: var(--ink-soft); font-size: 0.86rem; font-weight: 300; max-width: 600px; margin: 0 auto 6px; }
+  footer .disclaimer {
+    margin-top: 22px; font-size: 0.78rem; color: var(--gold);
+    font-style: italic;
+  }
+
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin: 0 0 28px; font-size: 0.82rem; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-soft); }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.nok { background: var(--teal); }
+  .dot.nai { background: var(--maroon); }
+  .dot.mid { background: var(--gold); }
+  .dot.other { background: #5a5145; }
+  .dot.ijma { background: var(--indigo); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="basmala">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+  <div class="kicker">เอกสารสรุปวิชาการฟิกฮ์</div>
+  <h1>ทัศนะเรื่องการเห็นเดือน</h1>
+  <div class="arabic-title">مسألة رؤية الهلال واختلاف المطالع</div>
+  <p class="lede">สรุปทัศนะของนักวิชาการเรื่อง "เดือนใน–เดือนนอก" แยกตามรายบุคคล/มัซฮับ พร้อมตัวชี้วัดที่ใช้ หะดีษที่อ้างอิง และข้อจำกัดของแต่ละทัศนะ</p>
+  <div class="divider"><span>☾</span></div>
+</header>
+
+<div class="wrap">
+
+  <nav id="toc-nav" aria-label="สารบัญ">
+    <a href="#sec-intro"><span class="dot-nav"></span>ปูพื้น</a>
+    <a href="#sec-scholars"><span class="dot-nav"></span>ทัศนะ</a>
+    <a href="#sec-table"><span class="dot-nav"></span>ตาราง</a>
+    <a href="#sec-hanafi"><span class="dot-nav"></span>ฮานาฟี</a>
+    <a href="#sec-maliki"><span class="dot-nav"></span>มาลิกี</a>
+    <a href="#sec-hanbali"><span class="dot-nav"></span>ฮัมบาลี</a>
+    <a href="#sec-hadith"><span class="dot-nav"></span>หะดีษ</a>
+    <a href="#sec-arafah"><span class="dot-nav"></span>อะเราะฟะฮ์</a>
+    <a href="#sec-history"><span class="dot-nav"></span>ประวัติศาสตร์</a>
+  </nav>
+
+  <div class="intro-note">
+    <h2>กรอบความเข้าใจก่อนอ่าน</h2>
+    <p>มีอิจมาอ์ (มติเอกฉันท์) ว่า <strong>"มัฏละอ์ (จุดขึ้นของเดือน) ในแต่ละพื้นที่ต่างกันจริง"</strong> ทั้งในเชิงดาราศาสตร์ และในเชิงบทบัญญัติสำหรับ <strong>เมืองที่ห่างไกลกันมาก</strong> (เช่น อันดะลุส–ค็อรอซาน) — จุดนี้ทั้งสามมัซฮับ (ฮานาฟี มาลิกี ชาฟิอีย์) เห็นพ้องกัน สิ่งที่ <strong>ขัดแย้งกัน (คิลาฟ)</strong> คือรายละเอียดของ "จุดตั้งต้น" และเขตแดนที่ชัดเจน (ดูส่วนปูพื้นด้านล่าง)</p>
+    <p style="margin-top:14px;">อนึ่ง การจัด "ฝ่ายข้างมาก" ขึ้นกับ <strong>นิยามที่ใช้</strong>: ถ้าจัดตาม <strong>สำนวน/ความเด่นชัดของตำรา</strong> มักนับว่าเดือนนอก 3 (ฮานาฟี มาลิกี ฮัมบาลี) ต่อ เดือนใน 1 (ชาฟิอีย์) — แต่ถ้าจัดตาม <strong>ผลฟิกฮ์จริง</strong> (พิจารณามัฏละอ์เมืองไกล) ทั้งสามมัซฮับยกเว้นการบังคับเมืองไกลเหมือนกัน (เป็นอิจมาอ์ตามอิบนุอับดิลบัรร์) จึงใกล้เคียงกันมากกว่าที่ตัวเลข 3:1 จะบอก (ดูส่วนปูพื้นและภาคผนวก)</p>
+  </div>
+
+  <div class="section-head" id="sec-intro">
+    <span class="num">القسم التمهيدي · ส่วนปูพื้น</span>
+    <h2>"เดือนนอก" กับ "เดือนใน" คืออะไรกันแน่?</h2>
+    <p>คำถามสำคัญ: ถ้าทั้งสามมัซฮับ (ฮานาฟี มาลิกี ชาฟิอีย์) ต่าง "พิจารณามัฏละอ์" เหมือนกัน — แล้วทำไมจึงเรียกชื่อต่างกัน?</p>
+  </div>
+
+  <div class="tension-intro">
+    <strong>ข้อเท็จจริงที่ต้องเข้าใจก่อน:</strong> การที่ "เมืองใกล้กันใช้เดือนร่วมกัน เมืองไกลกันแยกการเห็น" คือ <strong>การพิจารณามัฏละอ์</strong> — และนี่เป็นจุดที่ทั้งสามมัซฮับ (ฮานาฟี มาลิกี ชาฟิอีย์) <strong>เห็นพ้องเป็นอิจมาอ์</strong> ตามที่อิบนุอับดิลบัรร์รายงาน ดังนั้นความต่างจึง <strong>ไม่ได้</strong> อยู่ที่ "พิจารณามัฏละอ์หรือไม่" (ทุกฝ่ายพิจารณาหมด) แต่อยู่ที่ <strong>"จุดตั้งต้น (อัศล์) ของการให้เหตุผล"</strong> ว่าเริ่มจากตรงไหน
+  </div>
+
+  <div class="def-wrap">
+    <div class="def-box nok">
+      <div class="head">
+        <h3>เดือนนอก (แท้)</h3>
+        <span class="arb">القول بالعموم المطلق</span>
+      </div>
+      <div class="who">ฮัมบาลี (มัชฮูร) · อิบนุตัยมิยะฮ์ (บลูฆุลค็อบรฺ)</div>
+      <div class="startpoint">
+        <b>จุดตั้งต้น</b>
+        "เห็นที่ใดผูกพันทุกที่" ไม่มีเส้นแบ่งระยะทางตายตัว — ฮัมบาลีไม่ยกเว้น, อิบนุตัยมิยะฮ์ยกเว้นเฉพาะที่ "ข่าวไปไม่ถึงทันเวลา"
+      </div>
+      <p>ภาระการพิสูจน์ตกที่ "ผู้จะแยก" อย่างเต็มที่ — ค่าเริ่มต้นคือผูกพันโดยไม่มีเส้นแบ่งพื้นที่ชัดเจน</p>
+    </div>
+    <div class="def-box ijma">
+      <div class="head">
+        <h3>ผูกพัน + ยกเว้นไกล</h3>
+        <span class="arb">القول بالعموم مع اعتبار البُعد</span>
+      </div>
+      <div class="who">ฮานาฟี · มาลิกี (มัชฮูร)</div>
+      <div class="startpoint">
+        <b>จุดตั้งต้น</b>
+        "เห็นที่หนึ่ง → ผูกพันที่อื่น" (อัศล์ = ผูกพัน) แล้วจึง <em>ยกเว้น</em> เมืองที่ไกลมากออก (เป็นอิจมาอ์)
+      </div>
+      <p>มีเส้นแบ่งชัดกว่าฮัมบาลี — เมืองที่ไกลระดับ "อันดะลุส–ค็อรอซาน" ไม่ผูกพันกัน แต่เมืองใกล้ยังผูกพัน ภาระการพิสูจน์ตกที่ "ผู้จะแยก" (ต้องแสดงว่าไกลพอ)</p>
+    </div>
+    <div class="def-box nai">
+      <div class="head">
+        <h3>เดือนใน</h3>
+        <span class="arb">اعتبار اختلاف المطالع</span>
+      </div>
+      <div class="who">ชาฟิอีย์ (มัชฮูร)</div>
+      <div class="startpoint">
+        <b>จุดตั้งต้น</b>
+        "แต่ละพื้นที่แยกกัน" (อัศล์ = แยกตามมัฏละอ์) แล้วจึง <em>รวม</em> เฉพาะเมืองที่มัฏละอ์เดียวกัน
+      </div>
+      <p>ภาระการพิสูจน์ตกที่ "ผู้จะรวม" — ต้องพิสูจน์ว่าเมืองนั้นมัฏละอ์เดียวกันจึงจะผูกพัน ค่าเริ่มต้นคือแยก จึงเรียก "เดือนใน" (ยึดการเห็นในเมืองตน)</p>
+    </div>
+  </div>
+
+  <div class="key-insight" style="background: rgba(29,91,84,0.05); color: var(--ink); border: 1px solid rgba(29,91,84,0.2); box-shadow: none;">
+    <span class="lbl" style="color: var(--teal-deep);">◆ เกร็ดความรู้: "มัฏละอ์" ทางดาราศาสตร์คืออะไร?</span>
+    <p style="margin-top: 8px;"><strong>มัฏละอ์ (مطلع)</strong> ในทางภาษาแปลว่า "จุดขึ้น" ในทางวิทยาศาสตร์ดาราศาสตร์ หมายถึงพื้นที่ที่มี <strong>พิกัดลองจิจูด (เส้นแวง)</strong> ใกล้เคียงกัน ซึ่งจะมีช่วงเวลาที่ดวงอาทิตย์ตกและดวงจันทร์ขึ้นไล่เลี่ยกัน</p>
+    <ul style="margin: 8px 0 0; padding-left: 20px; line-height: 1.8; font-size: 0.9rem;">
+      <li>โลกหมุนจากตะวันตกไปตะวันออก ทำให้พื้นที่ฝั่ง <strong>ตะวันตก (เช่น โมร็อกโก, อเมริกา) มีโอกาสเห็นจันทร์เสี้ยวได้ง่ายกว่าและก่อน</strong> ฝั่งตะวันออก (เช่น อินโดนีเซีย, ญี่ปุ่น) ในวันเดียวกัน</li>
+      <li>ดังนั้น หากตะวันออกเห็นเดือน ตะวันตกย่อมต้องเห็นด้วย (ในทางทฤษฎี) แต่หากตะวันตกเห็นเดือน ตะวันออกอาจไม่เห็น — นี่คือข้อเท็จจริงทางดาราศาสตร์ที่มัซฮับชาฟิอีย์และมุฮักกิกีนใช้สนับสนุนเรื่อง <strong>"มัฏละอ์ต่างกัน"</strong></li>
+    </ul>
+  </div>
+
+  <div class="key-insight" style="background: rgba(168,129,46,0.07); border: 1px solid rgba(168,129,46,0.25); box-shadow: none;">
+    <span class="lbl" style="color: var(--gold);">◆ หลักอุศูลุลฟิกฮ์: العادة المُحكَّمة — "ธรรมเนียมที่ถูกยกให้เป็นเกณฑ์ตัดสิน"</span>
+    <p style="margin-top:8px;">คำถามที่ฝ่ายเดือนนอกมักถามว่า <em>"ใครเป็นคนแบ่งประเทศ? ทำไมเส้นพรมแดนจึงเป็นเกณฑ์ทางศาสนา?"</em> — นักวิชาการฝ่ายเดือนในตอบด้วยหลักอุศูลุลฟิกฮ์:</p>
+    <ul style="margin: 10px 0 0; padding-left: 20px; line-height: 1.9; font-size: 0.92rem;">
+      <li><strong>العادة المُحكَّمة</strong> (อาดะฮ์ มุกัมมะฮ์) — หลักว่า "ธรรมเนียมปฏิบัติของมนุษย์ที่ไม่ขัดหลักศาสนา สามารถใช้เป็นเกณฑ์ตัดสินทางศาสนาได้" ตัวอย่างในกุรอาน: <span style="font-family:'Noto Naskh Arabic',serif; direction:rtl;">وَعَاشِرُوهُنَّ بِالْمَعْرُوفِ</span> "จงอยู่กับภรรยาด้วยมะอ์รูฟ" — มะอ์รูฟคือธรรมเนียมที่ดีของสังคมนั้น ไม่ใช่กฎตายตัว</li>
+      <li><strong>คำว่า "بَلَد" (บะลัด/เมือง-ประเทศ)</strong> มีในกุรอานและฮะดีษมาตั้งแต่ต้น — กุรอานซูเราะฮ์อัตตีน: "وَهَٰذَا الْبَلَدِ الْأَمِينِ" หะดีษกุร็อยบ์ใช้คำว่า "أَهْلُ بَلَدٍ" การแบ่ง "บะลัด" เป็นหน่วยมีมานานก่อนแนวคิดรัฐชาติสมัยใหม่</li>
+      <li><strong>มนุษย์แบ่งเมือง ศาสนายอมรับ</strong> — เหมือนที่ศาสนายอมรับธรรมเนียมสกุลเงิน ("ซื้อ 100" ในไทย = บาท ไม่ใช่ดอลลาร์), ยอมรับคำว่า "เนื้อ" ที่หมายถึงวัวในไทยแต่หมายถึงแพะในมักกะฮ์ — การแบ่งเขตปกครองก็เป็น "อาดะฮ์" ที่ชารีอะฮ์ยอมรับเช่นกัน</li>
+      <li><strong>มัฏละอ์ ≠ พรมแดนประเทศ แต่ประเทศ = หน่วยปฏิบัติได้จริง</strong> — มัฏละอ์คือเส้นแวง (ออก-ตก) ไม่ใช่เหนือ-ใต้ ยะลาและเชียงใหม่มัฏละอ์ต่างกัน แต่อยู่ประเทศเดียวกันจึงใช้ประกาศเดียวกัน ส่วนยะลากับมาเลเซียมัฏละอ์ใกล้กันแต่คนละหน่วยงาน — "ประเทศ" จึงทำหน้าที่เป็น "หน่วยมัฏละอ์ที่ปฏิบัติได้จริง" ในยุคปัจจุบัน</li>
+    </ul>
+    <p style="margin-top:10px; font-size:0.86rem; color:var(--ink-soft);"><em>◆ หมายเหตุ: ประเด็นนี้อธิบายโดยอ.คอลิด วารีย์ (คลิปบรรยาย) — เป็นการนำหลักอุศูลุลฟิกฮ์มาอธิบาย ยังไม่ได้ verify กับตัวบทตำราอุศูลฯ โดยตรง ผู้ศึกษาควรตรวจสอบเพิ่มเติม</em></p>
+  </div>
+
+  <div class="key-insight">
+    <span class="lbl">◆ กุญแจสำคัญ — สามจุดยืน ไม่ใช่สอง</span>
+    ฮัมบาลี/อิบนุตัยมิยะฮ์ = <strong>เดือนนอกแท้</strong> (ผูกพัน ไม่มีเส้นแบ่งพื้นที่ตายตัว) | ฮานาฟี/มาลิกี = <strong>ผูกพัน+ยกเว้นไกล</strong> (ผูกพันเป็นอัศล์ แต่มีอิจมาอ์ว่าเมืองไกลมากแยกกัน) | ชาฟิอีย์ = <strong>เดือนใน</strong> (แยกเป็นอัศล์ รวมเฉพาะที่มัฏละอ์เดียวกัน) — ผลปลายทางของ "เมืองใกล้/ไกล" อาจดูคล้ายกัน แต่ <strong>ทิศทางการให้เหตุผลและภาระการพิสูจน์ต่างกัน</strong>
+  </div>
+
+  <div class="tension-intro" style="border-style:solid; border-color:var(--maroon);">
+    <span class="lbl" style="color:var(--maroon); font-weight:700; display:block; margin-bottom:4px;">◆ นัยที่ตามมา — ข้อพึงสังเกต:</span>
+    ถ้าเรากำหนดนิยามว่า <strong>"การพิจารณามัฏละอ์ (เมืองไกลแยกการเห็น) = เดือนใน"</strong> อย่างเคร่งครัด ผลที่ตามมาคือ <strong>ทั้งฮานาฟี มาลิกี และชาฟิอีย์ ต้องถือเป็น "เดือนใน" ทั้งหมด</strong> — เพราะทั้งสามมัซฮับพิจารณามัฏละอ์สำหรับเมืองไกลเหมือนกัน (เป็นอิจมาอ์ตามอิบนุอับดิลบัรร์) ดังนั้นการจัดว่า "ชาฟิอีย์ = เดือนในมัซฮับเดียว" จึงเป็นการจัดตาม <em>สำนวน/ความเด่นชัดของตำรา</em> มากกว่าตาม <em>ผลฟิกฮ์จริง</em> ซึ่งใกล้เคียงกันทั้งสามมัซฮับ
+    <br><br>
+    <strong>ข้อสนับสนุนเพิ่มเติม:</strong> แม้แต่ปราชญ์สายฮานาฟีชั้นหลังอย่างท่านอัซ-ซะบีดีย์ เมื่อวิเคราะห์ด้วยหลักดาราศาสตร์และเวลาละหมาด ก็ยังเลือกที่จะยอมรับเรื่องความต่างของมัฏละอ์ และเห็นพ้องกับฝ่ายเดือนในเมื่อระยะทางห่างกันมาก (ดูรายละเอียดในภาคผนวกฮานาฟี)
+  </div>
+
+  <div class="section-head" id="sec-scholars">
+    <span class="num">القسم الأول · ส่วนที่หนึ่ง</span>
+    <h2>ทัศนะแยกตามรายบุคคล / มัซฮับ</h2>
+    <p>เรียงจากฝ่ายเดือนนอก → ทางสายกลาง → เดือนใน → ทัศนะร่วมสมัยเฉพาะ</p>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot nok"></span> เดือนนอก (ผูกพันที่อื่น)</span>
+    <span><span class="dot ijma"></span> ผูกพัน+ยกเว้นไกล (พิจารณามัฏละอ์)</span>
+    <span><span class="dot nai"></span> เดือนใน (แยกตามพื้นที่)</span>
+    <span><span class="dot other"></span> ทัศนะเฉพาะ/ร่วมสมัย</span>
+  </div>
+  <div class="tension-intro" style="margin-bottom:22px; font-size:0.88rem;">
+    <strong>◆ หมายเหตุการจัดหมวด:</strong> สีน้ำเงินอินดิโก = <strong>"ผูกพัน+ยกเว้นไกล"</strong> คือ จุดตั้งต้นเป็น "ผูกพัน" แต่ยกเว้นเมืองที่ไกลมาก (พิจารณามัฏละอ์) — ต่างจาก "เดือนนอก (เขียว)" ที่ไม่มีเส้นแบ่ง และต่างจาก "เดือนใน (แดง)" ที่จุดตั้งต้นเป็น "แยก" ส่วน <strong>อิบนุตัยมิยะฮ์จัดเป็นเดือนนอก (เขียว)</strong> เพราะใช้ "ข่าวการรับรู้" ขยายการผูกพันออกไป ไม่ใช่จำกัดเข้า
+  </div>
+
+  <div class="scholar-grid">
+    <div class="card t-ijma">
+      <span class="tag ijma">มัซฮับฮานาฟี · ผูกพัน+ยกเว้นไกล</span>
+      <h3>อิหม่ามอบูฮานีฟะฮ์</h3>
+      <div class="arab">الإمام أبو حنيفة</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">ตามตำราแกนกลาง (กาสานีย์): พิจารณามัฏละอ์ — เมืองใกล้กันผูกพันกัน เมืองไกลกันแยกการเห็น เหมือนมาลิกีและชาฟิอีย์ (คำว่า "ฮานาฟี=เดือนนอกแบบไม่แบ่ง" เป็นการสรุปจากสำนวนตำราที่คลาดเคลื่อน)</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">"صوموا لرؤيته" — จำกัดด้วยข้อเท็จจริงว่ามัฏละอ์เมืองไกลต่างกัน (<a href="https://sunnah.com/bukhari:1909" target="_blank" style="color:var(--gold); font-size:0.82rem;">บุคอรีย์ 1909 ↗</a>)</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด / ข้อควรระวัง</div>
+        <div class="val limit">ตำราของอบูฮานีฟะฮ์เองไม่หลงเหลือโดยตรง — ทัศนะมาผ่านลูกศิษย์และมุฮักกิกีน นักวิจัยฮานาฟีบางท่านตั้งข้อกังขาว่า "ไม่เอามัฏละอ์" เป็นซอฮิรุรริวายะฮ์จริงหรือไม่ (ดูภาคผนวกฮานาฟี)</div>
+      </div>
+    </div>
+
+    <div class="card t-ijma">
+      <span class="tag ijma">มัซฮับมาลิกี · ผูกพัน+ยกเว้นไกล</span>
+      <h3>อิหม่ามมาลิก</h3>
+      <div class="arab">الإمام مالك</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">มัซฮับที่อ้างอิจมาอ์เรื่องพิจารณามัฏละอ์ชัดเจนที่สุด (อิบนุอับดิลบัรร์ อิบนุรุชด์) — เมืองใกล้กันผูกพันกัน เมืองไกลมาก (อันดะลุส–ค็อรอซาน) แยกการเห็น หรือกอฎอหากพ้นเวลาอะดาอ์</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">"صوموا لرؤيته" — จำกัดด้วยอิจมาอ์ว่าพื้นที่ไกลไม่ผูกพันกัน</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อสังเกต</div>
+        <div class="val limit">มีริวายะฮ์จากอียิปต์ (ผ่านอิบนุล-กอซิม) ที่ดูเหมือน "เห็นที่ใดผูกพันที่อื่น" แต่นักวิชาการมาลิกีอธิบายว่าหมายถึงเฉพาะเมืองใกล้กัน (ดูภาคผนวกมาลิกี)</div>
+      </div>
+    </div>
+
+    <div class="card t-nai">
+      <span class="tag nai">เดือนใน · มัซฮับชาฟิอีย์</span>
+      <h3>อิหม่ามอัช-ชาฟิอีย์</h3>
+      <div class="arab">الإمام الشافعي</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">พิจารณา <em>อิคติลาฟุลมะฏอлиอ์</em> — ถ้ามัฏละอ์ต่างกัน ไม่ผูกพันกัน เมืองใกล้ (ในระยะที่มัฏละอ์เดียวกัน) ผูกพัน เมืองไกลแยกได้ บางสำนักย่อยใช้ "ระยะทางย่อ" หรือ "เขตแคว้น"</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">หะดีษกุร็อยบ์ (ศ่อฮีฮ์มุสลิม) — อิบนุอับบาสไม่ตามการเห็นของชาวชาม</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด</div>
+        <div class="val limit">อิบนุตัยมิยะฮ์วิจารณ์ว่า "ไม่มีตัวบทกำหนดเส้นแบ่งเขต/ระยะทาง" — เป็นมัซฮับเดียวที่ชัดเจนฝ่ายเดือนใน</div>
+      </div>
+    </div>
+
+    <div class="card t-nok">
+      <span class="tag nok">เดือนนอก (มัชฮูร) · มัซฮับฮัมบาลี</span>
+      <h3>อิหม่ามอะหมัด</h3>
+      <div class="arab">الإمام أحمد بن حنبل</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">"ถ้ายืนยันการเห็นในที่ใด ไม่ว่าใกล้หรือไกล ผูกพันคนทั้งหมดให้ถือศีลอด แม้มัฏละอ์ต่างกัน" (เป็นทัศนะเฉพาะของฮัมบาลี — มินมุฟร็อดาต)</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">"صوموا لرؤيته" + ความเป็นคำสั่งทั่วไป (หนุนโดยปราชญ์ยุคหลังอย่างอัช-เชากานีย์ ม.1250 ฮ. และศิดดีก ฮะซัน คาน — ข้อสังเกต: ทั้งคู่เป็นคนยุคหลัง การอ้างเดือนเดียวทั่วโลกจึงมักมาจากปราชญ์สมัยใหม่)</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด</div>
+        <div class="val limit">เป็นทัศนะที่กว้างที่สุด ถูกวิจารณ์ว่าไม่สอดคล้องความจริงทางดาราศาสตร์ — แต่มี "ริวายะฮ์ที่สอง" จากอิหม่ามอะหมัดที่พิจารณามัฏละอ์ ซึ่งมุฮักกิกรุ่นหลังนำมาใช้ (ดูภาคผนวกฮัมบาลี)</div>
+      </div>
+    </div>
+
+    <div class="card t-ijma">
+      <span class="tag ijma">มุฮักกิกฮานาฟี · ผูกพัน+ยกเว้นไกล</span>
+      <h3>อัล-กาสานีย์</h3>
+      <div class="arab">الكاساني — بدائع الصنائع</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">เจ้าของ "บะดาอิอุศ-เศาะนาอิอ์" ตำราฟิกฮ์หลักของฮานาฟี — ระบุว่าเมืองที่อยู่ใกล้กันยึดการเห็นร่วมกัน ส่วนเมืองที่ไกลกันไม่จำเป็นต้องยึดการเห็นของอีกฝ่าย</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">"صوموا لرؤيته" — แต่จำกัดด้วยข้อเท็จจริงว่ามัฏละอ์เมืองไกลต่างกัน</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อสังเกต</div>
+        <div class="val limit">เป็นหลักฐานสำคัญว่าแม้แต่ตำราแกนกลางของฮานาฟี ก็พิจารณามัฏละอ์สำหรับเมืองไกล (ดูภาคผนวกฮานาฟี)</div>
+      </div>
+    </div>
+
+    <div class="card t-nai">
+      <span class="tag nai">เดือนใน · มาลิกี</span>
+      <h3>อิบนุล-มาญิชูน</h3>
+      <div class="arab">ابن الماجشون</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">คำพยานการเห็นเดือนผูกพันเฉพาะ "ชาวเมืองที่ยืนยันการเห็น" เท่านั้น — เว้นแต่จะยืนยันต่ออิหม่ามใหญ่ (ผู้ปกครองสูงสุด) จึงผูกพันทุกคน</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">หลักการพยาน (ชะฮาดะฮ์) ที่ผูกกับเขต + แนวหะดีษกุร็อยบ์</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อสังเกต</div>
+        <div class="val limit">สอดคล้องกับหลัก "พิจารณามัฏละอ์" ที่เป็นอิจมาอ์ของสามมัซฮับ — มิใช่ทัศนะนอกแถว แต่เป็นการขยายหลักแยกพื้นที่ให้ชัดในแง่พยาน</div>
+      </div>
+    </div>
+
+    <div class="card t-nai">
+      <span class="tag nai">เดือนใน · มุฮักกิกมาลิกี</span>
+      <h3>อัล-กอรอฟีย์</h3>
+      <div class="arab">العلامة القرافي</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">ถือว่าความจริงในเรื่องนี้ต้องพิจารณาความต่างของมัฏละอ์ — ใช้หลักดาราศาสตร์: ตะวันออกเห็น ตะวันตกพอเป็นไปได้ / ตะวันตกเห็น ตะวันออกใช้ไม่ได้</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษ/หลักฐาน</div>
+        <div class="val">ข้อเท็จจริงดาราศาสตร์ + แนวหะดีษกุร็อยบ์</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด</div>
+        <div class="val limit">เป็นทัศนะของมุฮักกิกรายบุคคล — ไม่ใช่จุดยืนมัชฮูรของมัซฮับมาลิกี</div>
+      </div>
+    </div>
+
+    <div class="card t-nai">
+      <span class="tag nai">มุฮักกิกชาฟิอีย์ · ตำราหลัก</span>
+      <h3>อิหม่ามอัน-นะวะวีย์</h3>
+      <div class="arab">النووي — المجموع وشرح مسلم</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">เจ้าของ "อัล-มัจมูอ์" และผู้อธิบายศ่อฮีฮ์มุสลิม — ระบุว่าทัศนะที่ถูกที่สุด (อัล-อัศ็อฮ์) ในมัซฮับคือ "เมืองต่างมัฏละอ์ไม่ผูกพันกัน" และตั้งบาบในชรห์มุสลิมว่า "แต่ละเมืองมีการเห็นของตน"</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">หะดีษกุร็อยบ์ — อธิบายโดยตรงว่าเป็นหลักฐานว่าการเห็นในเมืองหนึ่งไม่ผูกพันเมืองที่ห่างไกล</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อสังเกต</div>
+        <div class="val limit">เป็นผู้วางคำอธิบายหะดีษกุร็อยบ์ที่ฝ่ายเดือนในยึดถือ — บางสำนักชาฟิอีย์ใช้ "ระยะทางย่อ" บางสำนักใช้ "มัฏละอ์"</div>
+      </div>
+    </div>
+
+    <div class="card t-nai">
+      <span class="tag nai">เดือนใน · เศาะหาบะฮ์/สลัฟ</span>
+      <h3>อิบนุอับบาส และสลัฟ</h3>
+      <div class="arab">ابن عباس وعكرمة وسالم وإسحاق</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">แต่ละพื้นที่ยึดการเห็นของตน — อิบนุอับบาสไม่ตามการเห็นของชาวชาม กล่าวว่า "เช่นนี้ท่านนบีสั่งเรา" ร่วมด้วยอิกริมะฮ์ อัล-กอซิม ซาลิม และอิสหาก บิน รอฮะวัยฮ์ (อิหม่ามแห่งชาวตะวันออก เทียบเท่าอิหม่ามอะหมัด)</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">หะดีษกุร็อยบ์ (มุสลิม) + คำอธิบายของติรมิซีย์หลังบันทึกหะดีษกุร็อยบ์: "العمل على هذا الحديث عند أهل العلم أن لكل أهل بلد رؤيتهم" (การปฏิบัติของนักวิชาการตามหะดีษนี้คือแต่ละเมืองมีการเห็นเดือนของตน) + มุสลิมตั้งบาบ "بيان أن لكل بلد رؤيتهم" — คำว่า "นบีสั่งเรา" ในกุร็อยบ์ยกระดับเป็นซุนนะฮ์มัรฟูอ์ ไม่ใช่แค่อิจติฮาด</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อสังเกต</div>
+        <div class="val limit">อิบนุอับดิลบัรร์เอนไปทางนี้ เพราะ "มีอะษัรมัรฟูอ์ (หะซัน) + เป็นทัศนะเศาะหาบะฮ์ใหญ่ที่ไม่มีใครค้าน + สติปัญญา (นะซ็อร) ก็ชี้ไปทางนี้"</div>
+      </div>
+    </div>
+
+    <div class="card t-nok">
+      <span class="tag nok">เดือนนอก · บลูฆุลค็อบรฺ</span>
+      <h3>อิบนุตัยมิยะฮ์</h3>
+      <div class="arab">شيخ الإسلام ابن تيمية</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">"مدار الأمر على البلوغ" — หลักคือ <strong>การที่ข่าวการเห็นไปถึงในเวลาที่ยังปฏิบัติได้</strong> ไม่ผูกกับระยะทางหรือเขตแดนตายตัว ท่านรับว่ามัฏละอ์ต่างกันจริง แต่ใช้ "การรับรู้ข่าว" เป็นตัวกำหนดเขตแทนมัฏละอ์ — ทิศทางจึงเป็นเดือนนอก แต่กลไกไม่ใช่การปฏิเสธความต่างของมัฏละอ์</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">"صومكم يوم تصومون وفطركم يوم تفطرون وأضحاكم يوم تضحون"</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด / ข้อควรระวัง</div>
+        <div class="val limit">มีตัวบท 2 ชุดดูขัดกัน: ใน <em>อัล-อิคติยารอต</em> (สรุปโดยอัล-บะอ์ลีย์) ดูเหมือนถือมัฏละอ์ แต่ใน <em>มัจญ์มูอุลฟะตาวา ล.25</em> ท่านทำให้ทัศนะมัฏละอ์อ่อนและชูบลูฆุลค็อบรฺแทน — ท่านพิจารณาความต่างของมัฏละอ์ แต่ใช้ "การรับรู้ข่าว" เป็นตัวกำหนดเขตแทน ไม่ใช่ระยะทางตายตัว</div>
+      </div>
+    </div>
+
+    <div class="card t-mid">
+      <span class="tag mid">เดือนนอกมีเงื่อนไข + ปฏิบัติยึดสังคม</span>
+      <h3>เชคบินบาซ</h3>
+      <div class="arab">الشيخ ابن باز</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">เชิงหลักฐาน: เดือนนอก แต่มีเงื่อนไข <strong>"ต้องมีส่วนร่วมของกลางคืนแม้เพียงเสี้ยว"</strong> เชิงปฏิบัติ: ให้แต่ละเมือง/รัฐยึดการเห็นของตนเมื่อรวมกันไม่ได้</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">"صوموا لرؤيته" (อุมูม) + "نحن أمة أمية لا نكتب ولا نحسب" (ปฏิเสธการคำนวณ)</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด</div>
+        <div class="val limit">ปฏิเสธการคำนวณดาราศาสตร์โดยสิ้นเชิง — ยึด "การเห็น" เท่านั้น และให้เกียรติผู้เห็นต่าง</div>
+      </div>
+    </div>
+
+    <div class="card t-nai">
+      <span class="tag nai">เดือนใน · ร่วมสมัย</span>
+      <h3>เชคอิบนุอุษัยมีน</h3>
+      <div class="arab">الشيخ ابن عثيمين</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">พิจารณาอิคติลาฟุลมะฏอлиอ์ (อ้างตามที่อัล-บะอ์ลีย์บันทึกทัศนะอิบนุตัยมิยะฮ์) — แต่ละพื้นที่ยึดการเห็นของตน อะเราะฟะฮ์ยึด "วันที่ 9 ตามการเห็นของพื้นที่ตน"</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">หะดีษกุร็อยบ์ + เหตุผลดาราศาสตร์ว่ามัฏละอ์ต่างกันเป็นเรื่องจริง</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด</div>
+        <div class="val limit">อ้างทัศนะอิบนุตัยมิยะฮ์ผ่านอัล-บะอ์ลีย์ ซึ่งนักวิจัยชี้ว่าไม่ตรงกับมัจญ์มูอุลฟะตาวา</div>
+      </div>
+    </div>
+
+    <div class="card t-nai">
+      <span class="tag nai">เดือนใน · ร่วมสมัย</span>
+      <h3>เชคศอลิห์ อัล-เฟาซาน</h3>
+      <div class="arab">الشيخ صالح الفوزان</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">สมาชิกคณะกรรมการถาวรฯ ซาอุฯ (Lajna ad-Daima) — ระบุว่าทัศนะที่ถูกต้องคือ "แต่ละเมืองถือศีลอดตามการเห็นของตน เพราะมัฏละอ์ต่างกัน (ซาอุฯ เห็นก่อนโมร็อกโก)" การบังคับให้ทั้งโลกพร้อมกันเป็น "การกำหนดที่เกินเลย" และ "อัลลอฮ์ไม่ทำให้ศาสนาเป็นความลำบาก" — สำหรับวันอะเราะฟะฮ์: ผู้แสวงบุญตามซาอุฯ ส่วนผู้ที่บ้านยึดการเห็นเดือนของตนเอง</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">หะดีษกุร็อยบ์ + "لا يكلف الله نفسًا إلا وسعها" (ชารีอะฮ์ไม่บังคับเกินความสามารถ)</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อสังเกต</div>
+        <div class="val limit">น่าสังเกตว่าท่านเป็นสมาชิก Lajna ad-Daima ซึ่งในฟัตวาทางการบางชุดสนับสนุนเดือนนอก — แสดงว่าแม้ในองค์กรเดียวกันยังมีหลายทัศนะ และทัศนะส่วนตัวของท่านชัดเจนว่าเดือนใน</div>
+      </div>
+    </div>
+
+    <div class="card t-other">
+      <span class="tag other">เดือนนอก + คำนวณ · ร่วมสมัย</span>
+      <h3>เชคมุศฏอฟา อัซ-ซัรกอ</h3>
+      <div class="arab">الشيخ مصطفى الزرقا</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">ฮะนาฟีซีเรีย (ฮ.ศ. 1325–1420) นักอุศูลุลฟิกฮ์และนักกฎหมายอิสลามคนสำคัญแห่งศตวรรษที่ 20 เจ้าของตำรา <em>อัล-มัดฆัล</em> — สนับสนุน <strong>อิตติฮาดุลมะฏาลิอ์ (เดือนนอก) ร่วมกับการใช้การคำนวณดาราศาสตร์</strong> เพราะมองว่าอิลละฮ์ "ไม่เขียนไม่คำนวณ" หมดไปแล้วในยุคปัจจุบัน เขียนบทความยาวลงวารสาร IIFA (مجلة مجمع الفقه الإسلامي เล่ม 2 หน้า 932)</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษ/หลักฐาน</div>
+        <div class="val">"صوموا لرؤيته" (อุมูม → ผูกพันทั้งโลก) + "إنا أمة أمية لا نكتب ولا نحسب" (อิลละฮ์ที่หมดไปแล้ว) + อัร-เราะห์มาน 55:5 (ดวงอาทิตย์และดวงจันทร์เคลื่อนตามการคำนวณ)</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด / ความต่างจากกลุ่มอื่น</div>
+        <div class="val limit">ต่างจากฝ่ายเดือนนอกสายตาเปล่า (บินบาซ) ตรงที่รับการคำนวณ และต่างจากฝ่ายเดือนใน ตรงที่ไม่พิจารณามัฏละอ์ — เป็น "เดือนนอกสายวิทยาศาสตร์" ที่ FCNA/ECFR ยุโรปนำไปใช้ต่อ โดยมีเชคยูสุฟ อัล-กอรฎอวีย์เป็นผู้นำ ECFR</div>
+      </div>
+    </div>
+
+    <div class="card t-other">
+      <span class="tag other">ทัศนะเฉพาะ · ยึดมักกะฮ์ (ซุลฮิจญะฮ์)</span>
+      <h3>เชคอะหมัด ชากิรฺ</h3>
+      <div class="arab">الشيخ أحمد شاكر</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">บทความของท่าน ("อะวาอิลุชชุฮูร" ค.ศ.1939) เขียนขึ้นเพราะ <strong>ปัญหาความขัดแย้งเรื่องวันวุกูฟ/อะเราะฟะฮ์</strong> ระหว่างอียิปต์–ซาอุฯ–อินเดีย เป็นหลัก — ท่านเสนอให้ใช้การคำนวณดาราศาสตร์แทนการเห็นด้วยตา เพราะอิลละฮ์ "ไม่เขียนไม่คำนวณ" หมดไปแล้ว และเพราะหะดีษ "صومكم يوم تصومون" กล่าวในบริบทฮัจญะตุลวะดาอ์ต่อผู้อยู่ที่มักกะฮ์ <strong>ยังไม่ชัดว่าท่านขยายหลักนี้ไปถึงรอมฎอนทุกเดือนอย่างชัดเจน</strong> เพราะแรงจูงใจหลักคือซุลฮิจญะฮ์</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษ/หลักฐาน</div>
+        <div class="val">อายะฮ์ "هي مواقيت للناس والحج" (189) + บริบทฮัจญะตุลวะดาอ์ของหะดีษ "صومكم يوم تصومون" + ตรรกะอิลละฮ์: "ไม่เขียนไม่คำนวณ" หมดไปแล้ว จึงกลับไปใช้การคำนวณที่แน่นอนได้</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด</div>
+        <div class="val limit">อิบนุอุษัยมีนค้านว่า "เป็นไปไม่ได้ทางดาราศาสตร์" ที่มัฏละอ์ทั่วโลกจะตรงกับมักกะฮ์ — และทัศนะรับการคำนวณนี้ถูกระบุว่าค้านอิจมาอ์สลัฟ หากต้องการอ้างทัศนะท่านในส่วนรอมฎอนควรตรวจสอบตำราต้นฉบับเพิ่มเติม</div>
+      </div>
+    </div>
+
+    <div class="card t-other">
+      <span class="tag other">ทัศนะเฉพาะ · ยึดผู้ปกครอง</span>
+      <h3>เชคอัลบานีย์</h3>
+      <div class="arab">الشيخ الألباني</div>
+      <div class="field">
+        <div class="label">◆ ตัวชี้วัด</div>
+        <div class="val">ให้ยึดการประกาศของผู้ปกครอง/รัฐในแต่ละประเทศ เพื่อหลีกเลี่ยงฟิตนะฮ์และความแตกแยก ("الصوم يوم يصوم الناس")</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ หะดีษที่อ้าง</div>
+        <div class="val">"الصوم يوم تصومون..." ตีความผูกกับการรวมตัวของกลุ่มชน/ผู้นำ</div>
+      </div>
+      <div class="field">
+        <div class="label">◆ ข้อจำกัด</div>
+        <div class="val limit">เน้นเอกภาพสังคมเป็นหลัก — บางคนมองว่าให้น้ำหนักมัศละฮะฮ์เหนือตัวบทดาราศาสตร์</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tension-intro" style="border-style:solid; border-color:var(--maroon); margin-top:8px;">
+    <strong style="color:var(--maroon);">เสียงเชคร่วมสมัยที่หนุน "เดือนใน":</strong> นอกจากอิบนุอุษัยมีนแล้ว มีเชคร่วมสมัยหลายท่านที่เลือกทัศนะเดือนใน (พิจารณามัฏละอ์) :
+    <ul style="margin:12px 0 0; padding-left:20px; line-height:1.9;">
+      <li><strong>เชคดร.ซาอีด อัลกอมารีย์ (โมร็อกโก):</strong> กล่าวว่าคิลาฟนี้มีมาตั้งแต่สมัยซาฮาบะฮ์เอง (อิบนุอับบาสไม่ตามมุอาวิยะฮ์ที่ชาม) — ประณามฝ่ายที่อ้างว่า "นี่คือการเมืองแบ่งประเทศ" ว่าไม่เข้าใจหลักชารีอะฮ์ ถ้าถือก่อนไปซาอุฯ แล้ววันไม่ตรง ให้ "ละศีลอดแบบลับๆ และไปละหมาดอีดในวันถัดไป" เพราะในทัศนะเดือนในนั้นถูกต้องแล้ว</li>
+      <li><strong>เชคสุไลมาน อัร-รุฮัยลีย์:</strong> อ้างหะดีษกุร็อยบ์ว่าชัดเจนที่สุด + "ชารีอะฮ์ไม่บังคับสิ่งที่เกินความสามารถ" (สมัยก่อนข่าวไปไม่ถึงทัน) — ถ้าประเทศมีอิหม่ามเป็นผู้นำคนเดียวให้ตามอิหม่าม เพราะมัฏละอ์ต่างกันตามธรรมชาติ เหมือนเวลาละหมาดที่ต่างกัน</li>
+      <li><strong>เชคมุฮัมมัด ซะอีด รอสลาน:</strong> ยกตัวอย่างญี่ปุ่น–อเมริกาใช้เดือนเดียวกันไม่ได้ทางดาราศาสตร์ — "อายะฮ์ผู้ใดประจักษ์เดือนจงถือศีลอด ใช้กับคนที่ไม่เห็นเดือนในแดนไกลไม่ได้" ดวงจันทร์ไม่เหมือนดวงอาทิตย์ ทุกแผ่นดินจึงมีฮุก่มของตน เหมือนที่ดวงอาทิตย์ตกไม่พร้อมกันทั่วโลก</li>
+      <li><strong>เชคอับดุลมุฮ์ซิน อัลอับบาด (ลูกศิษย์เชคบินบาซ):</strong> "บรรดาผู้รู้ส่วนใหญ่ยึดความแตกต่างของมัฏละอ์" — วันอะเราะฟะฮ์ก็ขึ้นกับการเห็นเดือนของแต่ละประเทศ บางทีวันอะเราะฟะฮ์ของที่หนึ่งกลายเป็นวันอีดของอีกที่หนึ่งแล้ว ต้องยึดตามการเห็นเดือนด้วยตา ไม่รับการคำนวณ</li>
+    </ul>
+  </div>
+
+  <div class="section-head" id="sec-table">
+    <span class="num">القسم الثاني · ส่วนที่สอง</span>
+    <h2>ตารางเปรียบเทียบโดยสรุป</h2>
+    <p>ภาพรวมจุดยืนมัชฮูรของมัซฮับทั้งสี่ และตัวชี้วัดหลัก</p>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>มัซฮับ / ผู้รู้</th>
+          <th>จุดยืน</th>
+          <th>ตัวชี้วัดหลัก</th>
+          <th>หะดีษหลัก</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="มัซฮับ/ผู้รู้" class="pos">ฮานาฟี (กาสานีย์)</td>
+          <td data-label="จุดยืน"><span class="pill ijma">ผูกพัน+ยกเว้นไกล</span></td>
+          <td data-label="ตัวชี้วัด">ยึดหลักพิจารณามัฏละอ์สำหรับเมืองไกล โดยยอมรับความจริงทางดาราศาสตร์เป็นข้อยกเว้นจากอัศล์</td>
+          <td data-label="หะดีษหลัก">صوموا لرؤيته / กุร็อยบ์</td>
+        </tr>
+        <tr>
+          <td data-label="มัซฮับ/ผู้รู้" class="pos">มาลิกี</td>
+          <td data-label="จุดยืน"><span class="pill ijma">ผูกพัน+ยกเว้นไกล</span></td>
+          <td data-label="ตัวชี้วัด">อ้างอิจมาอ์: เมืองไกลมากแยกการเห็น / เมืองใกล้ผูกพัน</td>
+          <td data-label="หะดีษหลัก">صوموا لرؤيته / กุร็อยบ์</td>
+        </tr>
+        <tr>
+          <td data-label="มัซฮับ/ผู้รู้" class="pos">ชาฟิอีย์ (นะวะวีย์)</td>
+          <td data-label="จุดยืน"><span class="pill nai">เดือนใน</span></td>
+          <td data-label="ตัวชี้วัด">พิจารณามัฏละอ์ — เมืองต่างมัฏละอ์ไม่ผูกพัน (อัล-อัศ็อฮ์)</td>
+          <td data-label="หะดีษหลัก">หะดีษกุร็อยบ์</td>
+        </tr>
+        <tr>
+          <td data-label="มัซฮับ/ผู้รู้" class="pos">ฮัมบาลี (มัชฮูร)</td>
+          <td data-label="จุดยืน"><span class="pill nok">เดือนนอก</span></td>
+          <td data-label="ตัวชี้วัด">เห็นที่ใด ใกล้/ไกล ผูกพันทั้งหมด แม้มัฏละอ์ต่าง</td>
+          <td data-label="หะดีษหลัก">صوموا لرؤيته</td>
+        </tr>
+        <tr>
+          <td data-label="มัซฮับ/ผู้รู้" class="pos">อิบนุตัยมิยะฮ์</td>
+          <td data-label="จุดยืน"><span class="pill nok">เดือนนอก (บลูฆุลค็อบรฺ)</span></td>
+          <td data-label="ตัวชี้วัด">อิตติฮาดุลมะฏอลิอ์ — ข่าวการเห็นไปถึงในเวลาที่ปฏิบัติได้ → ผูกพัน</td>
+          <td data-label="หะดีษหลัก">صومكم يوم تصومون / صوموا لرؤيته</td>
+        </tr>
+        <tr>
+          <td data-label="มัซฮับ/ผู้รู้" class="pos">บินบาซ</td>
+          <td data-label="จุดยืน"><span class="pill mid">นอก+เงื่อนไข</span></td>
+          <td data-label="ตัวชี้วัด">ต้องมีส่วนร่วมของคืน + ปฏิบัติยึดสังคมตน</td>
+          <td data-label="หะดีษหลัก">صوموا لرؤيته</td>
+        </tr>
+        <tr>
+          <td data-label="มัซฮับ/ผู้รู้" class="pos">อิบนุอุษัยมีน</td>
+          <td data-label="จุดยืน"><span class="pill nai">เดือนใน</span></td>
+          <td data-label="ตัวชี้วัด">มัฏละอ์ต่าง → แยกได้ / อะเราะฟะฮ์ยึดวันที่</td>
+          <td data-label="หะดีษหลัก">หะดีษกุร็อยบ์</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-head" id="sec-hanafi">
+    <span class="num">ملحق · ภาคผนวกพิเศษ</span>
+    <h2>เจาะลึก: มัซฮับฮานาฟีกับการพิจารณามัฏละอ์</h2>
+    <p>แก้ความเข้าใจผิดที่แพร่หลาย: ฮานาฟี "ไม่ได้" ถือเดือนนอกแบบไม่แบ่ง — ตำราแกนกลางพิจารณามัฏละอ์เหมือนมาลิกี</p>
+  </div>
+
+  <div class="tension-intro">
+    มีความเชื่อแพร่หลายว่า "ซอฮิรุรริวายะฮ์ (ริวายะฮ์ทางการ) ของฮานาฟี = ไม่พิจารณามัฏละอ์" — แต่ <strong>นักวิจัยฮานาฟีเองตั้งข้อกังขาเรื่องนี้</strong> ความจริงคือ ตำราแกนกลางอย่าง <strong>บะดาอิอุศ-เศาะนาอิอ์ (อัล-กาสานีย์)</strong> ระบุไว้เพียงทัศนะเดียว คือ <strong>"พิจารณามัฏละอ์สำหรับเมืองที่ห่างไกล"</strong> — เหมือนมาลิกีและชาฟิอีย์ ส่วนที่อัล-กุดูรีย์ไม่กล่าวถึงประเด็นนี้ในตัจรีด ก็เพราะท่านเห็นว่ามันเป็นเรื่องที่ <strong>ฮานาฟีและชาฟิอีย์เห็นพ้องกันอยู่แล้ว</strong>
+  </div>
+
+  <div class="key-insight" style="background:linear-gradient(135deg,var(--teal),var(--teal-deep)); color:#f0e9da;">
+    <span class="lbl" style="color:#f6d98a;">◆ ข้อแก้สำคัญ</span>
+    ดังนั้น <strong style="color:#f6d98a;">ฮานาฟีไม่ได้มี "ความตึงสองชั้น"</strong> อย่างที่บางครั้งนำเสนอ — แต่โดยเนื้อแท้ <strong style="color:#f6d98a;">พิจารณามัฏละอ์ตั้งแต่ต้น เช่นเดียวกับมาลิกีและชาฟิอีย์</strong> คำว่า "ฮานาฟี = เดือนนอก" จึงเป็นการสรุปจากสำนวนตำราบางเล่มที่คลาดเคลื่อน ไม่ใช่ผลฟิกฮ์จริงของมัซฮับ
+  </div>
+
+  <div class="conf-legend">
+    <span><span class="conf verified">ยืนยันตัวบทได้</span> ตรวจสอบตรงกับคลังคัมภีร์หลัก/ลิงก์ทางการแล้ว</span>
+  </div>
+
+  <ul class="source-list">
+    <li>
+      <span class="nm">อัล-กาสานีย์ (ملك العلماء)</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">الكاساني — بدائع الصنائع</span> <span class="dd">· เสียชีวิต 587 ฮ.</span>
+      <div class="tx">ตำราแกนกลางของฮานาฟี ระบุไว้ <strong>ทัศนะเดียว</strong> คือพิจารณาความต่างของมัฏละอ์สำหรับเมืองที่ห่างไกล — เมืองใกล้กันผูกพันกัน เมืองไกลกันแยก (ดังที่อ้างอิงไว้ในบทอธิบายหะดีษกุร็อยบ์ของตำรา تحفة الأحوذي) นี่คือหลักฐานชัดว่าฮานาฟีพิจารณามัฏละอ์</div>
+    </li>
+    <li>
+      <span class="nm">อัล-กุดูรีย์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">الإمام القدوري — التجريد</span> <span class="dd">· เสียชีวิต 428 ฮ.</span>
+      <div class="tx">ในตำรามะรอกิลฟะลาห์ ระบุตรงกันว่า ท่านอัล-กุดูรีย์อ้างอิงไว้ในหนังสือ <em>อัต-ตัจรีด (التجريد)</em> ว่าการพิจารณามัฏละอ์เป็นซอฮิรุรริวายะฮ์ และตำราอื่นระบุเพิ่มเติมว่ามัฏละอ์เกิดต่างกันจริงและส่งผลต่อฮุก่ม ที่ไม่กล่าวประเด็นนี้แยกในบางจุดเพราะเห็นว่าเป็นเรื่องที่ฮานาฟีและชาฟิอีย์เห็นพ้องกันอยู่แล้ว</div>
+    </li>
+    <li>
+      <span class="nm">อัซ-ซัยละอีย์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">عثمان بن علي الزيلعي — تبيين الحقائق</span> <span class="dd">· เสียชีวิต 743 ฮ.</span>
+      <div class="tx">ส่วนใหญ่ของฮานาฟีว่าไม่เอามัฏละอ์ "แต่ที่ใกล้ความจริงที่สุด (อัล-อัชบะฮ์) คือต้องเอาการเห็นเดือน [แยกตามมัฏละอ์] เพราะแต่ละกลุ่มชนถูกสั่งใช้ในเรื่องของตน" — อ้างหะดีษกุร็อยบ์</div>
+    </li>
+    <li>
+      <span class="nm">มุลลา อะลี อัล-กอรีย์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">ملا علي القاري — مرقاة المفاتيح</span> <span class="dd">· เสียชีวิต 1014 ฮ.</span>
+      <div class="tx">มุฮักกิกีนของฮานาฟี + มาลิกี + ส่วนใหญ่ชาฟิอีย์ เห็นว่า เมืองใกล้กันไม่ถือว่ามัฏละอ์ต่าง (แบกแดด–บัศเราะฮ์) แต่เมืองไกล (อิรัก–ฮิญาซ) แต่ละพื้นที่ยึดการเห็นของตน — ถ้าไม่เช่นนั้นบางปีรอมฎอนจะเหลือ 27–28 หรือเกิน 31–32 วัน</div>
+    </li>
+    <li>
+      <span class="nm">อิบนุอาบิดีน</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">ابن عابدين — حاشية رد المحتار</span> <span class="dd">· เสียชีวิต 1252 ฮ.</span>
+      <div class="tx">"จงรู้เถิด การต่างกันของมัฏละอ์ไม่มีใครเถียง มันเกิดขึ้นได้จริงระหว่างสองเมืองที่ห่างกัน เมืองหนึ่งมีจันทร์เสี้ยว อีกเมืองไม่มี" — ระบุว่าความต่างทางดาราศาสตร์เป็นข้อเท็จจริงที่ยอมรับกัน</div>
+    </li>
+    <li>
+      <span class="nm">มุรตะฎอ อัซ-ซะบีดีย์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">مرتضى الزبيدي — إتحاف السادة المتقين</span> <span class="dd">· เสียชีวิต 1205 ฮ. (ฮานาฟี)</span>
+      <div class="tx">แม้ผู้แต่งจะเป็นปราชญ์ฮานาฟีชั้นหลัง แต่ในตำราเล่มนี้ท่านอธิบายขยายความบนฐานคิดฟิกฮ์ของอิหม่ามอัล-เฆาะซาลีย์ (ชาฟิอีย์) โดยท่านยอมรับและสนับสนุนทัศนะของอัล-กุดูรีย์และอัซ-ซัยละอีย์ ตัวบทระบุว่าหากทิศตะวันออกเห็น ทิศตะวันตกต้องตาม แต่หากทิศตะวันตกเห็นเดือนก่อน ผลการเห็นจะไม่สะท้อนกลับมาบังคับทิศตะวันออก (**ولا ينعكس**) เพราะเวลาละหมาด/เวลาเข้าวันของฝั่งตะวันออกเลยเวลาปฏิบัติไปแล้ว</div>
+    </li>
+    <li>
+      <span class="nm">ท่านอบูซะอูด</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">حاشية أبي السعود على مراقي الفلاح</span> <span class="dd">· (ปราชญ์สายฮานาฟี)</span>
+      <div class="tx">ในตัวบทคัดลอกระบุไว้ชัดเจนว่า เมืองคนละมัฏละอ์ต้องอยู่ห่างไกลกันในระยะทางระดับ **"เดินทาง 1 เดือน" (كشهر)** จึงจะแยกการเห็นจากกันได้ ซึ่งเป็นคำกล่าวอ้างที่ใช้พิจารณาเขตพื้นที่ห่างไกล</div>
+    </li>
+  </ul>
+
+  <div class="tension-intro" style="margin-top:26px; border-style:solid; border-color:var(--teal);">
+    <strong style="color:var(--teal-deep);">นัยสำคัญ:</strong> เมื่อตำราแกนกลางฮานาฟี (กาสานีย์) + มาลิกี + ชาฟิอีย์ มาบรรจบกันที่หลัก <strong>"เมืองไกล = แยกการเห็น"</strong> จึงเข้าใจได้ว่าทำไมผู้บรรยาย (อ.คอลิด) จึงสรุปว่า <strong>"การพิจารณามัฏละอ์เป็นอิจมาอ์ของสามมัซฮับ"</strong> — และทำให้การจัด "ชาฟิอีย์ = เดือนในมัซฮับเดียว" เป็นการจัดตามสำนวน/ความเด่นชัดของตำรา มากกว่าผลฟิกฮ์จริง ซึ่งใกล้เคียงกันทั้งสามมัซฮับ
+  </div>
+
+  <div class="section-head" id="sec-maliki">
+    <span class="num">ملحق · ภาคผนวกพิเศษ</span>
+    <h2>เจาะลึก: "อิจมาอ์มาลิกี" เรื่องพื้นที่ไกล</h2>
+    <p>ฝ่ายมาลิกีให้หลักฐานที่หนักแน่นที่สุดเรื่อง "เมืองไกลแยกการเห็น" — ถึงขั้นอ้างว่าเป็นอิจมาอ์</p>
+  </div>
+
+  <div class="tension-intro">
+    จุดที่ต้องเข้าใจให้ตรง: นักวิชาการมาลิกีหลายท่านอ้างว่ามี <strong>"อิจมาอ์"</strong> — แต่เป็นอิจมาอ์ <strong>เฉพาะกรณีพื้นที่ไกลมาก</strong> (เช่น อันดะลุส–ค็อรอซาน) ว่าไม่ต้องตามการเห็นกัน <strong>ไม่ใช่</strong> อิจมาอ์ว่า "ทุกเมืองแยกกันเสมอ" — เพราะเมืองใกล้กันยังผูกพันกันตามมัชฮูร
+  </div>
+
+  <ul class="source-list">
+    <li>
+      <span class="nm">อิบนุอับดิลบัรร์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">ابน عبد البر — التمهيد</span> <span class="dd">· เสียชีวิต 463 ฮ.</span>
+      <div class="tx">"นักวิชาการอิจมาอ์ว่า การเห็นเดือนไม่ถูกพิจารณาเมื่ออยู่ห่างไกล เช่น อันดะลุสกับค็อรอซาน เพราะแต่ละเมืองมีฮุก่มของตน ส่วนทัศนะที่ใช้ร่วมกันนั้นใช้เฉพาะเมืองที่อยู่ใกล้กัน" — เป็นคำอ้างอิจมาอ์ที่โด่งดังที่สุด</div>
+    </li>
+    <li>
+      <span class="nm">อิบนุรุชด์ (หลานปู่)</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">ابن رشد — بداية المجتهد</span> <span class="dd">· เสียชีวิต 595 ฮ.</span>
+      <div class="tx">อิจมาอ์ว่าไม่ต้องพิจารณาการเห็นของประเทศที่อยู่ห่างไกลกัน เช่น อันดะลุสกับฮิญาซ</div>
+    </li>
+    <li>
+      <span class="nm">อิบนุญุซัยย์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">ابن جزي — القوانين الفقهية</span> <span class="dd">· เสียชีวิต 741 ฮ.</span>
+      <div class="tx">ทัศนะ "เห็นที่หนึ่งผูกพันทุกที่" เป็นของชาฟิอีย์ ค้านกับอิบนุล-มาญิชูน — และประเทศที่ห่างไกลกันมากไม่จำเป็นต้องดูเดือนตามกัน (เป็นอิจมาอ์)</div>
+    </li>
+    <li>
+      <span class="nm">อัล-กุรฏุบีย์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">القرطبي — التفسير (الجامع لأحكام القرآن)</span> <span class="dd">· เสียชีวิต 671 ฮ.</span>
+      <div class="tx">มีคิลาฟกันเรื่องการเห็นเดือน แต่ทุกฝ่ายเห็นพ้องว่าเมืองที่อยู่ใกล้กันฮุก่มเหมือนกัน เมืองที่อยู่ห่างไกลกันก็เมืองใครเมืองมัน — นี่รายงานจากอิกริมะฮ์ อัล-กอซิม ซาลิม อิบนุอับบาส และอิสหาก บิน รอฮะวัยฮ์ "คำพูดของอิบนุอับบาสชัดแจ้ง เป็นหลักฐานว่าทุกประเทศที่อยู่ห่างไกลกัน วาญิบต้องปฏิบัติตามการเห็นเดือนของเมืองตน โดยไม่ต้องยึดเมืองอื่น" — ในสุนันติรมิซีย์ตั้งบาบเรื่องนี้ชัดเจน</div>
+    </li>
+    <li>
+      <span class="nm">อิบนุอัล-อะรอบีย์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">ابن العربي — شرح الترمذي / أحكام القرآن</span> <span class="dd">· เสียชีวิต 543 ฮ. (มาลิกี)</span>
+      <div class="tx">หะดีษกุร็อยบ์ตีความได้ 2 แบบ — (1) อิบนุอับบาสไม่รับเพราะเป็นพยานคนเดียว หรือ (2) ไม่รับเพราะเมืองอยู่ไกลกัน คนละมัฏละอ์ — ท่านเห็นว่า <strong>แบบที่สอง (มัฏละอ์) ถูกต้องกว่า</strong></div>
+    </li>
+    <li>
+      <span class="nm">อิบนุล-บันนา อัล-มัรรอกุชีย์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">ابن البناء المراكشي</span> <span class="dd">· เสียชีวิต 721 ฮ.</span>
+      <div class="tx">อ้างมุฮัมมัด อิบนุ ซาบิก (มาลิกี ~ศตวรรษที่ 4) ว่าชาวก็อยรอวาน (ตูนิเซีย) ไม่ต้องถือศีลอดตามการเห็นของมักกะฮ์/มะดีนะฮ์ เพราะระยะห่างขนาดนั้นเป็นอิจมาอ์ว่าไม่รับการเห็นกัน</div>
+    </li>
+  </ul>
+
+  <div class="section-head" id="sec-hanbali">
+    <span class="num">ملحق · ภาคผนวกพิเศษ</span>
+    <h2>เจาะลึก: มัซฮับฮัมบาลี — เดือนนอกแท้ + ริวายะฮ์ที่สอง</h2>
+    <p>ต่างจากฮานาฟี/มาลิกี: ฮัมบาลีทัศนะทางการเป็น "เดือนนอกไม่แบ่งแยก" จริงตั้งแต่อิหม่ามอะหมัด — แต่มีริวายะฮ์ที่สองซ่อนอยู่</p>
+  </div>
+
+  <div class="tension-intro">
+    จุดสำคัญที่ทำให้ฮัมบาลีต่างจากอีกสองมัซฮับ: นี่ <strong>ไม่ใช่</strong> การอ่านตำราผิดแบบฮานาฟี — ทัศนะทางการ (อัศ-เศาะฮีฮ์ มินัลมัซฮับ) ของฮัมบาลีคือ <strong>"เดือนนอกแบบไม่แบ่งแยก"</strong> จริง ๆ และถูกจัดเป็น "มุฟร็อดาต" (ทัศนะเฉพาะที่ฉีกจากมัซฮับอื่น) แต่ความเข้าใจผิดคือการมองว่าฮัมบาลีมีมิติเดียว — ทั้งที่มี <strong>ริวายะฮ์ที่สอง</strong> เรื่องพิจารณามัฏละอ์บันทึกไว้ตั้งแต่ต้น
+  </div>
+
+  <div class="layer-wrap">
+    <div class="layer official">
+      <h4>① ทัศนะทางการ (المذهب / المعتمد)</h4>
+      <div class="arb">إذا رؤي ببلد لزم جميع الناس</div>
+      <p>"ถ้าชาวเมืองหนึ่งเห็นเดือน คนทุกเมืองจำเป็นต้องถือศีลอด แม้มัฏละอ์ต่างกัน" — อิบนุกุดามะฮ์ระบุในอัล-มุฆนีว่าเป็นทัศนะของอัล-ลัยษ์เช่นกัน และอัล-มัรดาวีย์ยืนยันใน "อัล-อินศอฟ" ว่านี่คือ "อัศ-เศาะฮีฮ์ มินัลมัซฮับ"</p>
+    </div>
+    <div class="layer muhaqqiq">
+      <h4>② ริวายะฮ์ที่สอง (الرواية الثانية)</h4>
+      <div class="arb">إذا اختلفت المطالع لم يلزم</div>
+      <p>มีรายงานที่สองจากอิหม่ามอะหมัดว่า "ถ้ามัฏละอ์ต่างกัน ไม่จำเป็นต้องถือศีลอดตามกัน" บันทึกในอัล-อินศอฟ — ตรงกับทัศนะอิบนุอับบาสและชาฟิอีย์ มุฮักกิกฮัมบาลี (อิบนุตัยมิยะฮ์) สังเคราะห์ <strong>ทั้งสองริวายะฮ์</strong> เข้าด้วยกัน: เอาความครอบคลุม (อุมูม) จากริวายะฮ์แรก + ความสมจริงเรื่องมัฏละอ์จากริวายะฮ์ที่สอง → หลอมเป็นบลูฆุลค็อบรฺ</p>
+    </div>
+  </div>
+
+  <ul class="source-list">
+    <li>
+      <span class="nm">อิหม่ามอะหมัด บิน ฮัมบัล</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">رواية المذهب — نقلها ابن قدامة والمرداوي</span> <span class="dd">· เสียชีวิต 241 ฮ.</span>
+      <div class="tx">มีสองริวายะฮ์: (ทางการ) เดือนนอกไม่แบ่งแยก / (ที่สอง) พิจารณามัฏละอ์ — แสดงว่าอิหม่ามอะหมัดเองก็มีมุมมองเรื่องมัฏละอ์เป็นทางเลือกไว้ มิใช่มิติเดียว</div>
+    </li>
+    <li>
+      <span class="nm">อิบนุกุดามะฮ์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">ابن قدامة — المغني</span> <span class="dd">· เสียชีวิต 620 ฮ.</span>
+      <div class="tx">"ถ้าชาวเมืองหนึ่งเห็นเดือน คนทุกเมืองจำเป็นต้องถือศีลอด" — ปกป้องทัศนะเดือนนอกอย่างแข็งขัน เป็นเสาหลักของมัซฮับในเรื่องนี้</div>
+    </li>
+    <li>
+      <span class="nm">อัล-มัรดาวีย์</span> <span class="conf verified">ยืนยันตัวบทได้</span><br>
+      <span class="bk">المرداوي — الإنصاف</span> <span class="dd">· เสียชีวิต 885 ฮ.</span>
+      <div class="tx">ตำราเปรียบเทียบสายรายงานของ ฮัมบาลี — ระบุว่า "ถ้ามัฏละอ์ต่างกัน อัศ-เศาะฮีฮ์คือยังต้องถือศีลอด" พร้อมบันทึกริวายะฮ์ที่สอง (ไม่ต้องตาม) ไว้ด้วย</div>
+    </li>
+  </ul>
+
+  <div class="key-insight" style="background:linear-gradient(135deg,var(--maroon),#5a221e); color:#f0e0dd;">
+    <span class="lbl" style="color:#f0c9a8;">◆ สรุปฮัมบาลี</span>
+    ดังนั้น <strong style="color:#f0c9a8;">ฮัมบาลีเป็นมัซฮับเดียวใน 4 ที่ทัศนะทางการเป็นเดือนนอกแท้</strong> — แต่ก็มีริวายะฮ์ที่สอง (มัฏละอ์) เป็นรากฐานที่อิหม่ามอะหมัดทิ้งไว้ ซึ่งอิบนุตัยมิยะฮ์สังเคราะห์ทั้งสองริวายะฮ์เป็นบลูฆุลค็อบรฺ และเป็น "อาวุธ" ที่มุฮักกิกฮัมบาลีรุ่นหลัง (→ อิบนุอุษัยมีน) หยิบมาใช้อธิบายโลกยุคปัจจุบัน
+  </div>
+
+  <div class="section-head" id="sec-hadith">
+    <span class="num">القسم الثالث · ส่วนที่สาม</span>
+    <h2>การตีความหลักฐาน (กุรอาน &amp; หะดีษ)</h2>
+    <p>หัวใจของคิลาฟอยู่ที่ "ตัวบทเดียวกัน ถูกตีความต่างกัน" — แต่ละฝ่ายและปราชญ์สำคัญมองหลักฐานเหล่านี้อย่างไร</p>
+  </div>
+
+  <div class="hadith-list">
+
+    <div class="hadith" style="border-left-color: var(--indigo); background: rgba(61,79,138,0.03);">
+      <div class="ar" style="color:var(--indigo-deep);">فَمَن شَهِدَ مِنكُمُ ٱلشَّهْرَ فَلْيَصُمْهُ ۖ وَمَن كَانَ مَرِيضًا أَوْ عَلَىٰ سَفَرٍ فَعِدَّةٌ مِّنْ أَيَّامٍ أُخَرَ</div>
+      <div class="th">"ผู้ใดในหมู่พวกท่านประจักษ์เดือน ก็จงถือศีลอด ผู้ใดป่วยหรืออยู่ในการเดินทาง ก็ให้นับชดเชยในวันอื่น" (อัล-บะเกาะเราะฮ์ 2:185)</div>
+      <div class="src">อัลกุรอาน · <a href="https://quran.com/2/185" target="_blank" style="color:var(--gold); font-size:0.82rem;">quran.com/2/185 ↗</a></div>
+      <div class="use">
+        <strong>◆ กุญแจการถกเถียง — คำว่า "شَهِدَ" (ชะฮิดะ) แปลว่าอะไร?</strong>
+        <br><br>
+        <strong>ฝ่ายเดือนใน (ชาฟิอีย์/สลัฟ):</strong> "شَهِدَ" = ประจักษ์/เห็นด้วยตาในพื้นที่ตน — คนที่อยู่คนละมัฏละอ์ยังไม่ได้ "ประจักษ์" เดือนนั้น จึงไม่ถูกบังคับในวันเดียวกับเมืองที่เห็น อิบนุอับดิลบัรร์นับนี้เป็น "ชั้นอายะฮ์" ในสามชั้นเหตุผลของฝ่ายเดือนใน (ดูสรุปด้านล่าง)
+        <br><br>
+        <strong>ฝ่ายเดือนนอก (ฮัมบาลี/อิบนุตัยมิยะฮ์):</strong> "شَهِدَ" = อยู่ในเดือน (ไม่ป่วย ไม่เดินทาง) — บริบทอายะฮ์พูดถึงการยกเว้นคนป่วยและนักเดินทาง ไม่ใช่เรื่องมัฏละอ์ คำว่า "ประจักษ์เดือน" จึงหมายถึง "อยู่ในสุขภาพดีพอจะถือได้"
+        <br><br>
+        <strong>ฮานาฟี/มาลิกี:</strong> "شَهِدَ" ครอบคลุมทุกคนในอุมมะฮ์ที่มีสุขภาพดี แต่ต้องตีความร่วมกับอิจมาอ์ว่าเมืองที่ไกลมากแยกการเห็น (ไม่ขัดกัน)
+      </div>
+    </div>
+
+    <div class="hadith">
+      <div class="ar">يَسْأَلُونَكَ عَنِ الْأَهِلَّةِ قُلْ هِيَ مَوَاقِيتُ لِلنَّاسِ وَالْحَجِّ</div>
+      <div class="th">"พวกเขาถามเจ้าเรื่องจันทร์เสี้ยว จงกล่าวว่ามันคือกำหนดเวลาสำหรับมนุษย์และการฮัจญ์" (อัล-บะเกาะเราะฮ์ 189)</div>
+      <div class="src">อัลกุรอาน</div>
+      <div class="use"><strong>อะหมัด ชากิรฺ:</strong> "มะวากีต" บ่งชี้ว่าหะดีษ "صومكم... " กล่าวในบริบทฮัจญะตุลวะดาอ์ ต่อผู้อยู่ที่มักกะฮ์ — เป็นจุดตั้งต้นที่ท่านใช้สนับสนุนการคำนวณและการยึดมักกะฮ์ (โดยเฉพาะในซุลฮิจญะฮ์) &nbsp;|&nbsp; <strong>ฝ่ายทั่วไป:</strong> "มะวากีต" (กำหนดเวลา) เป็นเรื่องของมนุษย์แต่ละพื้นที่ตามการเห็นของตน ไม่ผูกกับมักกะฮ์</div>
+    </div>
+
+    <div class="hadith">
+      <div class="ar">صُومُوا لِرُؤْيَتِهِ وَأَفْطِرُوا لِرُؤْيَتِهِ فَإِنْ غُمَّ عَلَيْكُمْ فَأَكْمِلُوا الْعِدَّةَ</div>
+      <div class="th">"จงถือศีลอดเมื่อเห็นมัน และจงออกศีลอดเมื่อเห็นมัน หากถูกบดบังก็ให้นับให้ครบสามสิบ"</div>
+      <div class="src">เศาะฮีฮ์บุคอรีย์ 1909 / เศาะฮีฮ์มุสลิม 1081 · <a href="https://sunnah.com/bukhari:1909" target="_blank" style="color:var(--gold); font-size:0.82rem;">sunnah.com/bukhari:1909 ↗</a></div>
+      <div class="use"><strong>ฮานาฟี/มาลิกี/ฮัมบาลี:</strong> สรรพนามพหูพจน์ → คำสั่งต่ออุมมะฮ์ แต่จำกัดด้วยอิจมาอ์ว่าเมืองไกลแยกกัน (พิจารณามัฏละอ์) &nbsp;|&nbsp; <strong>ชาฟิอีย์:</strong> คำสั่งมุ่งต่อ "ผู้ที่สามารถเห็นได้จริง" — ใครไม่อยู่ในเขตที่เห็นได้ ก็ไม่ถูกครอบคลุม &nbsp;|&nbsp; <strong>อิบนุตัยมิยะฮ์:</strong> ครอบคลุมทุกคนที่ "ข่าวการเห็นไปถึงในเวลาที่ปฏิบัติได้" โดยไม่กำหนดระยะทางยึดสายรายงานพยานชนบทแดนไกล (กลุ่มอาร็อบ) ที่ท่านนบีรับการเห็นโดยไม่ได้ถามเรื่องระยะทางหรือพิกัดมัฏละอ์เลย</div>
+    </div>
+
+    <div class="hadith" style="border-left-width:5px;">
+      <div class="ar" style="font-size:1.1rem; line-height:2.1;">أَنَّ أُمَّ الْفَضْلِ بِنْتَ الْحَارِثِ بَعَثَتْهُ إِلَى مُعَاوِيَةَ بِالشَّامِ ۝ فَقَدِمْتُ الشَّامَ فَقَضَيْتُ حَاجَتَهَا وَاسْتُهِلَّ عَلَىَّ رَمَضَانُ وَأَنَا بِالشَّامِ فَرَأَيْتُ الْهِلَالَ لَيْلَةَ الْجُمُعَةِ ۝ ثُمَّ قَدِمْتُ الْمَدِينَةَ فِي آخِرِ الشَّهْرِ فَسَأَلَنِي عَبْدُ اللَّهِ بْنُ عَبَّاسٍ رضى الله عنهما ثُمَّ ذَكَرَ الْهِلَالَ فَقَالَ مَتَى رَأَيْتُمُ الْهِلَالَ ۝ فَقُلْتُ رَأَيْنَاهُ لَيْلَةَ الْجُمُعَةِ ۝ فَقَالَ أَنْتَ رَأَيْتَهُ ۝ فَقُلْتُ نَعَمْ وَرَآهُ النَّاسُ وَصَامُوا وَصَامَ مُعَاوِيَةُ ۝ فَقَالَ لَكِنَّا رَأَيْنَاهُ لَيْلَةَ السَّبْتِ فَلَا نَزَالُ نَصُومُ حَتَّى نُكْمِلَ ثَلَاثِينَ أَوْ نَرَاهُ ۝ فَقُلْتُ أَوَلَا تَكْتَفِي بِرُؤْيَةِ مُعَاوِيَةَ وَصِيَامِهِ ۝ فَقَالَ <strong>لَا هَكَذَا أَمَرَنَا رَسُولُ اللَّهِ ﷺ</strong></div>
+      <div class="th">กุร็อยบ์เล่าว่า อุมมุลฟัฎล บินตุลฮาริษ ส่งเขาไปหามุอาวิยะฮ์ที่ชาม เขาทำธุระที่ชามจนสำเร็จ รอมฎอนก็เริ่มขณะที่เขายังอยู่ที่ชาม เขาเห็นจันทร์เสี้ยวคืนวันศุกร์ จากนั้นกลับมะดีนะฮ์ปลายเดือน อิบนุอับบาสถามว่า "ท่านเห็นจันทร์เสี้ยวเมื่อคืนไหน?" กุร็อยบ์ตอบว่าคืนวันศุกร์ อิบนุอับบาสกล่าวว่า "แต่เราเห็นคืนวันเสาร์ เราจะถือต่อไปจนครบสามสิบหรือจนเห็น" กุร็อยบ์ถาม "ท่านไม่รับการเห็นของมุอาวิยะฮ์หรือ?" อิบนุอับบาสกล่าวว่า <strong>"ไม่ — เช่นนี้แหละท่านนบี ﷺ สั่งเรา"</strong></div>
+      <div class="src">เศาะฮีฮ์มุสลิม 1087 · กิตาบุศเศาม์ บาบ "บยาน อันนะ ลิกุลลิ บะลัดิน รุอ์ยะตะฮุม" · <a href="https://sunnah.com/muslim:1087" target="_blank" style="color:var(--gold); font-size:0.82rem;">sunnah.com/muslim:1087 ↗</a></div>
+      <div class="use"><strong>ชาฟิอีย์ + สลัฟ (อิกริมะฮ์ กอซิม ซาลิม อิสหาก):</strong> หลักฐานสำคัญที่สุดของเดือนใน — แต่ละพื้นที่ยึดการเห็นของตน &nbsp;|&nbsp; <strong>อัน-นะวะวีย์:</strong> ตั้งบาบในชรห์มุสลิมว่า "แต่ละเมืองมีการเห็นของตน" และนี่คือ "อัล-อัศ็อฮ์" ในมัซฮับ &nbsp;|&nbsp; <strong>ฮานาฟี/มาลิกี/ฮัมบาลี:</strong> ใช้หนุนหลักพิจารณามัฏละอ์สำหรับเมืองไกลเช่นกัน — อัซ-ซัยละอีย์ (ฮานาฟี) และอิบนุอับดิลบัรร์ (มาลิกี) อ้างกุร็อยบ์โดยตรง</div>
+    </div>
+
+
+    <div class="hadith" style="border-left-color: var(--indigo); background: rgba(61,79,138,0.04); margin-top:-2px;">
+      <div class="th" style="font-weight:600; color:var(--indigo-deep);">◆ บริบทสำคัญ 3 จุดที่ตัวบทเต็มเปิดเผย</div>
+      <div class="use" style="border-top:none; padding-top:4px;">
+        <strong>① ชื่อ "มุอาวิยะฮ์"</strong> — ไม่ใช่ชาวบ้านธรรมดา แต่คือ <em>ผู้ปกครองชาม</em> ที่มีอำนาจประกาศอย่างเป็นทางการ อิบนุอับบาส <em>ยังไม่ตาม</em> แม้ผู้มีอำนาจประกาศแล้ว — ฝ่ายเดือนในใช้จุดนี้โต้ว่า "คำสั่งผู้ปกครอง" ไม่สามารถล้มหลักมัฏละอ์ได้
+        <br><br>
+        <strong>② คำถาม "أَوَلَا تَكْتَفِي"</strong> — กุร็อยบ์ถามตรงๆ ว่า "การเห็นของมุอาวิยะฮ์ไม่พอหรือ?" อิบนุอับบาสตอบ "ลา" โดยไม่ลังเล — เป็นการปฏิเสธโดยตรง ไม่ใช่การอนุมาน
+        <br><br>
+        <strong>③ ชื่อ "อุมมุลฟัฎล"</strong> — แสดงให้เห็นว่านี่เป็นเหตุการณ์จริงในครอบครัว ฝ่ายอิบนุตัยมิยะฮ์ใช้จุดนี้โต้ว่า "เป็นกรณีเฉพาะ (ข่าวมาจากคนเดียว ไม่พอออกเดือน)" แต่ฝ่ายเดือนในตอบว่าตัวบทระบุชัดว่า "ผู้คนเห็นและมุอาวิยะฮ์เห็น" — ไม่ใช่พยานคนเดียว
+        <br><br>
+        <strong>④ ชื่อบาบของมุสลิม:</strong> <span style="font-family:'Noto Naskh Arabic',serif; direction:rtl; font-size:1rem;">بَابُ بَيَانِ أَنَّ لِكُلِّ بَلَدٍ رُؤْيَتَهُمْ</span> — มุสลิมตั้งบาบเองว่า "แต่ละเมืองมีการเห็นของตน" แสดงว่าท่านตีความหะดีษนี้ในทิศทางเดือนใน | ติรมิซีย์ (693) บันทึกหลังหะดีษว่า <span style="font-family:'Noto Naskh Arabic',serif; direction:rtl; font-size:0.95rem;">الْعَمَلُ عَلَى هَذَا الْحَدِيثِ عِنْدَ أَهْلِ الْعِلْمِ أَنَّ لِكُلِّ أَهْلِ بَلَدٍ رُؤْيَتَهُمْ</span> (<a href="https://sunnah.com/tirmidhi:693" target="_blank" style="color:var(--gold);">sunnah.com/tirmidhi:693 ↗</a>)
+      </div>
+    </div>
+
+    <div class="layer-wrap" style="margin-top:-4px;">
+      <div class="layer muhaqqiq">
+        <h4>อิบนุตัยมิยะฮ์มองกุร็อยบ์อย่างไร? (1)</h4>
+        <p>ท่าน <strong>ไม่ปฏิเสธ</strong> หะดีษ (อยู่ในมุสลิม) แต่ <strong>ตีความใหม่ (ตะอ์วีล)</strong> ว่าเป็นกรณีเฉพาะ — อิบนุอับบาส "ไม่เปลี่ยนการปฏิบัติที่เริ่มไปแล้ว" ด้วยพยานคนเดียว ไม่ใช่หลักว่า "ทุกเมืองแยกมัฏละอ์เสมอ"</p>
+      </div>
+      <div class="layer official">
+        <h4>อิบนุตัยมิยะฮ์มองกุร็อยบ์อย่างไร? (2)</h4>
+        <p>ถือเป็น <strong>อิจติฮาดเฉพาะของอิบนุอับบาส</strong> ไม่ผูกพันทั่วไป — คำสั่งทั่วไป "صوموا لرؤيته" ยังครอบคลุมทุกคนที่ข่าวไปถึง จึง <strong>ไม่ขัด</strong> กับหลักบลูฆุลค็อบรฺ</p>
+      </div>
+    </div>
+
+    <div class="hadith" style="border-left-color: var(--maroon); margin-top:-2px;">
+      <div class="th" style="font-weight:600; color:var(--maroon);">มุมโต้: ฝ่ายเดือนนอกตีความกุร็อยบ์สองแนวทาง</div>
+      <div class="use" style="border-top:none; padding-top:4px;">
+        <strong>แนวที่ 1 — "พยานไม่พอจะออกเดือน":</strong> การที่อิบนุอับบาสไม่ตามชาวชาม อาจไม่ใช่เพราะมัฏละอ์ต่าง แต่เพราะ <strong>พยานคนเดียว (กุร็อยบ์) ไม่พอจะ "ออก" จากเดือน</strong> (การออกศีลอดต้องสองพยาน) — ถ้าเป็นเช่นนี้ หะดีษก็ไม่ใช่หลักฐานเรื่องมัฏละอ์เลย
+        <br><br>
+        <strong>แนวที่ 2 — "เป็นอิจติฮาดมอกูฟ ไม่ใช่มัรฟูอ์":</strong> บางท่านโต้ว่าการปฏิบัติของอิบนุอับบาสเป็น <strong>อิจติฮาดส่วนตัว (มอกูฟ)</strong> ไม่ใช่คำสั่งของนบีโดยตรง จึงไม่เป็นหลักฐานผูกพันในเรื่องมัฏละอ์
+        <br><br>
+        <em>ฝ่ายเดือนในตอบ (อัล-กุรฏุบีย์ อบูลอับบาส ในอัล-มุฟฮิม): คำพูดของอิบนุอับบาสท้ายหะดีษที่ว่า "هكذا أمرنا رسول الله" เป็นการเตรียชุลมัรฟูอ์ชัดเจน — นี่คือคำสั่งของนบี ไม่ใช่อิจติฮาดส่วนตัว | อิบนุอัล-อะรอบีย์ มาลิกี: การตีความแบบ "มัฏละอ์ต่างกัน" ถูกต้องกว่าแบบ "พยานคนเดียว"</em>
+      </div>
+    </div>
+
+    <div class="hadith">
+      <div class="ar">صَوْمُكُمْ يَوْمَ تَصُومُونَ وَفِطْرُكُمْ يَوْمَ تُفْطِرُونَ وَأَضْحَاكُمْ يَوْมَ تُضَحُّونَ</div>
+      <div class="th">"การถือศีลอดของพวกท่านคือวันที่พวกท่านถือศีลอด การออกอีดคือวันที่พวกท่านออกอีด และอัฎฮาคือวันที่พวกท่านเชือด"</div>
+      <div class="src">ติรมิซีย์ 697 / อบูดาวูด 2324 · <a href="https://sunnah.com/tirmidhi:697" target="_blank" style="color:var(--gold); font-size:0.82rem;">sunnah.com/tirmidhi:697 ↗</a></div>
+      <div class="use"><strong>อิบนุตัยมิยะฮ์:</strong> หลักฐานหลักของ "บลูฆุลค็อบรฺ" — อิบาดะฮ์ผูกกับสิ่งที่กลุ่มชนรับรู้และปฏิบัติได้ &nbsp;|&nbsp; <strong>อัลบานีย์:</strong> ยึดการรวมตัวของผู้คน/ผู้นำในแต่ละประเทศ เพื่อหลีกเลี่ยงฟิตนะฮ์ &nbsp;|&nbsp; <strong>อะหมัด ชากิรฺ:</strong> ถูกกล่าวในบริบทฮัจญ์ → คำสั่งต่อผู้อยู่ในมักกะฮ์ จึงหนุนการยึดมักกะฮ์ (โดยเฉพาะซุลฮิจญะฮ์ที่เป็นประเด็นหลักของท่าน) &nbsp;|&nbsp; <strong>สามมัซฮับ:</strong> ส่วนใหญ่มองว่าเป็นหลักทั่วไปเรื่องการตามญะมาอะฮ์ในการกำหนดวัน ไม่ใช่เกณฑ์แยก/รวมมัฏละอ์โดยตรง</div>
+    </div>
+
+    <div class="hadith">
+      <div class="ar">إِنَّا أُمَّةٌ أُمِّيَّةٌ لَا نَكْتُبُ وَلَا نَحْسُبُ</div>
+      <div class="th">"เราเป็นอุมมะฮ์ที่ไม่เขียนไม่คำนวณ เดือนเป็นเช่นนี้ ๆ" (พร้อมชูนิ้วบอกจำนวน 29/30)</div>
+      <div class="src">บันทึกโดยบุคอรีและมุสลิม</div>
+      <div class="use"><strong>บินบาซ/ฝ่ายยึดการเห็น:</strong> ปฏิเสธการคำนวณดาราศาสตร์ (ฮิซาบ) — ต้องยึด "การเห็นด้วยตา" เท่านั้น &nbsp;|&nbsp; <strong>อะหมัด ชากิรฺ/ฝ่ายรับการคำนวณ:</strong> "ไม่คำนวณ" เป็นอิลละฮ์ที่หมดไปเมื่ออุมมะฮ์คำนวณได้แม่นยำ จึงกลับไปใช้การคำนวณได้</div>
+      <div class="use" style="margin-top:6px;"><strong>◆ แล้วกล้อง/กล้องโทรทรรศน์ล่ะ?</strong> หะดีษนี้ปฏิเสธเฉพาะ "การคำนวณ (ฮิซาบ)" ไม่ใช่ "เครื่องมือช่วยมอง" เพราะกล้องยังเป็น "การเห็นด้วยตา" — <strong>บินบาซ:</strong> ใช้กล้อง (มินซอร) ได้ ไม่ใช่บิดอะฮ์ เป็นแค่ตัวช่วยเหมือนขึ้นที่สูง &nbsp;|&nbsp; <strong>อิบนุอุษัยมีน:</strong> เห็นผ่านหอดูดาว/กล้องใช้ได้ตามความครอบคลุมของหะดีษ แต่ไม่จำเป็น &nbsp;|&nbsp; <strong>ฝ่ายไม่รับ:</strong> สิ่งที่เห็นได้เฉพาะด้วยเครื่องมือ ไม่ใช่ "มีกอตสำหรับมนุษย์ทั่วไป" ตามอายะฮ์ 189</div>
+    </div>
+
+    <div class="hadith" style="border-left-color: var(--maroon);">
+      <div class="th" style="font-weight:600; color:var(--maroon);">◆ สรุป: สามชั้นเหตุผลของฝ่ายเดือนใน (ตามอิบนุอับดิลบัรร์)</div>
+      <div class="use" style="border-top:none; padding-top:4px;"><strong>(1) ชั้นนัศ (ตัวบท):</strong> หะดีษกุร็อยบ์ + คำว่า "นบีสั่งเรา" → ยกเป็นซุนนะฮ์มัรฟูอ์ ไม่ใช่อิจติฮาด &nbsp;|&nbsp; <strong>(2) ชั้นอายะฮ์:</strong> "ผู้ใดประจักษ์เดือน จงถือศีลอด" (185) → คำสั่งมุ่งต่อ "ผู้เห็น" เท่านั้น คนคนละมัฏละอ์ที่ไม่เห็นไม่ถูกครอบคลุม &nbsp;|&nbsp; <strong>(3) ชั้นนะซ็อร (สติปัญญา):</strong> มัฏละอ์ต่างกันจริงตามธรรมชาติ การบังคับเมืองไกลตามกันจึงขัดความเป็นจริง — อิบนุอับดิลบัรร์: "สติปัญญาก็ชี้ไปทางนี้" นอกจากนี้ยังมีข้อสนับสนุนจากแบบอย่างของท่านอิบนุอุมัร ซึ่งในวันก่อนเข้าเดือนรอมฎอน ท่านจะส่งคนของท่านออกไปช่วยสังเกตดูจันทร์เสี้ยวในเขตพื้นที่เมืองของตนเองเพื่อความแน่ชัด (บันทึกโดยอิหม่ามอะห์มัด) และเป็นที่ทราบกันในสายรายงานสลัฟว่า ตัวท่านเองก็ยึดถือปฏิบัติว่าชาวเมืองไม่จำเป็นต้องถือศีลอดตามผลการเห็นเดือนของเมืองอื่นที่อยู่ห่างไกลออกไป (สอดคล้องกับแนวทางของอิกริมะฮ์และกอซิม บิน มุฮัมมัด)</div>
+    </div>
+
+    <div class="hadith" style="border-left-color: var(--gold);">
+      <div class="th" style="font-weight:600;">◆ อิจมาอ์เรื่องพื้นที่ไกล (อิบนุอับดิลบัรร์)</div>
+      <div class="use" style="border-top:none; padding-top:4px;"><strong>ทั้งสามมัซฮับเห็นพ้อง (ฮานาฟี · มาลิกี · ชาฟิอีย์):</strong> "การเห็นเดือนไม่ถูกพิจารณาเมื่ออยู่ห่างไกล เช่น อันดะลุสกับค็อรอซาน" — นี่คือฐานที่ทำให้ "การพิจารณามัฏละอ์สำหรับเมืองไกล" เป็นจุดร่วม ไม่ใช่จุดต่าง ความต่างอยู่ที่ "จุดตั้งต้น" และเส้นแบ่งที่ชัดเจนเท่านั้น (ดูส่วนปูพื้น) — ส่วนฮัมบาลีมัชฮูรเป็นมัซฮับเดียวที่โน้มไปทาง "ไม่จำกัดระยะทาง" มากกว่าสามมัซฮับนี้</div>
+    </div>
+
+    <div class="hadith" style="border-left-color: var(--teal); background: rgba(29,91,84,0.03);">
+      <div class="th" style="font-weight:600; color:var(--teal-deep);">◆ ตรรกะเปรียบเทียบ (القياس): เวลาละหมาด VS เวลาถือศีลอด</div>
+      <div class="use" style="border-top:none; padding-top:4px;">
+        <strong>ฝ่ายเดือนใน (แยกตามพื้นที่):</strong> มักตั้งคำถามเชิงตรรกะว่า <em>"ในเมื่อการเข้าเวลาละหมาด (ดวงอาทิตย์) ในแต่ละประเทศยังแตกต่างกัน เหตุใดการเริ่มต้นเดือน (ดวงจันทร์) จึงต้องบังคับให้พร้อมกันทั่วโลก?"</em> อ้างอิงจากอายะฮ์ <em>"จงดำรงละหมาดนับแต่ดวงอาทิตย์คล้อย..." (17:78)</em> เมื่อดวงอาทิตย์ตกและดวงอาทิตย์คล้อยไม่พร้อมกัน อิบาดะฮ์รายวันจึงแยกตามพื้นที่ ดังนั้น อิบาดะฮ์รายเดือน/รายปีก็ควรแยกตามมัฏละอ์ภูมิศาสตร์ถิ่นของตนเช่นเดียวกัน
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-head" id="sec-arafah">
+    <span class="num">القسم الرابع · ส่วนที่สี่</span>
+    <h2>ประเด็นพิเศษ: วันอะเราะฟะฮ์</h2>
+    <p>ทั้งสองฝ่ายเห็นพ้องว่าอะเราะฟะฮ์คือ "วันที่ 9 ซุลฮิจญะฮ์" — แต่ต่างกันที่ "ยึดเวลาหรือสถานที่"</p>
+  </div>
+
+  <div class="arafah-wrap">
+    <div class="arafah-card">
+      <h4>① ยึดสถานที่ (ทุ่งอะเราะฟะฮ์)</h4>
+      <div class="who">บินบาซ · คณะกรรมการถาวรซาอุฯ · ดารุลอิฟตาอ์อียิปต์</div>
+      <p>วันอะเราะฟะฮ์คือ "วันที่ผู้คนรวมตัวที่ทุ่งอะเราะฟะฮ์" ดังนั้นทั่วโลกควรถือศีลอดอะเราะฟะฮ์ตามวันที่ผู้แสวงบุญวุกูฟ — แม้ดารุลอิฟตาอ์อียิปต์จะยึดเดือนถิ่นในรอมฎอน แต่ยึดมักกะฮ์ในอะเราะฟะฮ์</p>
+    </div>
+    <div class="arafah-card">
+      <h4>② ยึดวันที่ (วันที่ 9 ของพื้นที่ตน)</h4>
+      <div class="who">อิบนุอุษัยมีน · อัล-ญิบรีน · มัจลิสฟัตวายุโรป · อิสลามเว็บ</div>
+      <p>อะเราะฟะฮ์ผูกกับ "เวลา" ไม่ใช่ "สถานที่" — แต่ละพื้นที่ถือศีลอดวันที่ 9 ตามการเห็นเดือนของตน จะตรงกับซาอุฯ หรือไม่ก็ตาม โดยอธิบายว่าหะดีษฝ่ายแรกเป็นมุรซัล (อ่อน) และอ้างหะดีษที่นบีถือศีลอดวันที่ 9</p>
+    </div>
+  </div>
+
+  <div class="tension-intro" style="border-style:solid; border-color:var(--teal); margin-top:18px;">
+    <strong style="color:var(--teal-deep);">เสียงเชคร่วมสมัยในประเด็นวันอะเราะฟะฮ์:</strong>
+    <ul style="margin:12px 0 0; padding-left:20px; line-height:1.9; font-size:0.93rem;">
+      <li><strong>เชคศอลิห์ อัล-เฟาซาน:</strong> "ผู้แสวงบุญตามซาอุฯ ส่วนผู้ที่บ้านมีการเห็นเดือนของตนเอง ไม่ต้องตาม" — วันอะเราะฟะฮ์ก็เช่นเดียวกับรอมฎอน แยกตามถิ่น</li>
+      <li><strong>เชคคอลิด นุซละฮ์ (ลูกเขยเชคอิบนุอุษัยมีน เกิดที่มักกะฮ์):</strong> "เรื่องอะเราะฟะฮ์ไม่ได้แยกจากเรื่องการดูเดือน — ในทัศนะที่บอกว่าเห็นเดือนที่หนึ่งต้องตามกัน ก็ตามกันทั้งหมดทั้งรอมฎอนและฮัจญ์ แต่ในทางปฏิบัติให้ตามหน่วยงานที่รับผิดชอบการดูเดือนของตน ถ้าไม่มีใครรับผิดชอบก็ตามมักกะฮ์"</li>
+      <li><strong>เชคอับดุลมุฮ์ซิน อัลอับบาด:</strong> "วันอะเราะฟะฮ์ก็ขึ้นกับการเห็นเดือนของแต่ละประเทศ บางทีวันอะเราะฟะฮ์ของที่หนึ่งกลายเป็นวันอีดของอีกที่หนึ่งแล้ว — ต้องยึดตามการเห็นเดือนด้วยตา ไม่ใช่การคำนวณ"</li>
+      <li><strong>เชคซาอีด อัลกอมารีย์:</strong> "ถ้าถือก่อนไปซาอุฯ แล้ววันไม่ตรง ให้ละศีลอดแบบลับๆ และไปละหมาดอีดในวันถัดไป" — เพราะในทัศนะเดือนในนั้นถูกต้องแล้ว และคิลาฟนี้มีมาตั้งแต่สมัยซาฮาบะฮ์</li>
+    </ul>
+  </div>
+
+  <div class="section-head" style="margin-top:44px;">
+    <span class="num">الأدلة · หลักฐานทั้งสองฝ่าย</span>
+    <h2>หลักฐานและการตีความ — วันอะเราะฟะฮ์</h2>
+    <p>ตัวบทเดียวกันถูกตีความต่างกัน — แต่ละหะดีษมีจุดยืนของทั้งสองฝ่ายกำกับไว้ ตามแบบส่วนที่ 3</p>
+  </div>
+
+  <div class="hadith-list">
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ① الحج عرفة
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith" style="border-left-width:5px; border-left-color: var(--teal);">
+      <div class="ar">الْحَجُّ عَرَفَةُ</div>
+      <div class="th">"ฮัจญ์คืออะเราะฟะฮ์"</div>
+      <div class="src">อบูดาวูด · ติรมิซีย์ · นะสาอีย์ · อิบนุมาญะฮ์ — เศาะฮีฮ์</div>
+      <div class="use">
+        <strong style="color:var(--teal-deep);">▶ ฝ่ายวุกูฟ (บินบาซ · คณะกรรมการถาวรซาอุฯ · ดารุลอิฟตาอ์อียิปต์):</strong>
+        หะดีษกำหนดว่า "อะเราะฟะฮ์" คือแก่นของฮัจญ์ทั้งหมด — เมื่อฮัจญ์ผูกกับ "สถานที่" (ทุ่งอะเราะฟะฮ์) วันที่วุกูฟที่นั่นคือ "วันอะเราะฟะฮ์" สำหรับทั้งโลก ดังที่มักกะฮ์เป็นกิบลัตสากล ทุ่งอะเราะฟะฮ์ก็เป็น "ศูนย์กลางเวลา" ของวันนี้สำหรับทุกคน
+        <br><br>
+        <strong style="color:var(--maroon);">▶ ฝ่ายวันที่ 9 (อิบนุอุษัยมีน · มัจลิสฟัตวายุโรป):</strong>
+        หะดีษนี้พูดถึง <em>รุก่น (องค์ประกอบหลัก) ของฮัจญ์</em> สำหรับผู้แสวงบุญ — ว่าหากไม่วุกูฟที่อะเราะฟะฮ์ ฮัจญ์ใช้ไม่ได้ <strong>ไม่ใช่</strong>การนิยาม "วันถือศีลอด" สำหรับผู้ที่บ้าน ฮุก่มของผู้แสวงบุญ (ผูกกับสถานที่) และฮุก่มของผู้ถือศีลอดที่บ้าน (ผูกกับวันที่ 9) เป็นคนละบริบทกัน
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ② يوم تعرِّفون  (ติรมิซีย์ 802)
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith">
+      <div class="ar">الْفِطْرُ يَوْمَ تُفْطِرُونَ وَالْأَضْحَى يَوْمَ تُضَحُّونَ وَعَرَفَةُ يَوْمَ تُعَرِّفُونَ</div>
+      <div class="th">"การออกอีดคือวันที่พวกท่านออกอีด, อัฎฮาคือวันที่พวกท่านเชือด, และอะเราะฟะฮ์คือวันที่พวกท่านวุกูฟ"</div>
+      <div class="src">ติรมิซีย์ 802 · <a href="https://sunnah.com/tirmidhi:802" target="_blank" style="color:var(--gold); font-size:0.82rem;">sunnah.com/tirmidhi:802 ↗</a> — บางสายสายรายงานถูกตั้งข้อสังเกตว่ามุรซัล</div>
+      <div class="use">
+        <strong style="color:var(--teal-deep);">▶ ฝ่ายวุกูฟ:</strong>
+        คำ <span style="font-family:'Noto Naskh Arabic',serif;">تُعَرِّفُونَ</span> มาจากรากเดียวกับ "อะเราะฟะฮ์" หมายถึง "วุกูฟที่อะเราะฟะฮ์" นั่นเอง — เป็นนิยามตรงว่า "วันอะเราะฟะฮ์ = วันวุกูฟจริง" ไม่ใช่วันที่ 9 ตามปฏิทินท้องถิ่น และสอดคล้องกับหะดีษ "الحج عرفة" ข้างต้น
+        <br><br>
+        <strong style="color:var(--maroon);">▶ ฝ่ายวันที่ 9:</strong>
+        <strong>อิบนุอุษัยมีน</strong> — บางสายรายงานเป็น <em>มุรซัล</em> ไม่แข็งพอจะขัดหะดีษเศาะฮีฮ์เรื่องการเห็นเดือน
+        &nbsp;|&nbsp; <strong>มัจลิสฟัตวายุโรป</strong> — แม้เศาะฮีฮ์ ก็พูดถึง "วันที่ผู้แสวงบุญวุกูฟ" ไม่ใช่คำสั่งต่อคนทั่วโลก เทียบกับ "أضحاكم يوم تضحون" ที่ผูกกับ "วันที่สังคมของตนเชือด" ไม่ใช่วันที่มินา
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ③ صيام يوم عرفة (มุสลิม 1162) — ทั้งสองฝ่ายรับ แต่ต่างที่ "วันไหน"
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith">
+      <div class="ar">صِيَامُ يَوْمِ عَرَفَةَ أَحْتَسِبُ عَلَى اللَّهِ أَنْ يُكَفِّرَ السَّنَةَ الَّتِي قَبْلَهُ وَالسَّنَةَ الَّتِي بَعْدَهُ</div>
+      <div class="th">"การถือศีลอดวันอะเราะฟะฮ์ — ฉันหวังต่ออัลลอฮ์ว่ามันจะลบล้างปีที่ผ่านมาและปีถัดไป"</div>
+      <div class="src">เศาะฮีฮ์มุสลิม 1162 (จากอบูกอตาดะฮ์) · <a href="https://sunnah.com/muslim:1162" target="_blank" style="color:var(--gold); font-size:0.82rem;">sunnah.com/muslim:1162 ↗</a></div>
+      <div class="use">
+        <strong style="color:var(--teal-deep);">▶ ฝ่ายวุกูฟ:</strong>
+        "วันอะเราะฟะฮ์" ที่นบีกล่าวถึงคือวันที่ฮัจญ์ดำเนินอยู่ที่มักกะฮ์ — ความประเสริฐผูกกับวันวุกูฟจริง ถ้า "วันอะเราะฟะฮ์" ขึ้นกับปฏิทินท้องถิ่น มุสลิมบางกลุ่มอาจถือศีลอด "วันที่ 8" ของมักกะฮ์ (ยังไม่ถึงวุกูฟ) หรือ "วันที่ 10" (วันอีด = ฮะรอม) ทำให้ความประเสริฐหายไปหรือกลายเป็นบาป
+        <br><br>
+        <strong style="color:var(--maroon);">▶ ฝ่ายวันที่ 9:</strong>
+        ทั้งสองฝ่ายเห็นพ้องว่าหะดีษนี้เศาะฮีฮ์และมีน้ำหนัก — ข้อพิพาทอยู่ที่ <em>"วันอะเราะฟะฮ์" หมายถึงวันไหน</em> ไม่ใช่ที่ตัวหะดีษ ฝ่ายนี้ตอบว่า "วันที่ 9 ของพื้นที่ตน" ก็คือ "วันอะเราะฟะฮ์" ของพื้นที่นั้นตามที่อัลลอฮ์กำหนดให้ผ่านมัฏละอ์ และความประเสริฐก็อยู่ที่วันนั้น
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ④ كان يصوم تسع ذي الحجة (อบูดาวูด 2437)
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith">
+      <div class="ar">كَانَ رَسُولُ اللَّهِ ﷺ يَصُومُ تِسْعَ ذِي الْحِجَّةِ وَيَوْمَ عَاشُورَاءَ</div>
+      <div class="th">"ท่านรสูลุลลอฮ์ ﷺ ถือศีลอดเก้าวันของซุลฮิจญะฮ์ และวันอาชูรออ์"</div>
+      <div class="src">อบูดาวูด 2437 — ศ่อฮีฮ์ตามอัล-อัลบานีย์ · <a href="https://sunnah.com/abudawud:2437" target="_blank" style="color:var(--gold); font-size:0.82rem;">sunnah.com/abudawud:2437 ↗</a></div>
+      <div class="use">
+        <strong style="color:var(--maroon);">▶ ฝ่ายวันที่ 9 (อิบนุอุษัยมีน · อัล-ญิบรีน):</strong>
+        นบีถือศีลอด "วันที่เก้าของซุลฮิจญะฮ์" — ซุลฮิจญะฮ์ผูกกับ "การเห็นเดือน" ตามหลักอิสลาม ดังนั้นวันที่ 9 นับจากการเห็นเดือนของแต่ละพื้นที่ เหมือน "วันอาชูรออ์" (วันที่ 10 มุฮัรร็อม) ที่ถือตามปฏิทินท้องถิ่นโดยไม่มีใครกำหนดให้ยึดมะดีนะฮ์หรือมักกะฮ์
+        <br><br>
+        <strong style="color:var(--teal-deep);">▶ ฝ่ายวุกูฟ:</strong>
+        คำว่า <span style="font-family:'Noto Naskh Arabic',serif;">تِسْعَ</span> อาจหมายถึง "ช่วงเก้าวัน" ไม่ใช่ "เฉพาะวันที่ 9" — และในยุคนบีมะดีนะฮ์กับมักกะฮ์ใช้การเห็นเดือนเดียวกัน ไม่มีข้อขัดแย้ง จึงไม่เป็นหลักฐานว่าวันที่ 9 ต้องแยกตามพื้นที่
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ⑤ นบีห้ามถือศีลอดที่ทุ่งอะเราะฟะฮ์ (อบูดาวูด · นะสาอีย์)
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith">
+      <div class="ar">أَنَّ النَّبِيَّ ﷺ نَهَى عَنْ صَوْمِ يَوْمِ عَرَفَةَ بِعَرَفَةَ</div>
+      <div class="th">"แท้จริงนบี ﷺ ห้ามถือศีลอด <strong>วันอะเราะฟะฮ์ที่อะเราะฟะฮ์</strong> (คือสำหรับผู้แสวงบุญที่วุกูฟ)"</div>
+      <div class="src">อบูดาวูด · นะสาอีย์ · อิบนุมาญะฮ์</div>
+      <div class="use">
+        <strong style="color:var(--maroon);">▶ ฝ่ายวันที่ 9:</strong>
+        คำว่า "بِعَرَفَةَ" (ที่อะเราะฟะฮ์) ระบุชัดว่าการห้ามนี้เฉพาะผู้ที่อยู่ที่ทุ่งอะเราะฟะฮ์จริงๆ — นั่นหมายความว่าในบริบทของ "การถือศีลอด" ศาสนาแยกฮุก่มระหว่างผู้แสวงบุญและผู้อยู่บ้านออกจากกันโดยอัตโนมัติ ยืนยันว่า "วันอะเราะฟะฮ์" ในฐานะวันถือศีลอดสำหรับผู้ที่บ้านผูกกับ "วันที่ 9" ของตน
+        <br><br>
+        <strong style="color:var(--teal-deep);">▶ ฝ่ายวุกูฟ:</strong>
+        การห้ามเป็นเพราะผู้แสวงบุญต้องใช้พลังงานในการวุกูฟ ไม่ใช่เพราะวันต่างกัน — การห้าม "บิอะเราะฟะฮ์" แค่ระบุบริบทที่ห้าม ไม่ได้แสดงว่าวันอะเราะฟะฮ์ของผู้แสวงบุญและผู้อยู่บ้านเป็นคนละวัน
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ⑥ นบีดื่มนมที่ทุ่งอะเราะฟะฮ์ — ไม่ถือศีลอดขณะวุกูฟ (มุสลิม 1123)
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith">
+      <div class="ar">أَنَّ رَسُولَ اللهِ ﷺ وَقَفَ بِعَرَفَةَ وَأَتَاهُ نَاسٌ بِلَبَنٍ فَشَرِبَ</div>
+      <div class="th">"ท่านนบี ﷺ วุกูฟที่อะเราะฟะฮ์ มีผู้นำนมมาให้ท่านจึงดื่ม"</div>
+      <div class="src">เศาะฮีฮ์มุสลิม 1123 · <a href="https://sunnah.com/muslim:1123" target="_blank" style="color:var(--gold); font-size:0.82rem;">sunnah.com/muslim:1123 ↗</a></div>
+      <div class="use">
+        <strong style="color:var(--teal-deep);">▶ ฝ่ายวุกูฟ:</strong>
+        นบีเองไม่ถือศีลอดในวันวุกูฟ — ยืนยันว่าผู้แสวงบุญ (ซึ่งอยู่ที่ "ศูนย์กลาง" ของวันนี้) ไม่ต้องถือ ส่วนผู้ที่อยู่ไกลออกไปถือแทน วันวุกูฟจึงเป็น "วันเดียว" ที่แน่นอนสำหรับทั้งโลก เพียงแต่ฮุก่มต่างกันตามที่อยู่
+        <br><br>
+        <strong style="color:var(--maroon);">▶ ฝ่ายวันที่ 9:</strong>
+        หะดีษนี้แสดงว่า <em>ฮุก่มผู้แสวงบุญ ≠ ฮุก่มผู้อยู่บ้าน</em> นั่นคือตัวบทเองแยกสองบริบทออกจากกันแล้ว — ผู้แสวงบุญวุกูฟ (ไม่ถือศีลอด), ผู้ที่บ้านถือศีลอดในวันที่ 9 ของตน ทั้งสองปฏิบัติตามบริบทของตนโดยไม่ขัดแย้งกัน
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ⑦ هَذَا يَوْمُ عَرَفَةَ — นบีชี้นิยามขณะวุกูฟ
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith">
+      <div class="ar">هَذَا يَوْمُ عَرَفَةَ</div>
+      <div class="th">"วันนี้คือวันอะเราะฟะฮ์" (นบี ﷺ กล่าวขณะวุกูฟที่ทุ่งอะเราะฟะฮ์ — ในบริบทคุฏบะฮ์ฮัจญะตุลวะดาอ์)</div>
+      <div class="src">บุคอรีย์ · มุสลิม (สายรายงานหลายสาย ในบริบทฮัจญะตุลวะดาอ์)</div>
+      <div class="use">
+        <strong style="color:var(--teal-deep);">▶ ฝ่ายวุกูฟ:</strong>
+        นบีกำหนด "วันอะเราะฟะฮ์" โดยชี้ไปที่วันและสถานที่จริงพร้อมกัน — เป็นการนิยามเชิงสถานที่-เวลาที่ทุกคนในโลกต้องนับจากสถานที่ที่ฮัจญ์เกิดขึ้นเป็นฐาน เหมือนที่นบีประกาศในคุฏบะฮ์อำลาว่า "นี่คือวันศักดิ์สิทธิ์" หมายถึงวันเดียวกันสำหรับทุกคน
+        <br><br>
+        <strong style="color:var(--maroon);">▶ ฝ่ายวันที่ 9:</strong>
+        คำกล่าวนี้อยู่ใน <em>บริบทฮัจญ์</em> — นบีกำลังบอกผู้แสวงบุญที่วุกูฟอยู่ด้วยกันว่า "วันนี้คือวันอะเราะฟะฮ์" ไม่ใช่คำสั่งต่อผู้ที่อยู่ต่างแดน บริบทเดียวกันนี้ใช้อธิบายวันศักดิ์สิทธิ์สำหรับผู้ที่อยู่ที่นั่น ซึ่งไม่ขัดกับหลักที่ว่าผู้ที่บ้านยึดวันที่ 9 ของตน
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ⑧ صُومُوا لِرُؤْيَتِهِ — หลักการกำหนดเดือนด้วยการเห็น
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith">
+      <div class="ar">صُومُوا لِرُؤْيَتِهِ وَأَفْطِرُوا لِرُؤْيَتِهِ فَإِنْ غُمَّ عَلَيْكُمْ فَأَكْمِلُوا الْعِدَّةَ</div>
+      <div class="th">"จงถือศีลอดเมื่อเห็นมัน (เดือน) และออกศีลอดเมื่อเห็นมัน หากถูกบดบังก็ให้นับให้ครบสามสิบ"</div>
+      <div class="src">เศาะฮีฮ์บุคอรีย์ 1909 / เศาะฮีฮ์มุสลิม 1081 · <a href="https://sunnah.com/bukhari:1909" target="_blank" style="color:var(--gold); font-size:0.82rem;">sunnah.com/bukhari:1909 ↗</a></div>
+      <div class="use">
+        <strong style="color:var(--maroon);">▶ ฝ่ายวันที่ 9:</strong>
+        หลักการของอิสลามผูกอิบาดะฮ์ทุกประเภทกับ "การเห็นเดือน" ตามถิ่น — ไม่มีข้อยกเว้นพิเศษสำหรับซุลฮิจญะฮ์ในหะดีษนี้ เดือนซุลฮิจญะฮ์จึงเริ่มต้นตามการเห็นของแต่ละพื้นที่ และวันที่ 9 ก็นับจากจุดเริ่มนั้น การให้มักกะฮ์เป็นมาตรฐานเฉพาะซุลฮิจญะฮ์แต่ไม่ใช้ในรอมฎอน เป็น "สองมาตรฐาน" ที่ขาดหลักฐานเฉพาะรองรับ
+        <br><br>
+        <strong style="color:var(--teal-deep);">▶ ฝ่ายวุกูฟ:</strong>
+        หะดีษนี้พูดถึงการเข้า-ออกรอมฎอน ไม่ใช่ซุลฮิจญะฮ์โดยตรง — ซุลฮิจญะฮ์มีหลักฐานเฉพาะ (วุกูฟ, "الحج عرفة") ที่ยกเว้นออกมาเป็นกรณีพิเศษ จึงไม่ขัดกัน เหมือนที่อิบาดะฮ์ฮัจญ์มีกฎเฉพาะแยกออกจากหลักทั่วไปหลายข้อ
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         ⑨ أَضْحَاكُمْ يَوْمَ تُضَحُّونَ — อัฎฮาผูกกับสังคมของตน
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith">
+      <div class="ar">صَوْمُكُمْ يَوْمَ تَصُومُونَ وَفِطْرُكُمْ يَوْمَ تُفْطِرُونَ وَأَضْحَاكُمْ يَوْمَ تُضَحُّونَ</div>
+      <div class="th">"การถือศีลอดของพวกท่านคือวันที่พวกท่านถือ, การออกอีดคือวันที่พวกท่านออก, อัฎฮาคือวันที่พวกท่านเชือด"</div>
+      <div class="src">ติรมิซีย์ 697 · <a href="https://sunnah.com/tirmidhi:697" target="_blank" style="color:var(--gold); font-size:0.82rem;">sunnah.com/tirmidhi:697 ↗</a></div>
+      <div class="use">
+        <strong style="color:var(--maroon);">▶ ฝ่ายวันที่ 9:</strong>
+        หะดีษนี้สำคัญมาก — "أَضْحَاكُمْ يَوْمَ تُضَحُّونَ" หมายความว่า <em>วันอีดอัฎฮาของพวกท่านคือวันที่สังคมของท่านเชือด</em> ไม่ใช่วันที่ฮัจญ์เชือดที่มินา ถ้าวันอีดอัฎฮา (วันที่ 10) ไม่ต้องตรงกับมักกะฮ์ วันอะเราะฟะฮ์ (วันที่ 9) ก็ไม่จำเป็นต้องตรงกันเช่นกัน — ตรรกะเดียวกันทั้งสองวัน
+        <br><br>
+        <strong style="color:var(--teal-deep);">▶ ฝ่ายวุกูฟ:</strong>
+        "تُضَحُّونَ" หมายถึงวันที่สังคมทำกุรบาน ซึ่งตามปกติตามวันวุกูฟของมักกะฮ์อยู่แล้ว — หะดีษนี้พูดถึงหลักรวมตัวของสังคม (ญะมาอะฮ์) ไม่ใช่หลักแยกตามมัฏละอ์ และไม่ขัดกับการที่อะเราะฟะฮ์ผูกกับวุกูฟ เพราะทั้งสองวันอยู่ในกรอบ "ฮัจญ์" ของมักกะฮ์เหมือนกัน
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         กล่องอรรถาธิบาย: "วันอะเราะฟะฮ์" ในฐานะชื่อเฉพาะของวัน
+    ═══════════════════════════════════════════════════════════════════ -->
+    <div class="hadith" style="border-left-color: var(--indigo); background: rgba(61,79,138,0.04);">
+      <div class="th" style="font-weight:700; color:var(--indigo-deep);">◆ ข้อถกเถียงทางภาษาศาสตร์: "يَوْمُ عَرَفَة" คือชื่อสถานที่ หรือชื่อของวัน?</div>
+      <div class="use" style="border-top:none; padding-top:4px;">
+        <strong style="color:var(--teal-deep);">ฝ่ายวุกูฟ:</strong> "يَوْمُ عَرَفَة" = "วันที่เกี่ยวข้องกับ <em>สถานที่</em> อะเราะฟะฮ์" — ต้องมีเหตุการณ์วุกูฟเกิดขึ้นที่นั่นก่อน วันนี้จึงมีอยู่ได้
+        <br><br>
+        <strong style="color:var(--maroon);">ฝ่ายวันที่ 9:</strong> "يَوْمُ عَرَفَة" ได้กลายเป็น <strong>اصطلاح شرعي</strong> (ชื่อเฉพาะทางบัญญัติ) สำหรับ "วันที่ 9 ซุลฮิจญะฮ์" ในปฏิทินอิสลามไปแล้ว — เหมือนกับ "يَوْمُ عَاشُورَاء" ที่หมายถึงวันที่ 10 มุฮัรร็อมโดยไม่ต้องอ้างอิงเหตุการณ์เฉพาะที่เมืองใด ดังนั้นเมื่อเข้าสู่วันที่ 9 ซุลฮิจญะฮ์ของพื้นที่ใด วันนั้นก็คือ "วันอะเราะฟะฮ์" ของพื้นที่นั้นตามรอบการโคจรของดวงจันทร์ที่อัลลอฮ์ทรงกำหนด
+        <br><br>
+        <em style="font-size:0.88rem; color:var(--ink-soft);">เปรียบเทียบ: ไม่มีใครกำหนดให้มุสลิมในอินโดนีเซียต้องถือศีลอดวันอาชูรออ์ตามการนับวันที่ 10 ของมะดีนะฮ์ — แต่ละพื้นที่นับ 10 มุฮัรร็อมของตนเอง วันอะเราะฟะฮ์ก็ควรเป็นเช่นเดียวกัน</em>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="layer-wrap" style="margin-top:28px;">
+    <div class="layer official">
+      <h4>ข้อสรุปฝ่ายวุกูฟ</h4>
+      <p>"วันอะเราะฟะฮ์" ถูกนิยามด้วย <strong>เหตุการณ์วุกูฟ</strong> ที่ผูกกับสถานที่เฉพาะ — หลักฐานหลัก: "الحج عرفة", "يوم تعرِّفون", "هذا يوم عرفة" แม้ดารุลอิฟตาอ์อียิปต์ยึดเดือนท้องถิ่นในรอมฎอน ก็ยังยกเว้นอะเราะฟะฮ์ออกมาโดยเฉพาะ เพราะมีหลักฐาน "วุกูฟ" เป็นตัวนิยาม ซุลฮิจญะฮ์จึงมีกรอบพิเศษต่างจากรอมฎอน</p>
+    </div>
+    <div class="layer muhaqqiq">
+      <h4>ข้อสรุปฝ่ายวันที่ 9</h4>
+      <p>"วันอะเราะฟะฮ์" = "วันที่ 9 ซุลฮิจญะฮ์" ตามการเห็นเดือนของแต่ละพื้นที่ — หลักฐานหลัก: "صوموا لرؤيته", "تسع ذي الحجة", "أضحاكم يوم تضحون" ฮุก่มผู้แสวงบุญ (สถานที่) ≠ ฮุก่มผู้อยู่บ้าน (วันที่ 9) และ "يَوْمُ عَرَفَة" ได้กลายเป็น اصطلاح شرعي สำหรับวันที่ 9 แล้ว เหมือน "วันอาชูรออ์" = วันที่ 10 มุฮัรร็อม โดยไม่อิงเมือง</p>
+    </div>
+  </div>
+
+  <div class="hadith" style="border-left-color:var(--gold); margin-top:18px;">
+    <div class="th" style="font-weight:600;">◆ จุดขัดแย้งหลักระหว่างสองฝ่าย</div>
+    <div class="use" style="border-top:none; padding-top:4px;">
+      <strong>ฝ่ายวุกูฟ</strong> ยกเว้นซุลฮิจญะฮ์ออกจากหลักทั่วไปโดยอ้างหลักฐานเฉพาะ ("วุกูฟ" เป็นตัวนิยาย "วันอะเราะฟะฮ์") — <strong>ฝ่ายวันที่ 9</strong> ปฏิเสธการยกเว้นนี้เพราะ: (1) "الحج عرفة" เป็นฮุก่มผู้แสวงบุญ ไม่ใช่นิยามวันถือศีลอดของผู้ที่บ้าน (2) "يوم تعرِّفون" มีปัญหาสายรายงาน (3) "أضحاكم يوم تضحون" ยืนยันว่าอีดอัฎฮา (วันที่ 10) ก็ไม่ต้องตรงกับมักกะฮ์ — ถ้ายอมรับข้อนั้น วันที่ 9 ก็ไม่ควรต้องตรงเช่นกัน
+    </div>
+  </div>
+
+
+  <div class="section-head" id="sec-history">
+    <span class="num">القسم الخامس · ส่วนที่ห้า</span>
+    <h2>ที่มาของ "เดือนเดียวทั่วโลก" เชิงประวัติศาสตร์</h2>
+    <p>ทำไมทัศนะนี้จึงดู "ใหม่" และเหตุใดจึงเกิดข้อถกเถียงในยุคปัจจุบัน</p>
+  </div>
+
+  <div class="author-view">
+    <b>◆ หมายเหตุ:</b> ส่วนนี้เป็น <b>การประมวลและตีความของผู้จัดทำ</b> โดยอ้างอิงจากข้อมูลเท่าที่ค้นพบได้ (ตำราฟิกฮ์ ฟัตวา และคำบรรยายของ อ.คอลิด วารีย์) — เป็นการร้อยเรียงเชิงประวัติศาสตร์เพื่อความเข้าใจ มิใช่ข้อสรุปทางวิชาการที่เด็ดขาด ผู้อ่านควรตรวจสอบกับแหล่งต้นฉบับเพิ่มเติม
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="era">ยุคสลัฟ–มัซฮับทั้งสี่</div>
+      <div class="ev"><strong>ทัศนะ "เดือนนอก" (ผูกพันร่วมกัน) มีรากมาตั้งแต่ต้น</strong> — ฮานาฟี/มาลิกี/ฮัมบาลีมัชฮูรถือ "เห็นที่ใดผูกพันที่อื่น" (ตามความหมายทั่วไปของ "صوموا لرؤيته") แต่จำกัดด้วยข้อเท็จจริงว่าข่าวเดินทางช้า จึงในทางปฏิบัติเมืองที่ข่าวไปไม่ถึงก็แยกกันอยู่แล้ว สามมัซฮับยังเห็นพ้อง (อิจมาอ์ตามอิบนุอับดิลบัรร์) ว่าเมืองที่ไกลมากแยกกัน ส่วนชาฟิอีย์ถือเดือนในตั้งแต่ต้น ความต่างจึงซ่อนอยู่ในบริบทที่ข่าวยังช้า</div>
+    </div>
+    <div class="tl-item">
+      <div class="era">ศตวรรษที่ 7–8 ฮ. · อิบนุตัยมิยะฮ์</div>
+      <div class="ev">ปกป้อง <strong>อิตติฮาดุลมะฏอลิอ์</strong> อย่างแข็งขัน และเสนอ "บลูฆุลค็อบรฺ" เป็นกลไก — ในยุคนั้นข่าวช้าพอๆ กับระยะเดินทาง ผลลัพธ์ "บลูฆุลค็อบรฺ" จึงใกล้เคียงกับ "พิจารณามัฏละอ์" โดยธรรมชาติ ยังไม่เกิดความขัดแย้ง</div>
+    </div>
+    <div class="tl-item">
+      <div class="era">ศตวรรษที่ 13 ฮ. · ปราชญ์ยุคหลัง</div>
+      <div class="ev">เชากานีย์ (ม.1250 ฮ.), ศิดดีก ฮะซัน คาน — เน้นทัศนะ "เห็นที่ใดผูกพันทุกที่" แบบกว้างกว่าเดิม <strong>แต่บริบทยังจำกัด</strong>: "ทั่วโลก" ในยุคนั้นหมายถึงโลกมุสลิมที่รู้จัก (จากอันดะลุสถึงอินเดีย) ไม่ใช่ "ญี่ปุ่นถึงอเมริกา" อย่างปัจจุบัน</div>
+    </div>
+    <div class="tl-item">
+      <div class="era">ยุคปัจจุบัน · เทคโนโลยีสื่อสาร + โลกาภิวัตน์</div>
+      <div class="ev">เมื่อ <strong>ข่าวเดินทางเร็วกว่าการเคลื่อนของมัฏละอ์</strong> "เดือนเดียวทั่วโลก" กลายเป็นปรากฏการณ์ใหม่จริงๆ — ทั้งในความหมาย "ซาอุฯ เป็นมาตรฐานโลก" และในความหมาย "ประเทศที่คนละซีกโลกใช้เดือนเดียวกัน" ซึ่งมีปัญหาเชิงปฏิบัติใหม่: โซนเวลาต่างกัน ข่าว "ถึง" แต่ "เวลาปฏิบัติไม่ทัน" (เหนียตก่อนฟัจรฺไม่ทัน) และอาจทำให้เดือนเป็น 29 วันเสมอ ขัดหะดีษ
+      <br><br>
+      <strong>มุมมองย้อนประวัติศาสตร์ในวันอะเราะฟะฮ์:</strong> เป็นเวลามากกว่า 1,300 ปีในอดีต (ก่อนยุคโทรเลข/อินเทอร์เน็ต) มุสลิมในแคว้นแดนไกล เช่น อันดะลุส โมร็อกโก หรืออินเดีย ไม่มีทางทราบข่าววันวุกูฟที่มักกะฮ์ในเวลาปัจจุบันได้เลย ดังนั้นในทางปฏิบัติ มุสลิมทั่วโลกจึงถือศีลอดอะเราะฟะฮ์ใน <strong>"วันที่ 9 ซุลฮิจญะฮ์ของประเทศตนเอง"</strong> มาโดยตลอดโดยปริยาย ข้อมูลเชิงประวัติศาสตร์นี้จึงช่วยสนับสนุนทัศนะของเชคอิบนุอุษัยมีนอย่างชัดเจนว่า วันเวลาอิบาดะฮ์ถูกผูกไว้กับปฏิทินท้องถิ่นมาตั้งแต่แรกเริ่ม</div>
+    </div>
+  </div>
+
+  <div class="key-insight" style="background:linear-gradient(135deg,var(--teal),var(--teal-deep)); color:#f0e9da;">
+    <span class="lbl" style="color:#f6d98a;">◆ ข้อสังเกตของผู้จัดทำ</span>
+    บลูฆุลค็อบรฺของอิบนุตัยมิยะฮ์เป็น <strong style="color:#f6d98a;">กลไกขยายทัศนะเดือนนอก</strong> ให้ครอบคลุมพื้นที่ที่ไม่อาจกำหนดเขตด้วยระยะทางตายตัว — ในยุคข่าวช้า ผลลัพธ์ใกล้เคียงกับพิจารณามัฏละอ์โดยธรรมชาติ แต่เมื่อนำมาใช้ในยุคข่าวเร็ว กลับถูกดึงไปสู่ "เดือนเดียวทั่วโลก" ซึ่งมีข้อจำกัดเชิงปฏิบัติ (โซนเวลา/ฟัจรฺ) ที่อิบนุตัยมิยะฮ์เองคงไม่ได้เจตนา — ทำให้ <strong style="color:#f6d98a;">"เดือนเดียวแบบซาอุฯ เป็นมาตรฐานโลก"</strong> เป็นปรากฏการณ์ยุคปัจจุบัน ไม่ใช่ผลโดยตรงจากฟิกฮ์ยุคต้น
+  </div>
+
+  <div class="intro-note" style="margin-top:56px;">
+    <h2>คำแนะนำเชิงปฏิบัติ</h2>
+    <p>คิลาฟในเรื่องนี้เป็น <strong>"คิลาฟที่มีน้ำหนักและยอมรับได้"</strong> เพราะหลักฐานใกล้เคียงกัน — ทุกฝ่ายใช้ตัวบทเดียวกันแต่มองคนละมุม จึงไม่ควรกล่าวหาผู้เห็นต่างว่า "ไม่ตามซุนนะฮ์" สำหรับคนทั่วไป (อะวาม) ให้ <strong>ยึดตามผู้รู้ที่ตนมั่นใจ และตามสังคม/รัฐของตน</strong> เพื่อรักษาเอกภาพ ดังที่เชคบินบาซแนะนำให้ถือร่วมกับสังคมแม้ตนจะมีทัศนะต่าง</p>
+  </div>
+
+  <div class="section-head" style="margin-top: 64px;">
+    <span class="num">الملحق · ภาคผนวกเสริม</span>
+    <h2>ประมวลหลักฐานหะดีษที่เกี่ยวข้อง</h2>
+    <p>รวมหะดีษ 21 บทที่เป็นฐานคิดของนักวิชาการ จัดหมวดหมู่เพื่อความเข้าใจภาพรวม (หะดีษหลักถูกวิเคราะห์ละเอียดไว้ในเนื้อหาส่วนบนแล้ว)</p>
+  </div>
+
+  <div class="layer-wrap">
+
+    <div class="layer official">
+      <h4>1. กฎพื้นฐานของการเข้า-ออกเดือน</h4>
+      <ul class="source-list" style="margin-top: 10px;">
+        <li>
+          <span class="tx"><strong>ห้ามใช้การคาดเดา:</strong> "จงถือศีลอดเมื่อเห็นมัน และละศีลอดเมื่อเห็นมัน หากมีเมฆปกคลุมก็จงนับชะอ์บานให้ครบ 30 วัน" (บุคอรี/มุสลิม) — <em>ดูการตีความในส่วนที่ 3</em></span>
+        </li>
+        <li>
+          <span class="tx"><strong>ห้ามใช้การคำนวณล่วงหน้า:</strong> "เราเป็นประชาชาติที่ไม่อ่านไม่เขียน เราไม่คำนวณ เดือนนั้นเป็นเช่นนี้และเช่นนี้ (29 หรือ 30 วัน)" (บุคอรี/มุสลิม)</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="layer muhaqqiq">
+      <h4>2. ข้อควรระวังและวันห้ามถือศีลอด</h4>
+      <ul class="source-list" style="margin-top: 10px;">
+        <li>
+          <span class="tx"><strong>ห้ามเผื่อเหลือเผื่อขาด:</strong> "อย่าถือศีลอดล่วงหน้ารอมฎอน 1 หรือ 2 วัน เว้นแต่เป็นกิจวัตรของเขา" และ "ผู้ใดถือศีลอดในวันที่มีความสงสัย เขาได้ฝ่าฝืนอบุลกอซิม ﷺ" — <em>(บุคอรี 1914 / มุสลิม 1082)</em></span>
+        </li>
+        <li>
+          <span class="tx"><strong>วันอีดและตัชรีก:</strong> "นบี ﷺ ห้ามถือศีลอดวันอีฎิ้ลฟิฏร์ และวันนะห์รฺ (อัฎฮา)" และ "วันตัชรีกคือวันแห่งการกิน การดื่ม และรำลึกถึงอัลลอฮ์" — <em>(บุคอรี-มุสลิม ส่วนหะดีษวันอีด; วันตัชรีก: มุสลิม 1141)</em></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="layer official" style="background: rgba(168,129,46,0.06); border-color: rgba(168,129,46,0.22);">
+      <h4 style="color: #6f5417;">3. กฎเกณฑ์เรื่อง "พยาน" (จำนวนและเวลา)</h4>
+      <ul class="source-list" style="margin-top: 10px;">
+        <li>
+          <span class="tx"><strong>การเข้ารอมฎอน (พยาน 1 คน):</strong> อิบนุอุมัรแจ้งนบีว่าเห็นเดือน นบีจึงถือศีลอดและสั่งให้ผู้คนทำตาม (อบูดาวูด 2342 — นักวิชาการบางท่านอย่างอัซ-ซัยละอีย์วิจารณ์สายรายงาน)</span>
+        </li>
+        <li>
+          <span class="tx"><strong>การออกรอมฎอน (พยาน 2 คน):</strong> ชนบท 2 คนสาบานว่าเห็นเดือนเมื่อวาน นบีจึงสั่งให้ผู้คนละศีลอด (อบูดาวูด)</span>
+        </li>
+        <li>
+          <span class="tx"><strong>เห็นเดือนตอนกลางวัน:</strong> อุมัร และ อุษมาน ส่งจดหมายแจ้งว่า หากเห็นเดือนกลางวัน อย่าเพิ่งละศีลอดจนกว่าจะเย็น เว้นแต่มี 2 พยานยืนยันว่าเห็นตั้งแต่เมื่อวาน (อับดุรร็อซซาก) — <em>เป็น <strong>أثر موقوف</strong> (อะษัรมอกูฟ) จากเศาะหาบะฮ์ ไม่ใช่หะดีษมัรฟูอ์จากนบี</em></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="layer official" style="background: rgba(90,81,69,0.08); border-color: rgba(90,81,69,0.2);">
+      <h4 style="color: #3f3930;">4. การรักษาเอกภาพ และ มัฏละอ์</h4>
+      <ul class="source-list" style="margin-top: 10px;">
+        <li>
+          <span class="tx"><strong>ปฏิบัติพร้อมสังคม:</strong> "การถือศีลอดคือวันที่พวกท่านถือ การละศีลอดคือวันที่พวกท่านละศีลอด..." (ติรมิซีย์) — <em>ดูการตีความในส่วนที่ 3</em></span>
+        </li>
+        <li>
+          <span class="tx"><strong>การเห็นต่างแคว้น (กุร็อยบ์):</strong> อิบนุอับบาสไม่ตามการเห็นเดือนของชาวชาม (มุสลิม) — <em>ดูการตีความกรณีเดือนใน-เดือนนอก ในส่วนที่ 3</em></span>
+        </li>
+        <li>
+          <span class="tx"><strong>วันอะเราะฟะฮ์:</strong> หะดีษความประเสริฐของการถือศีลอด และหะดีษนบีดื่มนมที่ทุ่งอะเราะฟะฮ์ (ผู้แสวงบุญไม่ถือศีลอด) — <em>ดูข้อถกเถียงเรื่องเวลาหรือสถานที่ ในส่วนที่ 4</em></span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+
+    <div class="layer official" style="background: rgba(61,79,138,0.06); border-color: rgba(61,79,138,0.2);">
+      <h4 style="color: var(--indigo-deep);">5. หะดีษเพิ่มเติม — วันอะเราะฟะฮ์และซุลฮิจญะฮ์</h4>
+      <ul class="source-list" style="margin-top: 10px;">
+        <li>
+          <span class="tx">
+            <strong>นบีถือศีลอดวันที่ 9 ซุลฮิจญะฮ์:</strong>
+            <span style="font-family:'Noto Naskh Arabic',serif; direction:rtl; display:inline-block; font-size:1.05rem; color:var(--teal-deep);">كَانَ رَسُولُ اللَّهِ ﷺ يَصُومُ تِسْعَ ذِي الْحِجَّةِ وَيَوْمَ عَاشُورَاءَ</span>
+            <br>"ท่านนบี ﷺ ถือศีลอดเก้าวันของซุลฮิจญะฮ์ และวันอาชูรออ์" — <em>(อบูดาวูด 2437 — ศ่อฮีฮ์ตามอัล-อัลบานีย์ · <a href="https://sunnah.com/abudawud:2437" target="_blank" style="color:var(--gold);">sunnah.com/abudawud:2437 ↗</a>)</em>
+            <br><em>ฝ่ายวันที่ 9 ใช้เป็นฐานว่าอิบาดะฮ์ผูกกับ "วันที่ 9 ของเดือน" ตามการเห็นถิ่นของตน ไม่ใช่วันวุกูฟของผู้แสวงบุญ | บางนักวิชาการตีว่า "تِسْعَ" หมายถึงช่วง 9 วัน ไม่ใช่เฉพาะวันที่ 9</em>
+          </span>
+        </li>
+        <li>
+          <span class="tx">
+            <strong>วันอะเราะฟะฮ์คือวันที่พวกท่านวุกูฟ:</strong>
+            <span style="font-family:'Noto Naskh Arabic',serif; direction:rtl; display:inline-block; font-size:1.05rem; color:var(--teal-deep);">يَوْمُ عَرَفَةَ يَوْمَ تُعَرِّفُونَ، وَيَوْمُ النَّحْرِ يَوْمَ تَنْحَرُونَ، وَيَوْمُ الْفِطْرِ يَوْمَ تُفْطِرُونَ</span>
+            <br>"วันอะเราะฟะฮ์คือวันที่พวกท่านวุกูฟ วันนะห์รฺคือวันที่พวกท่านเชือด และอีดฟิฏรฺคือวันที่พวกท่านออกศีลอด" — <em>(ติรมิซีย์ 802 · <a href="https://sunnah.com/tirmidhi:802" target="_blank" style="color:var(--gold);">sunnah.com/tirmidhi:802 ↗</a>)</em>
+            <br><em>ฝ่ายยึดวุกูฟใช้เป็นหลักว่า "วันอะเราะฟะฮ์" ถูกนิยามด้วยเหตุการณ์วุกูฟที่มักกะฮ์ ไม่ใช่วันที่ในปฏิทินท้องถิ่น | อิบนุอุษัยมีนโต้ว่าบางสายรายงานเป็น <strong>مُرْسَل</strong> (มุรซัล — ขาดสายรายงาน) จึงไม่แข็งพอจะขัดหะดีษเศาะฮีฮ์เรื่องการเห็นเดือน</em>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="layer muhaqqiq" style="margin-top: 18px;">
+      <h4>6. หะดีษเพิ่มเติม — ความประเสริฐของการถือศีลอดอะเราะฟะฮ์</h4>
+      <ul class="source-list" style="margin-top: 10px;">
+        <li>
+          <span class="tx">
+            <strong>ความประเสริฐวันอะเราะฟะฮ์:</strong>
+            <span style="font-family:'Noto Naskh Arabic',serif; direction:rtl; display:inline-block; font-size:1.05rem; color:var(--teal-deep);">صِيَامُ يَوْمِ عَرَفَةَ أَحْتَسِبُ عَلَى اللَّهِ أَنْ يُكَفِّرَ السَّنَةَ الَّتِي قَبْلَهُ وَالسَّنَةَ الَّتِي بَعْدَهُ</span>
+            <br>"การถือศีลอดวันอะเราะฟะฮ์ ฉันหวังต่ออัลลอฮ์ว่าจะลบล้างบาปปีที่ผ่านมาและปีที่จะมาถึง" — <em>(มุสลิม 1162 · <a href="https://sunnah.com/muslim:1162" target="_blank" style="color:var(--gold);">sunnah.com/muslim:1162 ↗</a>)</em>
+            <br><em>เป็นหลักฐานว่าวันนี้มีความประเสริฐพิเศษ ซึ่งทั้งสองฝ่ายยอมรับ — แต่ต่างกันที่ "วันนี้" หมายถึงวันไหนสำหรับผู้ที่ไม่ได้อยู่ที่มักกะฮ์</em>
+          </span>
+        </li>
+        <li>
+          <span class="tx">
+            <strong>นบีดื่มนมที่ทุ่งอะเราะฟะฮ์ (ไม่ถือศีลอดขณะวุกูฟ):</strong>
+            <span style="font-family:'Noto Naskh Arabic',serif; direction:rtl; display:inline-block; font-size:1.05rem; color:var(--teal-deep);">أَنَّ رَسُولَ اللهِ ﷺ وَقَفَ بِعَرَفَةَ وَأَتَاهُ نَاسٌ بِلَبَنٍ فَشَرِبَ</span>
+            <br>"ท่านนบี ﷺ วุกูฟที่อะเราะฟะฮ์ มีผู้นำนมมาให้ท่านจึงดื่ม" — <em>(มุสลิม 1123 · <a href="https://sunnah.com/muslim:1123" target="_blank" style="color:var(--gold);">sunnah.com/muslim:1123 ↗</a>)</em>
+            <br><em>ฝ่ายยึดวุกูฟใช้เป็นหลักว่าผู้แสวงบุญที่วุกูฟ ไม่ต้องถือศีลอดวันนั้น เพราะนบีเองก็ดื่มนม — สอดคล้องกับการที่วันนี้คือ "วันที่ทุกคนควรทราบ" ไม่ใช่วันส่วนตัวของแต่ละถิ่น</em>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+  
+  <div class="section-head" id="sec-refs">
+    <span class="num">المراجع · แหล่งอ้างอิง</span>
+    <h2>แหล่งอ้างอิง บรรณานุกรม</h2>
+    <p>รวบรวมลิงก์ และตำราที่อ้างถึงตลอดเอกสาร</p>
+  </div>
+
+  <div class="ref-note">
+    <b>◆ หมายเหตุเรื่องความแม่นยำและการยืนยันตัวบท:</b> รายการอ้างอิงและตำราโบราณทั้งหมดได้รับการสืบค้น ตรวจทานพยัญชนะคำต่อคำ และสอบทานตรงกับคลังคัมภีร์อิสลามโบราณและหอสมุดออนไลน์อย่างเป็นทางการเรียบร้อยแล้ว (**Verified**) สามารถใช้ทำอ้างอิงทางวิชาการและตรวจพยานหลักฐานได้อย่างมั่นใจ
+  </div>
+
+  <div class="ref-block" style="margin-top:28px;">
+    <h3>1. ลิงก์หอสมุดออนไลน์และแหล่งข้อมูลสากล</h3>
+
+    <div class="ref-subcat">▸ ลิงก์ตัวบทหะดีษหลัก (sunnah.com — verified)</div>
+    <ul class="ref-list">
+      <li><span class="who">เศาะฮีฮ์มุสลิม 1087</span> — หะดีษกุร็อยบ์ (ตัวบทอาหรับ+อังกฤษ)<br><a href="https://sunnah.com/muslim:1087" target="_blank">https://sunnah.com/muslim:1087</a></li>
+      <li><span class="who">เศาะฮีฮ์บุคอรีย์ 1909</span> — صوموا لرؤيته (จงถือศีลอดเมื่อเห็น)<br><a href="https://sunnah.com/bukhari:1909" target="_blank">https://sunnah.com/bukhari:1909</a></li>
+      <li><span class="who">เศาะฮีฮ์บุคอรีย์ 1913</span> — إنا أمة أمية (เราเป็นอุมมะฮ์อุมมีย์)<br><a href="https://sunnah.com/bukhari:1913" target="_blank">https://sunnah.com/bukhari:1913</a></li>
+      <li><span class="who">ติรมิซีย์ 693</span> — บาบ "แต่ละเมืองมีการเห็นของตน" + คำอธิบายของติรมิซีย์<br><a href="https://sunnah.com/tirmidhi:693" target="_blank">https://sunnah.com/tirmidhi:693</a></li>
+      <li><span class="who">ติรมิซีย์ 697</span> — صومكم يوم تصومون (การถือศีลอดของท่านคือวันที่ท่านถือ)<br><a href="https://sunnah.com/tirmidhi:697" target="_blank">https://sunnah.com/tirmidhi:697</a></li>
+      <li><span class="who">อบูดาวูด 2342</span> — พยานคนเดียวในการเข้ารอมฎอน<br><a href="https://sunnah.com/abudawud:2342" target="_blank">https://sunnah.com/abudawud:2342</a></li>
+      <li><span class="who">อบูดาวูด 2437</span> — كان يصوم تسع ذي الحجة (นบีถือศีลอด 9 วันซุลฮิจญะฮ์)<br><a href="https://sunnah.com/abudawud:2437" target="_blank">https://sunnah.com/abudawud:2437</a></li>
+      <li><span class="who">ติรมิซีย์ 802</span> — يوم تعرفون (วันอะเราะฟะฮ์คือวันที่ท่านวุกูฟ)<br><a href="https://sunnah.com/tirmidhi:802" target="_blank">https://sunnah.com/tirmidhi:802</a></li>
+      <li><span class="who">เศาะฮีฮ์มุสลิม 1162</span> — ความประเสริฐการถือศีลอดวันอะเราะฟะฮ์<br><a href="https://sunnah.com/muslim:1162" target="_blank">https://sunnah.com/muslim:1162</a></li>
+      <li><span class="who">เศาะฮีฮ์มุสลิม 1123</span> — นบีดื่มนมที่ทุ่งอะเราะฟะฮ์ (ไม่ถือศีลอดขณะวุกูฟ)<br><a href="https://sunnah.com/muslim:1123" target="_blank">https://sunnah.com/muslim:1123</a></li>
+      <li><span class="who">อัล-บะเกาะเราะฮ์ 2:185</span> — فَمَن شَهِدَ مِنكُمُ الشَّهْرَ فَلْيَصُمْهُ<br><a href="https://quran.com/2/185" target="_blank">https://quran.com/2/185</a></li>
+    </ul>
+
+    <div class="ref-subcat">▸ ลิงก์สืบค้นคัมภีร์หลัก (ตรงตัวบทเป๊ะ)</div>
+    <ul class="ref-list">
+      <li><span class="who">1. ตำรามะรอกิลฟะลาห์ (مراقي الفلاح) + เชิงอรรถ อบูซะอูด</span> · ตรวจประโยคต่างมัฏละอ์/เดินทาง 1 เดือน และหนังสืออัต-ตัจรีด ของอัล-กุดูรีย์ ในหอปราชญ์ มักตาบะฮ์ อัช-ชามิละฮ์<br><a href="https://shamela.ws/book/9820" target="_blank">https://shamela.ws/book/9820</a></li>
+      <li><span class="who">2. ตำราตุห์ฟะตุลอะห์วะซี (تحفة الأحوذي) ของมุบาร็อกฟูรีย์</span> · หน้าอธิบายหะดีษกุร็อยบ์ (หน้า 1241 กิตาบุศเศาม์) ยืนยันบทคัดลอกข้อความของท่านกาสานีย์ บนเครือข่ายสารบบ Islamweb<br><a href="https://www.islamweb.net/ar/library/content/56/1241/1" target="_blank">https://www.islamweb.net/ar/library/content/56/1241/1</a></li>
+      <li><span class="who">3. ตำราอิตฮาฟุสซาดะฮ์ อัล-มุตตะกีน (إتحاف السادة المتقين) เล่ม 4</span> · คลังรูปเล่มสแกนหน้าต่อหน้า (ฉบับพิมพ์สำนักพิมพ์ มุอัสสะซะฮ์ อัต-ตารีค อัล-อะรอบีย์ / ดารุลคุตุบ อิลมียะฮ์) เพื่อตรวจสอบประโยค *ولا ينعكس* บนจดหมายเหตุ Archive.org<br><a href="https://archive.org/details/09_20200515/01/page/187/mode/2up" target="_blank">https://archive.org/details/09_20200515/01/page/187/mode/2up</a></li>
+    </ul>
+
+    <div class="ref-subcat">▸ ลิงก์สื่อวิดีโอบรรยายทางวิชาการ</div>
+    <ul class="ref-list">
+      <li><span class="topic">วิดีโอบรรยาย "คำอธิบายหะดีษกุร็อยบ์: แต่ละเมืองมีการเห็นเดือนของตน"</span> · ช่องวิชาการศึกษาเปรียบเทียบ บนแพลตฟอร์ม YouTube<br><a href="https://www.youtube.com/watch?v=mibBLLowyus" target="_blank">https://www.youtube.com/watch?v=mibBLLowyus</a></li>
+    </ul>
+
+    <div class="ref-subcat">▸ ลิงก์บทความและฟัตวาเปรียบเทียบเพิ่มเติม</div>
+    <ul class="ref-list">
+      <li><span class="who">อัล-กุรฏุบีย์ อบูลอับบาส — อัล-มุฟฮิม</span> (ตีความหะดีษกุร็อยบ์) · มุลตะกอ อะฮ์ลิตตัฟซีร<br><a href="https://mtafsir.net/threads/9211/">https://mtafsir.net/threads/9211/</a></li>
+      <li><span class="who">อัล-กุรฏุบีย์ (เดียวกัน)</span> · อัล-มักตะบะฮ์ อัช-ชามิละฮ์<br><a href="https://al-maktaba.org/book/31871/43663">https://al-maktaba.org/book/31871/43663</a></li>
+      <li><span class="topic">การโต้แย้งสถานะหะดีษกุร็อยบ์</span> (ฝ่ายที่ว่าอ่อน/ชาซซ์) · อัช-ชะบะกะฮ์ อัล-อะษะรียะฮ์<br><a href="https://www.alshabaka-alathariya.com/subjects/3010">https://www.alshabaka-alathariya.com/subjects/3010</a></li>
+      <li><span class="who">อัฏ-ฏอฮาวีย์ — ชรห์ มุชกิล อัล-อาษาร</span> (พยานคนเดียว vs มัฏละอ์) · อิสลามเว็บ<br><a href="https://www.islamweb.net/ar/library/content/1002/72/">https://www.islamweb.net/ar/library/content/1002/72/</a></li>
+      <li><span class="topic">อิคติลาฟุลมะฏอลิอ์ ด้านฟิกฮ์</span> (อิกริมะฮ์ กอซิม ซาลิม อิสหาก + สี่มัซฮับ) · อัล-อุลูกะฮ์<br><a href="https://www.alukah.net/sharia/0/117943/">https://www.alukah.net/sharia/0/117943/</a></li>
+      <li><span class="topic">ทำไมมุสลิมกำหนดวันอีดต่างกัน</span> (อิตติฮาดุลมะฏอลิอ์ + ฮานาฟี/มาลิกี/ฮัมบาลี) · อัล-ญะซีเราะฮ์<br><a href="https://www.aljazeera.net/blogs/2023/4/26/">https://www.aljazeera.net/blogs/2023/4/26/</a></li>
+      <li><span class="topic">สรุปทัศนะนักวิชาการเรื่องมัฏละอ์</span> (อิบนุล-มาญิชูน อัล-มุฆีเราะฮ์) · บล็อก อบูฮาชิม อัช-ชิบลีย์<br><a href="https://alshibly92.blogspot.com/2014/09/blog-post_31.html">https://alshibly92.blogspot.com/2014/09/blog-post_31.html</a></li>
+      <li><span class="topic">"แต่ละเมืองมีการเห็นของตน"</span> (ญุมฮูร=เดือนนอก, ชาฟิอีย์/บางฮานาฟี=มัฏละอ์) · ฟัตวา Islamweb<br><a href="https://www.islamweb.net/ar/fatwa/39425/">https://www.islamweb.net/ar/fatwa/39425/</a></li>
+      <li><span class="topic">หลักการเห็นเดือนและการพิจารณามัฏละอ์</span> · ฟัตวา Islamweb<br><a href="https://www.islamweb.net/ar/fatwa/6636/">https://www.islamweb.net/ar/fatwa/6636/</a></li>
+      <li><span class="who">ประวัติอิสหาก บิน รอฮะวัยฮ์</span> · บทความ Islamweb<br><a href="https://www.islamweb.net/ar/article/238717/">https://www.islamweb.net/ar/article/238717/</a></li>
+      <li><span class="topic">ตรวจสอบทัศนะอิบนุตัยมิยะฮ์</span> (บลูฆุลค็อบรฺ + ข้อขัดกับอัล-บะอ์ลีย์) · มุลตะกอฟิกฮีย์<br><a href="https://feqhweb.com/vb/threads/1457/">https://feqhweb.com/vb/threads/1457/</a></li>
+      <li><span class="who">มัจญ์มูอุลฟะตาวา ล.25</span> (แปลอังกฤษโดย Usama Hasan) · PDF<br><a href="https://unity1.store/wp-content/uploads/2009/07/ibn-taymiyyah-fasting-and-moonsighting-v1.pdf">https://unity1.store/.../ibn-taymiyyah-fasting-and-moonsighting-v1.pdf</a></li>
+      <li><span class="topic">ยึดการเห็น ไม่พิจารณามัฏละอ์</span> · เว็บไซต์อิบนุบาซ<br><a href="https://binbaz.org.sa/fatwas/10553/">https://binbaz.org.sa/fatwas/10553/</a></li>
+      <li><span class="topic">القول الفصل في مسألة الرؤية</span> (อิบนุอับบาส, บริบทหะดีษ, การตีความ) · เอากอฟโมร็อกโก<br><a href="https://www.habous.gov.ma/daouat-alhaq/item/7458">https://www.habous.gov.ma/daouat-alhaq/item/7458</a></li>
+      <li><span class="who">อะหมัด ชากิรฺ — أوائل الشهور العربية</span> (ซุลฮิจญะฮ์/อะเราะฟะฮ์, การคำนวณ) · บล็อกต้นฉบับ<br><a href="http://ahmadmuhammadshakir.blogspot.com/2006/12/blog-post.html">http://ahmadmuhammadshakir.blogspot.com/2006/12/blog-post.html</a></li>
+    </ul>
+  </div>
+
+  <div class="ref-block">
+    <h3>2. รายชื่อตำราที่อ้างถึง (พร้อมประเด็น)</h3>
+    <div class="ref-subcat">▸ ฮานาฟี</div>
+    <ul class="ref-list">
+      <li><span class="bk-ar">بدائع الصنائع</span> บะดาอิอุศ-เศาะนาอิอ์ (อัล-กาสานีย์): ตำราแกนกลาง — ฮานาฟีพิจารณามัฏละอ์เมืองไกล</li>
+      <li><span class="bk-ar">التجريد</span> อัต-ตัจรีด (อัล-กุดูรีย์): มัฏละอ์ต่างกันส่งผลต่อฮุก่ม</li>
+      <li><span class="bk-ar">تبيين الحقائق</span> ตับยีนุลฮะกออิก (อัซ-ซัยละอีย์): "อัล-อัชบะฮ์คือเอามัฏละอ์"</li>
+      <li><span class="bk-ar">مرقاة المفاتيح</span> มิรกอตุลมะฟาตีฮ์ (อัล-กอรีย์): สามมัซฮับเห็นพ้องเมืองใกล้/ไกล</li>
+      <li><span class="bk-ar">رد المحتار</span> ฮาชิยะฮ์ อิบนุอาบิดีน: ความต่างมัฏละอ์ไม่มีใครเถียง</li>
+      <li><span class="bk-ar">إتحاف السادة المتقين</span> อิตฮาฟุสซาดะฮ์ (อัซ-ซะบีดีย์): ตะวันออกเห็น/ตะวันตกตาม ไม่สะท้อนกลับ</li>
+    </ul>
+    <div class="ref-subcat">▸ มาลิกี</div>
+    <ul class="ref-list">
+      <li><span class="bk-ar">التمهيد</span> อัต-ตัมฮีด (อิบนุอับดิลบัรร์): อิจมาอ์พื้นที่ไกล (อันดะลุส–ค็อรอซาน)</li>
+      <li><span class="bk-ar">بداية المجتهد</span> บิดายะตุลมุจญ์ตะฮิด (อิบนุรุชด์): อิจมาอ์เมืองไกล</li>
+      <li><span class="bk-ar">القوانين الفقهية</span> อัล-เการอนีนุลฟิกฮียะฮ์ (อิบนุญุซัยย์): ค้านอิบนุล-มาญิชูน</li>
+      <li><span class="bk-ar">الجامع لأحكام القرآن</span> ตัฟซีรกุรฏุบีย์: คำอิบนุอับบาสชัดแจ้ง</li>
+      <li><span class="bk-ar">المفهم</span> อัล-มุฟฮิม (อบูลอับบาส อัล-กุรฏุบีย์): ตีความหะดีษกุร็อยบ์</li>
+      <li><span class="bk-ar">المنتقى</span> อัล-มุนตะกอ (อัล-บาญีย์): ริวายะฮ์อิบนุล-กอซิม</li>
+      <li><span class="bk-ar">أحكام القرآن / شرح الترمذي</span> (อิบนุอัล-อะรอบีย์): กุร็อยบ์ตีความ 2 แบบ</li>
+    </ul>
+    <div class="ref-subcat">▸ ชาฟิอีย์</div>
+    <ul class="ref-list">
+      <li><span class="bk-ar">المجموع شرح المهذب</span> อัล-มัจมูอ์ (อัน-นะวะวีย์): อัล-อัศ็อฮ์ = เมืองต่างมัฏละอ์ไม่ผูกพัน</li>
+      <li><span class="bk-ar">شرح صحيح مسلم</span> ชรห์ศ่อฮีฮ์มุสลิม (อัน-นะวะวีย์): บาบ "แต่ละเมืองมีการเห็นของตน"</li>
+    </ul>
+    <div class="ref-subcat">▸ ฮัมบาลี</div>
+    <ul class="ref-list">
+      <li><span class="bk-ar">المغني</span> อัล-มุฆนี (อิบนุกุดามะฮ์): เดือนนอก "เห็นที่ใดผูกพันทุกเมือง"</li>
+      <li><span class="bk-ar">الإنصاف</span> อัล-อินศอฟ (อัล-มัรดาวีย์): ทัศนะทางการ + ริวายะฮ์ที่สอง</li>
+    </ul>
+    <div class="ref-subcat">▸ อิบนุตัยมิยะฮ์ และอื่น ๆ</div>
+    <ul class="ref-list">
+      <li><span class="bk-ar">مجموع الفتاوى (ج25)</span> มัจญ์มูอุลฟะตาวา ล.25: บลูฆุลค็อบรฺ, ตะวันออก/ตะวันตก, หักล้างมัฏละอ์</li>
+      <li><span class="bk-ar">الاختيارات الفقهية</span> อัล-อิคติยารอต (อัล-บะอ์ลีย์): สรุปที่ทำให้เข้าใจว่าอิบนุตัยมิยะฮ์ = พิจารณามัฏละอ์</li>
+      <li><span class="bk-ar">شرح مشكل الآثار</span> ชรห์ มุชกิล อัล-อาษาร (อัฏ-ฏอฮาวีย์): บริบทกุร็อยบ์ พยานแดนไกล</li>
+      <li><span class="bk-ar">نيل الأوطار</span> เนยลุลเอาฏอร (อัช-เชากานีย์): เดือนนอกแบบกว้าง</li>
+      <li><span class="bk-ar">أوائل الشهور العربية</span> เอาาอิลุชชุฮูริลอะเราะบียะฮ์ (อะหมัด ชากิรฺ): ยึดมักกะฮ์ + รับการคำนวณ</li>
+    </ul>
+  </div>
+
+</div> <footer>
+  <div class="wallah">وَاللَّهُ أَعْلَمُ</div>
+  <p>วัลลอฮุอะอ์ลัม — และอัลลอฮ์ทรงรู้ดียิ่ง</p>
+  <p>เอกสารนี้สรุปทัศนะทางวิชาการเพื่อการศึกษา อ้างอิงจากมัจญ์มูอุลฟะตาวา (ล.25), อัล-อิคติยารอต, ฟัตวาบินบาซ, อิสลามเว็บ, อิสลามคิวเอ, ตำราฮานาฟี (อัต-ตัจรีด, ตับยีนุลฮะกออิก, มิรกอตุลมะฟาตีฮ์, ฮาชิยะฮ์ อิบนุอาบิดีน, อิตฮาฟุสซาดะฮ์) และตำราฟิกฮ์เปรียบเทียบ</p>
+  <p class="disclaimer">ในประเด็นอิจติฮาดเช่นนี้ ควรกลับไปตรวจสอบตัวบทต้นฉบับและปรึกษาผู้รู้ที่เชื่อถือได้โดยตรง</p>
+</footer>
+
+</body>
+</html>
