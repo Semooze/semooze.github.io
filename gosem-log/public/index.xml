@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Gosem Log</title>
+    <link>http://localhost:1313/Semooze/semooze.github.io/</link>
+    <description>Recent content on Gosem Log</description>
+    <generator>Hugo</generator>
+    <language>th-th</language>
+    <lastBuildDate>Wed, 14 Jan 2026 07:07:07 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/Semooze/semooze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Third Post</title>
+      <link>http://localhost:1313/Semooze/semooze.github.io/posts/my-first-post-copy-2/</link>
+      <pubDate>Wed, 14 Jan 2026 07:07:07 +0100</pubDate>
+      <guid>http://localhost:1313/Semooze/semooze.github.io/posts/my-first-post-copy-2/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This is &lt;strong&gt;bold&lt;/strong&gt; text, and this is &lt;em&gt;emphasized&lt;/em&gt; text.&lt;/p&gt;
+&lt;p&gt;Visit the &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; website!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My First Post</title>
+      <link>http://localhost:1313/Semooze/semooze.github.io/posts/my-first-post/</link>
+      <pubDate>Sun, 14 Jan 2024 07:07:07 +0100</pubDate>
+      <guid>http://localhost:1313/Semooze/semooze.github.io/posts/my-first-post/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This is &lt;strong&gt;bold&lt;/strong&gt; text, and this is &lt;em&gt;emphasized&lt;/em&gt; text.&lt;/p&gt;
+&lt;p&gt;Visit the &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; website!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hello Node.js !</title>
+      <link>http://localhost:1313/Semooze/semooze.github.io/posts/2016-02-14-what-is-nodejs/</link>
+      <pubDate>Sun, 14 Feb 2016 12:35:00 +0700</pubDate>
+      <guid>http://localhost:1313/Semooze/semooze.github.io/posts/2016-02-14-what-is-nodejs/</guid>
+      <description>&lt;h1 id=&#34;nodejs-คอ-&#34;&gt;Node.js คือ ?&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://nodejs.org/en/&#34;&gt;Node.js&lt;/a&gt; ไม่ใช่ภาษาโปรแกรมใหม่แต่อย่างใด แต่เป็น platform ที่ทำให้สามารถ รัน Java script บนฝั่งเซิร์ฟเวอร์ได้ โดยเพิ่มเติมไลบรารี่ที่เกี่ยวข้องกับการจัดการไฟล์ การรับส่งข้อมูล และอื่นๆ&lt;/p&gt;
+&lt;h1 id=&#34;nodejs-เกดขนไดอยางไร-&#34;&gt;Node.js เกิดขึ้นได้อย่างไร ?&lt;/h1&gt;
+&lt;p&gt;Ryan Dahl เขียน Node.js ขึ้นในปี ค.ศ. 2009 โดย Node ทำงานอยู่บน  V8 JavaScript engine&lt;/p&gt;
+&lt;h1 id=&#34;v8-javascript-engine-คออะไร-&#34;&gt;V8 JavaScript engine คืออะไร ?&lt;/h1&gt;
+&lt;p&gt;เป็น Javascript engine ที่เขียนขึ้นด้วยภาษา C++ นำมาใช้ใน Google &lt;a href=&#34;https://developers.google.com/v8/&#34;&gt;chrome browser&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;ระบบของ-nodejs&#34;&gt;ระบบของ Node.js&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Single thread&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;การทำงานจะใช้เพียง Thread เดียว
+*หากไม่ได้ใช้ module &lt;a href=&#34;https://nodejs.org/api/cluster.html&#34;&gt;cluster&lt;/a&gt; หรือ &lt;a href=&#34;https://www.npmjs.com/package/webworker-threads&#34;&gt;webworker-threads&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Event-driven&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;การทำงานจะเป็นแบบ &lt;a href=&#34;http://code.danyork.com/2011/01/25/node-js-doctors-offices-and-fast-food-restaurants-understanding-event-driven-programming/&#34;&gt;Event-based&lt;/a&gt; คือ จะทำงานตามที่ได้รับมอบหมายเพียงอย่างเดียว ไม่มีการรอผลลัพธ์จากการทำงานที่ไม่เกี่ยวข้อง ตัวอย่างเช่น พยาบาลคนหนึ่งมีหน้าที่แจกแบบฟอร์มตรวจสุขภาพ และบันทึกข้อมูลลงคอมพิวเตอร์ เมื่อมีผู้ป่วยมาเข้าคิวเพื่อรับแบบฟอร์ม พยาบาลจะแจกแบบฟอร์มให้ หลังจากได้รับแบบฟอร์มแล้วเขาต้องไปตรวจสุขภาพตามห้องตรวจต่างๆด้วยตัวเอง ระหว่างนี้พยาบาลจะไม่รอแต่จะแจกแบบฟอร์มให้คนถัดไปทันที เมื่อชายคนนั้นตรวจสุขภาพครบทุกอย่างแล้วจึงจะมาเข้าคิวอีกครั้งเพื่อให้พยาบาลบันทึกลงคอมพิวเตอร์&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Non-blocking I/O&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;คำสั่งที่เกี่ยวข้องกับ I/O เช่น คิวรี่ฐานข้อมูล เรียกดูข้อมูลจากเว็บไซต์เขียนหรืออ่านไฟล์ จะมีการทำงานแบบ asynchronous คือไม่มีการหยุดการทำงาน(block) เพื่อรอผลลัพธ์จากคำสั่งเหล่านี้&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My First Post2</title>
+      <link>http://localhost:1313/Semooze/semooze.github.io/posts/my-first-post-copy/</link>
+      <pubDate>Wed, 14 Feb 2001 07:07:07 +0100</pubDate>
+      <guid>http://localhost:1313/Semooze/semooze.github.io/posts/my-first-post-copy/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This is &lt;strong&gt;bold&lt;/strong&gt; text, and this is &lt;em&gt;emphasized&lt;/em&gt; text.&lt;/p&gt;
+&lt;p&gt;Visit the &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; website!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

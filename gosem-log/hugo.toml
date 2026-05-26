@@ -1,0 +1,4 @@
+baseURL = 'https://semooze.github.io/'
+locale = 'th-th'
+title = 'Gosem Log'
+theme = 'PaperMod'
