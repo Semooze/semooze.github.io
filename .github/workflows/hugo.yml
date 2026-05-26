@@ -28,8 +28,12 @@ jobs:
         run: hugo --minify
         working-directory: gosem-log
 
-      - name: Deploy to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: gosem-log/public
-          branch: gh-pages
+      - name: Deploy to docs/
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          rm -rf docs
+          cp -r gosem-log/public docs
+          git add docs
+          git diff --staged --quiet || git commit -m "Deploy Hugo site"
+          git push
