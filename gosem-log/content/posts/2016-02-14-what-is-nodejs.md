@@ -6,7 +6,7 @@ tags: ["node.js"]
 img: "../images/nodejs.png"
 excerpt_separator: <!--more-->
 guid: "ccbb0c56-da58-4238-a20b-23524fe01c21"
-draft: true
+draft: false
 ---
 Node.js คือ ?
 ============
