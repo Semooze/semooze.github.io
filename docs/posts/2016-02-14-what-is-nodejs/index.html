@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
-
-<head><script src="/Semooze/semooze.github.io/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Semooze/semooze.github.io/livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Hello Node.js ! | Gosem Log</title>
-<meta name="keywords" content="node.js">
-<meta name="description" content="Node.js คือ ?
+<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Hello Node.js ! | Gosem Log</title>
+<meta name=keywords content="node.js"><meta name=description content="Node.js คือ ?
 Node.js ไม่ใช่ภาษาโปรแกรมใหม่แต่อย่างใด แต่เป็น platform ที่ทำให้สามารถ รัน Java script บนฝั่งเซิร์ฟเวอร์ได้ โดยเพิ่มเติมไลบรารี่ที่เกี่ยวข้องกับการจัดการไฟล์ การรับส่งข้อมูล และอื่นๆ
 Node.js เกิดขึ้นได้อย่างไร ?
 Ryan Dahl เขียน Node.js ขึ้นในปี ค.ศ. 2009 โดย Node ทำงานอยู่บน  V8 JavaScript engine
 V8 JavaScript engine คืออะไร ?
-เป็น Javascript engine ที่เขียนขึ้นด้วยภาษา C&#43;&#43; นำมาใช้ใน Google chrome browser
+เป็น Javascript engine ที่เขียนขึ้นด้วยภาษา C++ นำมาใช้ใน Google chrome browser
 ระบบของ Node.js
 Single thread
 การทำงานจะใช้เพียง Thread เดียว
@@ -20,233 +12,27 @@ Single thread
 Event-driven
 การทำงานจะเป็นแบบ Event-based คือ จะทำงานตามที่ได้รับมอบหมายเพียงอย่างเดียว ไม่มีการรอผลลัพธ์จากการทำงานที่ไม่เกี่ยวข้อง ตัวอย่างเช่น พยาบาลคนหนึ่งมีหน้าที่แจกแบบฟอร์มตรวจสุขภาพ และบันทึกข้อมูลลงคอมพิวเตอร์ เมื่อมีผู้ป่วยมาเข้าคิวเพื่อรับแบบฟอร์ม พยาบาลจะแจกแบบฟอร์มให้ หลังจากได้รับแบบฟอร์มแล้วเขาต้องไปตรวจสุขภาพตามห้องตรวจต่างๆด้วยตัวเอง ระหว่างนี้พยาบาลจะไม่รอแต่จะแจกแบบฟอร์มให้คนถัดไปทันที เมื่อชายคนนั้นตรวจสุขภาพครบทุกอย่างแล้วจึงจะมาเข้าคิวอีกครั้งเพื่อให้พยาบาลบันทึกลงคอมพิวเตอร์
 Non-blocking I/O
-คำสั่งที่เกี่ยวข้องกับ I/O เช่น คิวรี่ฐานข้อมูล เรียกดูข้อมูลจากเว็บไซต์เขียนหรืออ่านไฟล์ จะมีการทำงานแบบ asynchronous คือไม่มีการหยุดการทำงาน(block) เพื่อรอผลลัพธ์จากคำสั่งเหล่านี้">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/Semooze/semooze.github.io/posts/2016-02-14-what-is-nodejs/">
-<link crossorigin="anonymous" href="/Semooze/semooze.github.io/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/Semooze/semooze.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/Semooze/semooze.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/Semooze/semooze.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/Semooze/semooze.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/Semooze/semooze.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/Semooze/semooze.github.io/posts/2016-02-14-what-is-nodejs/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1313/Semooze/semooze.github.io/" accesskey="h" title="Gosem Log (Alt + H)">Gosem Log</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      Hello Node.js !
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
-    </h1>
-    <div class="post-meta">
-
-<span title='2016-02-14 12:35:00 +0700 +07'>14 กุมภาพันธ์ G 2016</span>
-
-</div>
-  </header> 
-  <div class="post-content md-content"><h1 id="nodejs-คอ-">Node.js คือ ?<a hidden class="anchor" aria-hidden="true" href="#nodejs-คอ-">#</a></h1>
-<p><a href="https://nodejs.org/en/">Node.js</a> ไม่ใช่ภาษาโปรแกรมใหม่แต่อย่างใด แต่เป็น platform ที่ทำให้สามารถ รัน Java script บนฝั่งเซิร์ฟเวอร์ได้ โดยเพิ่มเติมไลบรารี่ที่เกี่ยวข้องกับการจัดการไฟล์ การรับส่งข้อมูล และอื่นๆ</p>
-<h1 id="nodejs-เกดขนไดอยางไร-">Node.js เกิดขึ้นได้อย่างไร ?<a hidden class="anchor" aria-hidden="true" href="#nodejs-เกดขนไดอยางไร-">#</a></h1>
-<p>Ryan Dahl เขียน Node.js ขึ้นในปี ค.ศ. 2009 โดย Node ทำงานอยู่บน  V8 JavaScript engine</p>
-<h1 id="v8-javascript-engine-คออะไร-">V8 JavaScript engine คืออะไร ?<a hidden class="anchor" aria-hidden="true" href="#v8-javascript-engine-คออะไร-">#</a></h1>
-<p>เป็น Javascript engine ที่เขียนขึ้นด้วยภาษา C++ นำมาใช้ใน Google <a href="https://developers.google.com/v8/">chrome browser</a></p>
-<h1 id="ระบบของ-nodejs">ระบบของ Node.js<a hidden class="anchor" aria-hidden="true" href="#ระบบของ-nodejs">#</a></h1>
-<p><strong>Single thread</strong></p>
-<p>การทำงานจะใช้เพียง Thread เดียว
-*หากไม่ได้ใช้ module <a href="https://nodejs.org/api/cluster.html">cluster</a> หรือ <a href="https://www.npmjs.com/package/webworker-threads">webworker-threads</a></p>
-<p><strong>Event-driven</strong></p>
-<p>การทำงานจะเป็นแบบ <a href="http://code.danyork.com/2011/01/25/node-js-doctors-offices-and-fast-food-restaurants-understanding-event-driven-programming/">Event-based</a> คือ จะทำงานตามที่ได้รับมอบหมายเพียงอย่างเดียว ไม่มีการรอผลลัพธ์จากการทำงานที่ไม่เกี่ยวข้อง ตัวอย่างเช่น พยาบาลคนหนึ่งมีหน้าที่แจกแบบฟอร์มตรวจสุขภาพ และบันทึกข้อมูลลงคอมพิวเตอร์ เมื่อมีผู้ป่วยมาเข้าคิวเพื่อรับแบบฟอร์ม พยาบาลจะแจกแบบฟอร์มให้ หลังจากได้รับแบบฟอร์มแล้วเขาต้องไปตรวจสุขภาพตามห้องตรวจต่างๆด้วยตัวเอง ระหว่างนี้พยาบาลจะไม่รอแต่จะแจกแบบฟอร์มให้คนถัดไปทันที เมื่อชายคนนั้นตรวจสุขภาพครบทุกอย่างแล้วจึงจะมาเข้าคิวอีกครั้งเพื่อให้พยาบาลบันทึกลงคอมพิวเตอร์</p>
-<p><strong>Non-blocking I/O</strong></p>
-<p>คำสั่งที่เกี่ยวข้องกับ I/O เช่น คิวรี่ฐานข้อมูล เรียกดูข้อมูลจากเว็บไซต์เขียนหรืออ่านไฟล์ จะมีการทำงานแบบ asynchronous คือไม่มีการหยุดการทำงาน(block) เพื่อรอผลลัพธ์จากคำสั่งเหล่านี้</p>
-<h1 id="จดเดนของ-nodejsคออะไร">จุดเด่นของ Node.jsคืออะไร<a hidden class="anchor" aria-hidden="true" href="#จดเดนของ-nodejsคออะไร">#</a></h1>
-<p>การทำงานแบบ Event-driven และ non-blocking I/O ทำให้ไม่มีการรอผลลัพธ์ที่ที่เกิดจาก I/O request เช่น เมื่อส่งคิวรี่ไปยังฐานข้อมูล DBMS จะต้องใช้เวลาสักพักในการค้นหาข้อมูลที่เราต้องการและส่งกลับมา แต่ Node.js จะไม่รอและทำงานในคำสั่งถัดไปทันที เมื่อข้อมูลที่ต้องการถูกส่งกลับมาแล้วจึงจะนำข้อมูลนั้นไปทำงานต่อ ช่วยลดเวลาที่เสียไปจากการรอผลลัพธ์</p>
-<p>การทำงานเพียง Thread เดียวทำให้ไม่มีการ context switch ระหว่าง thread ช่วยลดเวลาที่เสียไปจาก context switch</p>
-<p>ทั้งสามเหตุผลทำให้ Node.js ทำงานได้รวดเร็ว โดยเฉพาะเมื่อแอพพลิเคชั่นที่ต้องการสร้าง มีการเรียกใช้งาน I/O เยอะ</p>
-<p>Node.js ใช้ ภาษา Java script ซึ่งเป็นภาษาที่นิยมใช้ในงานด้าน Frontend ช่วยลดเวลาในการศึกษาเรียนรู้ในการศึกษาภาษาใหม่</p>
-<p>มี Libraries เสริมจำนวนมากทำให้เราไม่ต้องเสียเวลามาเขียนเอง</p>
-<h1 id="การตดตง">การติดตั้ง<a hidden class="anchor" aria-hidden="true" href="#การตดตง">#</a></h1>
-<p><a href="https://nodejs.org/en/download/">LTS Version (4.3.0)</a><!-- raw HTML omitted -->
-<a href="https://nodejs.org/en/download/stable/">Stable latest version (5.6.0)</a><!-- raw HTML omitted -->
-<a href="https://nodejs.org/en/download/package-manager/">ลงผ่าน package manager</a><!-- raw HTML omitted --></p>
-<h1 id="ขอมลเพมเตม">ข้อมูลเพิ่มเติม<a hidden class="anchor" aria-hidden="true" href="#ขอมลเพมเตม">#</a></h1>
-<p><a href="https://www.youtube.com/watch?v=ztspvPYybIY&amp;noredirect=1">Original Node.js presentation</a></p>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/Semooze/semooze.github.io/tags/node.js/">Node.js</a></li>
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/Semooze/semooze.github.io/">Gosem Log</a></span> · 
-
-    
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+คำสั่งที่เกี่ยวข้องกับ I/O เช่น คิวรี่ฐานข้อมูล เรียกดูข้อมูลจากเว็บไซต์เขียนหรืออ่านไฟล์ จะมีการทำงานแบบ asynchronous คือไม่มีการหยุดการทำงาน(block) เพื่อรอผลลัพธ์จากคำสั่งเหล่านี้"><meta name=author content><link rel=canonical href=https://semooze.github.io/posts/2016-02-14-what-is-nodejs/><link crossorigin=anonymous href=/assets/css/stylesheet.6ff46447b1fa3f8a5cc0bcae48088decc3ae37f5fbc99406a3aefc3bf0e6044a.css integrity="sha256-b/RkR7H6P4pcwLyuSAiN7MOuN/X7yZQGo678O/DmBEo=" rel="preload stylesheet" as=style><link rel=icon href=https://semooze.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://semooze.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://semooze.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://semooze.github.io/apple-touch-icon.png><link rel=mask-icon href=https://semooze.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://semooze.github.io/posts/2016-02-14-what-is-nodejs/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><meta property="og:url" content="https://semooze.github.io/posts/2016-02-14-what-is-nodejs/"><meta property="og:site_name" content="Gosem Log"><meta property="og:title" content="Hello Node.js !"><meta property="og:description" content="Node.js คือ ? Node.js ไม่ใช่ภาษาโปรแกรมใหม่แต่อย่างใด แต่เป็น platform ที่ทำให้สามารถ รัน Java script บนฝั่งเซิร์ฟเวอร์ได้ โดยเพิ่มเติมไลบรารี่ที่เกี่ยวข้องกับการจัดการไฟล์ การรับส่งข้อมูล และอื่นๆ
+Node.js เกิดขึ้นได้อย่างไร ? Ryan Dahl เขียน Node.js ขึ้นในปี ค.ศ. 2009 โดย Node ทำงานอยู่บน V8 JavaScript engine
+V8 JavaScript engine คืออะไร ? เป็น Javascript engine ที่เขียนขึ้นด้วยภาษา C++ นำมาใช้ใน Google chrome browser
+ระบบของ Node.js Single thread
+การทำงานจะใช้เพียง Thread เดียว *หากไม่ได้ใช้ module cluster หรือ webworker-threads
+Event-driven
+การทำงานจะเป็นแบบ Event-based คือ จะทำงานตามที่ได้รับมอบหมายเพียงอย่างเดียว ไม่มีการรอผลลัพธ์จากการทำงานที่ไม่เกี่ยวข้อง ตัวอย่างเช่น พยาบาลคนหนึ่งมีหน้าที่แจกแบบฟอร์มตรวจสุขภาพ และบันทึกข้อมูลลงคอมพิวเตอร์ เมื่อมีผู้ป่วยมาเข้าคิวเพื่อรับแบบฟอร์ม พยาบาลจะแจกแบบฟอร์มให้ หลังจากได้รับแบบฟอร์มแล้วเขาต้องไปตรวจสุขภาพตามห้องตรวจต่างๆด้วยตัวเอง ระหว่างนี้พยาบาลจะไม่รอแต่จะแจกแบบฟอร์มให้คนถัดไปทันที เมื่อชายคนนั้นตรวจสุขภาพครบทุกอย่างแล้วจึงจะมาเข้าคิวอีกครั้งเพื่อให้พยาบาลบันทึกลงคอมพิวเตอร์
+Non-blocking I/O
+คำสั่งที่เกี่ยวข้องกับ I/O เช่น คิวรี่ฐานข้อมูล เรียกดูข้อมูลจากเว็บไซต์เขียนหรืออ่านไฟล์ จะมีการทำงานแบบ asynchronous คือไม่มีการหยุดการทำงาน(block) เพื่อรอผลลัพธ์จากคำสั่งเหล่านี้"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2016-02-14T12:35:00+07:00"><meta property="article:modified_time" content="2016-02-14T12:35:00+07:00"><meta property="article:tag" content="Node.js"><meta name=twitter:card content="summary"><meta name=twitter:title content="Hello Node.js !"><meta name=twitter:description content="Node.js คือ ? Node.js ไม่ใช่ภาษาโปรแกรมใหม่แต่อย่างใด แต่เป็น platform ที่ทำให้สามารถ รัน Java script บนฝั่งเซิร์ฟเวอร์ได้ โดยเพิ่มเติมไลบรารี่ที่เกี่ยวข้องกับการจัดการไฟล์ การรับส่งข้อมูล และอื่นๆ
+Node.js เกิดขึ้นได้อย่างไร ? Ryan Dahl เขียน Node.js ขึ้นในปี ค.ศ. 2009 โดย Node ทำงานอยู่บน V8 JavaScript engine
+V8 JavaScript engine คืออะไร ? เป็น Javascript engine ที่เขียนขึ้นด้วยภาษา C++ นำมาใช้ใน Google chrome browser
+ระบบของ Node.js Single thread
+การทำงานจะใช้เพียง Thread เดียว *หากไม่ได้ใช้ module cluster หรือ webworker-threads
+Event-driven
+การทำงานจะเป็นแบบ Event-based คือ จะทำงานตามที่ได้รับมอบหมายเพียงอย่างเดียว ไม่มีการรอผลลัพธ์จากการทำงานที่ไม่เกี่ยวข้อง ตัวอย่างเช่น พยาบาลคนหนึ่งมีหน้าที่แจกแบบฟอร์มตรวจสุขภาพ และบันทึกข้อมูลลงคอมพิวเตอร์ เมื่อมีผู้ป่วยมาเข้าคิวเพื่อรับแบบฟอร์ม พยาบาลจะแจกแบบฟอร์มให้ หลังจากได้รับแบบฟอร์มแล้วเขาต้องไปตรวจสุขภาพตามห้องตรวจต่างๆด้วยตัวเอง ระหว่างนี้พยาบาลจะไม่รอแต่จะแจกแบบฟอร์มให้คนถัดไปทันที เมื่อชายคนนั้นตรวจสุขภาพครบทุกอย่างแล้วจึงจะมาเข้าคิวอีกครั้งเพื่อให้พยาบาลบันทึกลงคอมพิวเตอร์
+Non-blocking I/O
+คำสั่งที่เกี่ยวข้องกับ I/O เช่น คิวรี่ฐานข้อมูล เรียกดูข้อมูลจากเว็บไซต์เขียนหรืออ่านไฟล์ จะมีการทำงานแบบ asynchronous คือไม่มีการหยุดการทำงาน(block) เพื่อรอผลลัพธ์จากคำสั่งเหล่านี้"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://semooze.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Hello Node.js !","item":"https://semooze.github.io/posts/2016-02-14-what-is-nodejs/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Hello Node.js !","name":"Hello Node.js !","description":"Node.js คือ ? Node.js ไม่ใช่ภาษาโปรแกรมใหม่แต่อย่างใด แต่เป็น platform ที่ทำให้สามารถ รัน Java script บนฝั่งเซิร์ฟเวอร์ได้ โดยเพิ่มเติมไลบรารี่ที่เกี่ยวข้องกับการจัดการไฟล์ การรับส่งข้อมูล และอื่นๆ\nNode.js เกิดขึ้นได้อย่างไร ? Ryan Dahl เขียน Node.js ขึ้นในปี ค.ศ. 2009 โดย Node ทำงานอยู่บน V8 JavaScript engine\nV8 JavaScript engine คืออะไร ? เป็น Javascript engine ที่เขียนขึ้นด้วยภาษา C++ นำมาใช้ใน Google chrome browser\nระบบของ Node.js Single thread\nการทำงานจะใช้เพียง Thread เดียว *หากไม่ได้ใช้ module cluster หรือ webworker-threads\nEvent-driven\nการทำงานจะเป็นแบบ Event-based คือ จะทำงานตามที่ได้รับมอบหมายเพียงอย่างเดียว ไม่มีการรอผลลัพธ์จากการทำงานที่ไม่เกี่ยวข้อง ตัวอย่างเช่น พยาบาลคนหนึ่งมีหน้าที่แจกแบบฟอร์มตรวจสุขภาพ และบันทึกข้อมูลลงคอมพิวเตอร์ เมื่อมีผู้ป่วยมาเข้าคิวเพื่อรับแบบฟอร์ม พยาบาลจะแจกแบบฟอร์มให้ หลังจากได้รับแบบฟอร์มแล้วเขาต้องไปตรวจสุขภาพตามห้องตรวจต่างๆด้วยตัวเอง ระหว่างนี้พยาบาลจะไม่รอแต่จะแจกแบบฟอร์มให้คนถัดไปทันที เมื่อชายคนนั้นตรวจสุขภาพครบทุกอย่างแล้วจึงจะมาเข้าคิวอีกครั้งเพื่อให้พยาบาลบันทึกลงคอมพิวเตอร์\nNon-blocking I/O\nคำสั่งที่เกี่ยวข้องกับ I/O เช่น คิวรี่ฐานข้อมูล เรียกดูข้อมูลจากเว็บไซต์เขียนหรืออ่านไฟล์ จะมีการทำงานแบบ asynchronous คือไม่มีการหยุดการทำงาน(block) เพื่อรอผลลัพธ์จากคำสั่งเหล่านี้\n","keywords":["node.js"],"articleBody":"Node.js คือ ? Node.js ไม่ใช่ภาษาโปรแกรมใหม่แต่อย่างใด แต่เป็น platform ที่ทำให้สามารถ รัน Java script บนฝั่งเซิร์ฟเวอร์ได้ โดยเพิ่มเติมไลบรารี่ที่เกี่ยวข้องกับการจัดการไฟล์ การรับส่งข้อมูล และอื่นๆ\nNode.js เกิดขึ้นได้อย่างไร ? Ryan Dahl เขียน Node.js ขึ้นในปี ค.ศ. 2009 โดย Node ทำงานอยู่บน V8 JavaScript engine\nV8 JavaScript engine คืออะไร ? เป็น Javascript engine ที่เขียนขึ้นด้วยภาษา C++ นำมาใช้ใน Google chrome browser\nระบบของ Node.js Single thread\nการทำงานจะใช้เพียง Thread เดียว *หากไม่ได้ใช้ module cluster หรือ webworker-threads\nEvent-driven\nการทำงานจะเป็นแบบ Event-based คือ จะทำงานตามที่ได้รับมอบหมายเพียงอย่างเดียว ไม่มีการรอผลลัพธ์จากการทำงานที่ไม่เกี่ยวข้อง ตัวอย่างเช่น พยาบาลคนหนึ่งมีหน้าที่แจกแบบฟอร์มตรวจสุขภาพ และบันทึกข้อมูลลงคอมพิวเตอร์ เมื่อมีผู้ป่วยมาเข้าคิวเพื่อรับแบบฟอร์ม พยาบาลจะแจกแบบฟอร์มให้ หลังจากได้รับแบบฟอร์มแล้วเขาต้องไปตรวจสุขภาพตามห้องตรวจต่างๆด้วยตัวเอง ระหว่างนี้พยาบาลจะไม่รอแต่จะแจกแบบฟอร์มให้คนถัดไปทันที เมื่อชายคนนั้นตรวจสุขภาพครบทุกอย่างแล้วจึงจะมาเข้าคิวอีกครั้งเพื่อให้พยาบาลบันทึกลงคอมพิวเตอร์\nNon-blocking I/O\nคำสั่งที่เกี่ยวข้องกับ I/O เช่น คิวรี่ฐานข้อมูล เรียกดูข้อมูลจากเว็บไซต์เขียนหรืออ่านไฟล์ จะมีการทำงานแบบ asynchronous คือไม่มีการหยุดการทำงาน(block) เพื่อรอผลลัพธ์จากคำสั่งเหล่านี้\nจุดเด่นของ Node.jsคืออะไร การทำงานแบบ Event-driven และ non-blocking I/O ทำให้ไม่มีการรอผลลัพธ์ที่ที่เกิดจาก I/O request เช่น เมื่อส่งคิวรี่ไปยังฐานข้อมูล DBMS จะต้องใช้เวลาสักพักในการค้นหาข้อมูลที่เราต้องการและส่งกลับมา แต่ Node.js จะไม่รอและทำงานในคำสั่งถัดไปทันที เมื่อข้อมูลที่ต้องการถูกส่งกลับมาแล้วจึงจะนำข้อมูลนั้นไปทำงานต่อ ช่วยลดเวลาที่เสียไปจากการรอผลลัพธ์\nการทำงานเพียง Thread เดียวทำให้ไม่มีการ context switch ระหว่าง thread ช่วยลดเวลาที่เสียไปจาก context switch\nทั้งสามเหตุผลทำให้ Node.js ทำงานได้รวดเร็ว โดยเฉพาะเมื่อแอพพลิเคชั่นที่ต้องการสร้าง มีการเรียกใช้งาน I/O เยอะ\nNode.js ใช้ ภาษา Java script ซึ่งเป็นภาษาที่นิยมใช้ในงานด้าน Frontend ช่วยลดเวลาในการศึกษาเรียนรู้ในการศึกษาภาษาใหม่\nมี Libraries เสริมจำนวนมากทำให้เราไม่ต้องเสียเวลามาเขียนเอง\nการติดตั้ง LTS Version (4.3.0) Stable latest version (5.6.0) ลงผ่าน package manager\nข้อมูลเพิ่มเติม Original Node.js presentation\n","wordCount":"144","inLanguage":"en","datePublished":"2016-02-14T12:35:00+07:00","dateModified":"2016-02-14T12:35:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://semooze.github.io/posts/2016-02-14-what-is-nodejs/"},"publisher":{"@type":"Organization","name":"Gosem Log","logo":{"@type":"ImageObject","url":"https://semooze.github.io/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=header-nav><div class=logo><a href=https://semooze.github.io/ accesskey=h title="Gosem Log (Alt + H)">Gosem Log</a><div class=logo-switches><button id=theme-toggle class=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme"><svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu class=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Hello Node.js !</h1><div class=post-meta><span title='2016-02-14 12:35:00 +0700 +0700'>February 14, 2016</span></div></header><div class="post-content md-content"><h1 id=nodejs-คอ->Node.js คือ ?<a hidden class=anchor aria-hidden=true href=#nodejs-คอ->#</a></h1><p><a href=https://nodejs.org/en/>Node.js</a> ไม่ใช่ภาษาโปรแกรมใหม่แต่อย่างใด แต่เป็น platform ที่ทำให้สามารถ รัน Java script บนฝั่งเซิร์ฟเวอร์ได้ โดยเพิ่มเติมไลบรารี่ที่เกี่ยวข้องกับการจัดการไฟล์ การรับส่งข้อมูล และอื่นๆ</p><h1 id=nodejs-เกดขนไดอยางไร->Node.js เกิดขึ้นได้อย่างไร ?<a hidden class=anchor aria-hidden=true href=#nodejs-เกดขนไดอยางไร->#</a></h1><p>Ryan Dahl เขียน Node.js ขึ้นในปี ค.ศ. 2009 โดย Node ทำงานอยู่บน V8 JavaScript engine</p><h1 id=v8-javascript-engine-คออะไร->V8 JavaScript engine คืออะไร ?<a hidden class=anchor aria-hidden=true href=#v8-javascript-engine-คออะไร->#</a></h1><p>เป็น Javascript engine ที่เขียนขึ้นด้วยภาษา C++ นำมาใช้ใน Google <a href=https://developers.google.com/v8/>chrome browser</a></p><h1 id=ระบบของ-nodejs>ระบบของ Node.js<a hidden class=anchor aria-hidden=true href=#ระบบของ-nodejs>#</a></h1><p><strong>Single thread</strong></p><p>การทำงานจะใช้เพียง Thread เดียว
+*หากไม่ได้ใช้ module <a href=https://nodejs.org/api/cluster.html>cluster</a> หรือ <a href=https://www.npmjs.com/package/webworker-threads>webworker-threads</a></p><p><strong>Event-driven</strong></p><p>การทำงานจะเป็นแบบ <a href=http://code.danyork.com/2011/01/25/node-js-doctors-offices-and-fast-food-restaurants-understanding-event-driven-programming/>Event-based</a> คือ จะทำงานตามที่ได้รับมอบหมายเพียงอย่างเดียว ไม่มีการรอผลลัพธ์จากการทำงานที่ไม่เกี่ยวข้อง ตัวอย่างเช่น พยาบาลคนหนึ่งมีหน้าที่แจกแบบฟอร์มตรวจสุขภาพ และบันทึกข้อมูลลงคอมพิวเตอร์ เมื่อมีผู้ป่วยมาเข้าคิวเพื่อรับแบบฟอร์ม พยาบาลจะแจกแบบฟอร์มให้ หลังจากได้รับแบบฟอร์มแล้วเขาต้องไปตรวจสุขภาพตามห้องตรวจต่างๆด้วยตัวเอง ระหว่างนี้พยาบาลจะไม่รอแต่จะแจกแบบฟอร์มให้คนถัดไปทันที เมื่อชายคนนั้นตรวจสุขภาพครบทุกอย่างแล้วจึงจะมาเข้าคิวอีกครั้งเพื่อให้พยาบาลบันทึกลงคอมพิวเตอร์</p><p><strong>Non-blocking I/O</strong></p><p>คำสั่งที่เกี่ยวข้องกับ I/O เช่น คิวรี่ฐานข้อมูล เรียกดูข้อมูลจากเว็บไซต์เขียนหรืออ่านไฟล์ จะมีการทำงานแบบ asynchronous คือไม่มีการหยุดการทำงาน(block) เพื่อรอผลลัพธ์จากคำสั่งเหล่านี้</p><h1 id=จดเดนของ-nodejsคออะไร>จุดเด่นของ Node.jsคืออะไร<a hidden class=anchor aria-hidden=true href=#จดเดนของ-nodejsคออะไร>#</a></h1><p>การทำงานแบบ Event-driven และ non-blocking I/O ทำให้ไม่มีการรอผลลัพธ์ที่ที่เกิดจาก I/O request เช่น เมื่อส่งคิวรี่ไปยังฐานข้อมูล DBMS จะต้องใช้เวลาสักพักในการค้นหาข้อมูลที่เราต้องการและส่งกลับมา แต่ Node.js จะไม่รอและทำงานในคำสั่งถัดไปทันที เมื่อข้อมูลที่ต้องการถูกส่งกลับมาแล้วจึงจะนำข้อมูลนั้นไปทำงานต่อ ช่วยลดเวลาที่เสียไปจากการรอผลลัพธ์</p><p>การทำงานเพียง Thread เดียวทำให้ไม่มีการ context switch ระหว่าง thread ช่วยลดเวลาที่เสียไปจาก context switch</p><p>ทั้งสามเหตุผลทำให้ Node.js ทำงานได้รวดเร็ว โดยเฉพาะเมื่อแอพพลิเคชั่นที่ต้องการสร้าง มีการเรียกใช้งาน I/O เยอะ</p><p>Node.js ใช้ ภาษา Java script ซึ่งเป็นภาษาที่นิยมใช้ในงานด้าน Frontend ช่วยลดเวลาในการศึกษาเรียนรู้ในการศึกษาภาษาใหม่</p><p>มี Libraries เสริมจำนวนมากทำให้เราไม่ต้องเสียเวลามาเขียนเอง</p><h1 id=การตดตง>การติดตั้ง<a hidden class=anchor aria-hidden=true href=#การตดตง>#</a></h1><p><a href=https://nodejs.org/en/download/>LTS Version (4.3.0)</a>
+<a href=https://nodejs.org/en/download/stable/>Stable latest version (5.6.0)</a>
+<a href=https://nodejs.org/en/download/package-manager/>ลงผ่าน package manager</a></p><h1 id=ขอมลเพมเตม>ข้อมูลเพิ่มเติม<a hidden class=anchor aria-hidden=true href=#ขอมลเพมเตม>#</a></h1><p><a href="https://www.youtube.com/watch?v=ztspvPYybIY&amp;noredirect=1">Original Node.js presentation</a></p></div><footer class=post-footer><ul class=post-tags><li><a href=https://semooze.github.io/tags/node.js/>Node.js</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://semooze.github.io/>Gosem Log</a></span> ·
+<span>Powered by
+<a href="https://gohugo.io/?utm_source=papermod" rel=noopener target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top id=top-link class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey=g><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var toplink=document.getElementById("top-link");window.onscroll=function(){const e=window.innerHeight;document.body.scrollTop>e||document.documentElement.scrollTop>e?toplink.classList.remove("hidden"):toplink.classList.add("hidden")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script></body></html>
