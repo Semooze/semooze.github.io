@@ -1,4 +1,4 @@
-baseURL = 'https://semooze.github.io/'
+baseURL = 'https://gosem-blog.pages.dev/'
 locale = 'th-th'
 title = 'Gosem Log'
 theme = 'PaperMod'
